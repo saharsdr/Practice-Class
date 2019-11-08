@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2019 at 08:23 AM
+-- Generation Time: Nov 08, 2019 at 08:40 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -43,12 +43,12 @@ CREATE TABLE `table_course` (
 
 CREATE TABLE `table_practiceclass` (
   `groupeNumberPracticeClass` smallint(6) NOT NULL,
-  `termPracticeClass` char(1) COLLATE utf8_persian_ci NOT NULL,
+  `termPracticeClass` bit(1) NOT NULL,
   `yearYearPracticeClass` char(5) COLLATE utf8_persian_ci NOT NULL,
   `idCourse` char(7) COLLATE utf8_persian_ci DEFAULT NULL,
   `idProfessor` char(10) COLLATE utf8_persian_ci DEFAULT NULL,
   `idTA` char(10) COLLATE utf8_persian_ci DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
 -- --------------------------------------------------------
 
@@ -58,6 +58,35 @@ CREATE TABLE `table_practiceclass` (
 
 CREATE TABLE `table_professor` (
   `idProfessor` char(10) COLLATE utf8_persian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `table_quiz`
+--
+
+CREATE TABLE `table_quiz` (
+  `numberQuiz` smallint(6) NOT NULL,
+  `dateQuiz` date DEFAULT NULL,
+  `termPracticeClass` bit(1) NOT NULL,
+  `yearYearPracticeClass` char(5) COLLATE utf8_persian_ci NOT NULL,
+  `groupeNumberPracticeClass` smallint(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `table_quizstudent`
+--
+
+CREATE TABLE `table_quizstudent` (
+  `numberQuiz` smallint(6) NOT NULL,
+  `idStudent` char(10) COLLATE utf8_persian_ci NOT NULL,
+  `grade` smallint(6) DEFAULT NULL,
+  `termPracticeClass` bit(1) NOT NULL,
+  `yearYearPracticeClass` char(5) COLLATE utf8_persian_ci NOT NULL,
+  `groupeNumberPracticeClass` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
 -- --------------------------------------------------------
@@ -93,10 +122,10 @@ CREATE TABLE `table_student` (
 CREATE TABLE `table_studentpracticeclass` (
   `grade` float DEFAULT NULL,
   `groupeNumberPracticeClass` smallint(6) NOT NULL,
-  `termPracticeClass` char(1) COLLATE utf8_persian_ci NOT NULL,
+  `termPracticeClass` bit(1) NOT NULL,
   `yearYearPracticeClass` char(5) COLLATE utf8_persian_ci NOT NULL,
   `idStudent` char(10) COLLATE utf8_persian_ci NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
 -- --------------------------------------------------------
 
@@ -109,7 +138,7 @@ CREATE TABLE `table_user` (
   `firstNameUser` varchar(25) COLLATE utf8_persian_ci NOT NULL,
   `lastNameUser` varchar(25) COLLATE utf8_persian_ci NOT NULL,
   `password` varchar(30) COLLATE utf8_persian_ci NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
 --
 -- Indexes for dumped tables
@@ -126,15 +155,36 @@ ALTER TABLE `table_course`
 --
 ALTER TABLE `table_practiceclass`
   ADD PRIMARY KEY (`groupeNumberPracticeClass`,`termPracticeClass`,`yearYearPracticeClass`),
-  ADD KEY `table_practiceclass_ibfk_1` (`idProfessor`),
-  ADD KEY `table_practiceclass_ibfk_2` (`idTA`),
-  ADD KEY `table_practiceclass_ibfk_3` (`idCourse`);
+  ADD KEY `idProfessor` (`idProfessor`),
+  ADD KEY `idTA` (`idTA`),
+  ADD KEY `idCourse` (`idCourse`),
+  ADD KEY `termPracticeClass` (`termPracticeClass`),
+  ADD KEY `yearYearPracticeClass` (`yearYearPracticeClass`);
 
 --
 -- Indexes for table `table_professor`
 --
 ALTER TABLE `table_professor`
   ADD PRIMARY KEY (`idProfessor`);
+
+--
+-- Indexes for table `table_quiz`
+--
+ALTER TABLE `table_quiz`
+  ADD PRIMARY KEY (`numberQuiz`,`termPracticeClass`,`yearYearPracticeClass`,`groupeNumberPracticeClass`),
+  ADD KEY `termPracticeClass` (`termPracticeClass`),
+  ADD KEY `yearYearPracticeClass` (`yearYearPracticeClass`),
+  ADD KEY `groupeNumberPracticeClass` (`groupeNumberPracticeClass`);
+
+--
+-- Indexes for table `table_quizstudent`
+--
+ALTER TABLE `table_quizstudent`
+  ADD PRIMARY KEY (`numberQuiz`,`idStudent`,`termPracticeClass`,`yearYearPracticeClass`,`groupeNumberPracticeClass`),
+  ADD KEY `idStudent` (`idStudent`),
+  ADD KEY `termPracticeClass` (`termPracticeClass`),
+  ADD KEY `yearYearPracticeClass` (`yearYearPracticeClass`),
+  ADD KEY `groupeNumberPracticeClass` (`groupeNumberPracticeClass`);
 
 --
 -- Indexes for table `table_resource`
@@ -154,9 +204,9 @@ ALTER TABLE `table_student`
 --
 ALTER TABLE `table_studentpracticeclass`
   ADD PRIMARY KEY (`idStudent`,`termPracticeClass`,`yearYearPracticeClass`,`groupeNumberPracticeClass`),
-  ADD KEY `table_studentpracticeclass_ibfk_2` (`groupeNumberPracticeClass`),
-  ADD KEY `table_studentpracticeclass_ibfk_3` (`termPracticeClass`),
-  ADD KEY `table_studentpracticeclass_ibfk_4` (`yearYearPracticeClass`);
+  ADD KEY `groupeNumberPracticeClass` (`groupeNumberPracticeClass`),
+  ADD KEY `termPracticeClass` (`termPracticeClass`),
+  ADD KEY `yearYearPracticeClass` (`yearYearPracticeClass`);
 
 --
 -- Indexes for table `table_user`
@@ -183,6 +233,24 @@ ALTER TABLE `table_professor`
   ADD CONSTRAINT `table_professor_ibfk_1` FOREIGN KEY (`idProfessor`) REFERENCES `table_user` (`idUser`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
+-- Constraints for table `table_quiz`
+--
+ALTER TABLE `table_quiz`
+  ADD CONSTRAINT `table_quiz_ibfk_1` FOREIGN KEY (`termPracticeClass`) REFERENCES `table_practiceclass` (`termPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_quiz_ibfk_2` FOREIGN KEY (`yearYearPracticeClass`) REFERENCES `table_practiceclass` (`yearYearPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_quiz_ibfk_3` FOREIGN KEY (`groupeNumberPracticeClass`) REFERENCES `table_practiceclass` (`groupeNumberPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `table_quizstudent`
+--
+ALTER TABLE `table_quizstudent`
+  ADD CONSTRAINT `table_quizstudent_ibfk_1` FOREIGN KEY (`numberQuiz`) REFERENCES `table_quiz` (`numberQuiz`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_quizstudent_ibfk_2` FOREIGN KEY (`idStudent`) REFERENCES `table_student` (`idStudent`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_quizstudent_ibfk_3` FOREIGN KEY (`termPracticeClass`) REFERENCES `table_quiz` (`termPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_quizstudent_ibfk_4` FOREIGN KEY (`yearYearPracticeClass`) REFERENCES `table_quiz` (`yearYearPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_quizstudent_ibfk_5` FOREIGN KEY (`groupeNumberPracticeClass`) REFERENCES `table_quiz` (`groupeNumberPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
 -- Constraints for table `table_resource`
 --
 ALTER TABLE `table_resource`
@@ -199,8 +267,8 @@ ALTER TABLE `table_student`
 -- Constraints for table `table_studentpracticeclass`
 --
 ALTER TABLE `table_studentpracticeclass`
-  ADD CONSTRAINT `table_studentpracticeclass_ibfk_1` FOREIGN KEY (`idStudent`) REFERENCES `table_user` (`idUser`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `table_studentpracticeclass_ibfk_2` FOREIGN KEY (`groupeNumberPracticeClass`) REFERENCES `table_practiceclass` (`groupeNumberPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_studentpracticeclass_ibfk_1` FOREIGN KEY (`groupeNumberPracticeClass`) REFERENCES `table_practiceclass` (`groupeNumberPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_studentpracticeclass_ibfk_2` FOREIGN KEY (`idStudent`) REFERENCES `table_student` (`idStudent`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `table_studentpracticeclass_ibfk_3` FOREIGN KEY (`termPracticeClass`) REFERENCES `table_practiceclass` (`termPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `table_studentpracticeclass_ibfk_4` FOREIGN KEY (`yearYearPracticeClass`) REFERENCES `table_practiceclass` (`yearYearPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE;
 COMMIT;
