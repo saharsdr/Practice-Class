@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2019 at 07:37 AM
+-- Generation Time: Nov 08, 2019 at 07:53 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -34,6 +34,21 @@ CREATE TABLE `table_course` (
   `idCourse` char(7) COLLATE utf8_persian_ci NOT NULL,
   `nameCourse` varchar(20) COLLATE utf8_persian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `table_practiceclass`
+--
+
+CREATE TABLE `table_practiceclass` (
+  `groupeNumberPracticeClass` smallint(6) NOT NULL,
+  `termPracticeClass` bit(1) NOT NULL,
+  `yearYearPracticeClass` char(5) COLLATE utf8_persian_ci NOT NULL,
+  `idCourse` char(7) COLLATE utf8_persian_ci DEFAULT NULL,
+  `idProfessor` char(10) COLLATE utf8_persian_ci DEFAULT NULL,
+  `idTA` char(10) COLLATE utf8_persian_ci DEFAULT NULL
+) ;
 
 -- --------------------------------------------------------
 
@@ -93,6 +108,15 @@ ALTER TABLE `table_course`
   ADD PRIMARY KEY (`idCourse`);
 
 --
+-- Indexes for table `table_practiceclass`
+--
+ALTER TABLE `table_practiceclass`
+  ADD PRIMARY KEY (`groupeNumberPracticeClass`,`termPracticeClass`,`yearYearPracticeClass`),
+  ADD KEY `idProfessor` (`idProfessor`),
+  ADD KEY `idTA` (`idTA`),
+  ADD KEY `idCourse` (`idCourse`);
+
+--
 -- Indexes for table `table_professor`
 --
 ALTER TABLE `table_professor`
@@ -120,6 +144,14 @@ ALTER TABLE `table_user`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `table_practiceclass`
+--
+ALTER TABLE `table_practiceclass`
+  ADD CONSTRAINT `table_practiceclass_ibfk_1` FOREIGN KEY (`idProfessor`) REFERENCES `table_user` (`idUser`),
+  ADD CONSTRAINT `table_practiceclass_ibfk_2` FOREIGN KEY (`idTA`) REFERENCES `table_user` (`idUser`),
+  ADD CONSTRAINT `table_practiceclass_ibfk_3` FOREIGN KEY (`idCourse`) REFERENCES `table_course` (`idCourse`);
 
 --
 -- Constraints for table `table_professor`
