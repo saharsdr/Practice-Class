@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2019 at 08:29 AM
+-- Generation Time: Nov 08, 2019 at 08:40 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -58,6 +58,35 @@ CREATE TABLE `table_practiceclass` (
 
 CREATE TABLE `table_professor` (
   `idProfessor` char(10) COLLATE utf8_persian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `table_quiz`
+--
+
+CREATE TABLE `table_quiz` (
+  `numberQuiz` smallint(6) NOT NULL,
+  `dateQuiz` date DEFAULT NULL,
+  `termPracticeClass` bit(1) NOT NULL,
+  `yearYearPracticeClass` char(5) COLLATE utf8_persian_ci NOT NULL,
+  `groupeNumberPracticeClass` smallint(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `table_quizstudent`
+--
+
+CREATE TABLE `table_quizstudent` (
+  `numberQuiz` smallint(6) NOT NULL,
+  `idStudent` char(10) COLLATE utf8_persian_ci NOT NULL,
+  `grade` smallint(6) DEFAULT NULL,
+  `termPracticeClass` bit(1) NOT NULL,
+  `yearYearPracticeClass` char(5) COLLATE utf8_persian_ci NOT NULL,
+  `groupeNumberPracticeClass` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
 -- --------------------------------------------------------
@@ -139,6 +168,25 @@ ALTER TABLE `table_professor`
   ADD PRIMARY KEY (`idProfessor`);
 
 --
+-- Indexes for table `table_quiz`
+--
+ALTER TABLE `table_quiz`
+  ADD PRIMARY KEY (`numberQuiz`,`termPracticeClass`,`yearYearPracticeClass`,`groupeNumberPracticeClass`),
+  ADD KEY `termPracticeClass` (`termPracticeClass`),
+  ADD KEY `yearYearPracticeClass` (`yearYearPracticeClass`),
+  ADD KEY `groupeNumberPracticeClass` (`groupeNumberPracticeClass`);
+
+--
+-- Indexes for table `table_quizstudent`
+--
+ALTER TABLE `table_quizstudent`
+  ADD PRIMARY KEY (`numberQuiz`,`idStudent`,`termPracticeClass`,`yearYearPracticeClass`,`groupeNumberPracticeClass`),
+  ADD KEY `idStudent` (`idStudent`),
+  ADD KEY `termPracticeClass` (`termPracticeClass`),
+  ADD KEY `yearYearPracticeClass` (`yearYearPracticeClass`),
+  ADD KEY `groupeNumberPracticeClass` (`groupeNumberPracticeClass`);
+
+--
 -- Indexes for table `table_resource`
 --
 ALTER TABLE `table_resource`
@@ -183,6 +231,24 @@ ALTER TABLE `table_practiceclass`
 --
 ALTER TABLE `table_professor`
   ADD CONSTRAINT `table_professor_ibfk_1` FOREIGN KEY (`idProfessor`) REFERENCES `table_user` (`idUser`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `table_quiz`
+--
+ALTER TABLE `table_quiz`
+  ADD CONSTRAINT `table_quiz_ibfk_1` FOREIGN KEY (`termPracticeClass`) REFERENCES `table_practiceclass` (`termPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_quiz_ibfk_2` FOREIGN KEY (`yearYearPracticeClass`) REFERENCES `table_practiceclass` (`yearYearPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_quiz_ibfk_3` FOREIGN KEY (`groupeNumberPracticeClass`) REFERENCES `table_practiceclass` (`groupeNumberPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `table_quizstudent`
+--
+ALTER TABLE `table_quizstudent`
+  ADD CONSTRAINT `table_quizstudent_ibfk_1` FOREIGN KEY (`numberQuiz`) REFERENCES `table_quiz` (`numberQuiz`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_quizstudent_ibfk_2` FOREIGN KEY (`idStudent`) REFERENCES `table_student` (`idStudent`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_quizstudent_ibfk_3` FOREIGN KEY (`termPracticeClass`) REFERENCES `table_quiz` (`termPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_quizstudent_ibfk_4` FOREIGN KEY (`yearYearPracticeClass`) REFERENCES `table_quiz` (`yearYearPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_quizstudent_ibfk_5` FOREIGN KEY (`groupeNumberPracticeClass`) REFERENCES `table_quiz` (`groupeNumberPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `table_resource`
