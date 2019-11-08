@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2019 at 07:53 AM
+-- Generation Time: Nov 08, 2019 at 08:29 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -48,7 +48,7 @@ CREATE TABLE `table_practiceclass` (
   `idCourse` char(7) COLLATE utf8_persian_ci DEFAULT NULL,
   `idProfessor` char(10) COLLATE utf8_persian_ci DEFAULT NULL,
   `idTA` char(10) COLLATE utf8_persian_ci DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
 -- --------------------------------------------------------
 
@@ -87,6 +87,20 @@ CREATE TABLE `table_student` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `table_studentpracticeclass`
+--
+
+CREATE TABLE `table_studentpracticeclass` (
+  `grade` float DEFAULT NULL,
+  `groupeNumberPracticeClass` smallint(6) NOT NULL,
+  `termPracticeClass` bit(1) NOT NULL,
+  `yearYearPracticeClass` char(5) COLLATE utf8_persian_ci NOT NULL,
+  `idStudent` char(10) COLLATE utf8_persian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `table_user`
 --
 
@@ -114,7 +128,9 @@ ALTER TABLE `table_practiceclass`
   ADD PRIMARY KEY (`groupeNumberPracticeClass`,`termPracticeClass`,`yearYearPracticeClass`),
   ADD KEY `idProfessor` (`idProfessor`),
   ADD KEY `idTA` (`idTA`),
-  ADD KEY `idCourse` (`idCourse`);
+  ADD KEY `idCourse` (`idCourse`),
+  ADD KEY `termPracticeClass` (`termPracticeClass`),
+  ADD KEY `yearYearPracticeClass` (`yearYearPracticeClass`);
 
 --
 -- Indexes for table `table_professor`
@@ -136,6 +152,15 @@ ALTER TABLE `table_student`
   ADD PRIMARY KEY (`idStudent`);
 
 --
+-- Indexes for table `table_studentpracticeclass`
+--
+ALTER TABLE `table_studentpracticeclass`
+  ADD PRIMARY KEY (`idStudent`,`termPracticeClass`,`yearYearPracticeClass`,`groupeNumberPracticeClass`),
+  ADD KEY `groupeNumberPracticeClass` (`groupeNumberPracticeClass`),
+  ADD KEY `termPracticeClass` (`termPracticeClass`),
+  ADD KEY `yearYearPracticeClass` (`yearYearPracticeClass`);
+
+--
 -- Indexes for table `table_user`
 --
 ALTER TABLE `table_user`
@@ -149,9 +174,9 @@ ALTER TABLE `table_user`
 -- Constraints for table `table_practiceclass`
 --
 ALTER TABLE `table_practiceclass`
-  ADD CONSTRAINT `table_practiceclass_ibfk_1` FOREIGN KEY (`idProfessor`) REFERENCES `table_user` (`idUser`),
-  ADD CONSTRAINT `table_practiceclass_ibfk_2` FOREIGN KEY (`idTA`) REFERENCES `table_user` (`idUser`),
-  ADD CONSTRAINT `table_practiceclass_ibfk_3` FOREIGN KEY (`idCourse`) REFERENCES `table_course` (`idCourse`);
+  ADD CONSTRAINT `table_practiceclass_ibfk_1` FOREIGN KEY (`idProfessor`) REFERENCES `table_user` (`idUser`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_practiceclass_ibfk_2` FOREIGN KEY (`idTA`) REFERENCES `table_user` (`idUser`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_practiceclass_ibfk_3` FOREIGN KEY (`idCourse`) REFERENCES `table_course` (`idCourse`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `table_professor`
@@ -171,6 +196,15 @@ ALTER TABLE `table_resource`
 --
 ALTER TABLE `table_student`
   ADD CONSTRAINT `table_student_ibfk_1` FOREIGN KEY (`idStudent`) REFERENCES `table_user` (`idUser`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `table_studentpracticeclass`
+--
+ALTER TABLE `table_studentpracticeclass`
+  ADD CONSTRAINT `table_studentpracticeclass_ibfk_1` FOREIGN KEY (`groupeNumberPracticeClass`) REFERENCES `table_practiceclass` (`groupeNumberPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_studentpracticeclass_ibfk_2` FOREIGN KEY (`idStudent`) REFERENCES `table_student` (`idStudent`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_studentpracticeclass_ibfk_3` FOREIGN KEY (`termPracticeClass`) REFERENCES `table_practiceclass` (`termPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `table_studentpracticeclass_ibfk_4` FOREIGN KEY (`yearYearPracticeClass`) REFERENCES `table_practiceclass` (`yearYearPracticeClass`) ON DELETE NO ACTION ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
