@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2019 at 08:40 AM
+-- Generation Time: Nov 09, 2019 at 03:30 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -33,6 +33,22 @@ USE `database_practiceclass`;
 CREATE TABLE `table_course` (
   `idCourse` char(7) COLLATE utf8_persian_ci NOT NULL,
   `nameCourse` varchar(20) COLLATE utf8_persian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `table_practice`
+--
+
+CREATE TABLE `table_practice` (
+  `partPractice` smallint(6) NOT NULL,
+  `numberPractice` smallint(6) NOT NULL,
+  `linkPractice` text COLLATE utf8_persian_ci DEFAULT NULL,
+  `termPracticeClass` bit(1) NOT NULL,
+  `yearYearPracticeClass` char(5) COLLATE utf8_persian_ci NOT NULL,
+  `groupeNumberPracticeClass` smallint(6) NOT NULL,
+  `idUploader` char(10) COLLATE utf8_persian_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
 -- --------------------------------------------------------
@@ -151,6 +167,15 @@ ALTER TABLE `table_course`
   ADD PRIMARY KEY (`idCourse`);
 
 --
+-- Indexes for table `table_practice`
+--
+ALTER TABLE `table_practice`
+  ADD PRIMARY KEY (`partPractice`,`numberPractice`,`termPracticeClass`,`yearYearPracticeClass`,`groupeNumberPracticeClass`),
+  ADD KEY `termPracticeClass` (`termPracticeClass`),
+  ADD KEY `yearYearPracticeClass` (`yearYearPracticeClass`),
+  ADD KEY `groupeNumberPracticeClass` (`groupeNumberPracticeClass`);
+
+--
 -- Indexes for table `table_practiceclass`
 --
 ALTER TABLE `table_practiceclass`
@@ -217,6 +242,14 @@ ALTER TABLE `table_user`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `table_practice`
+--
+ALTER TABLE `table_practice`
+  ADD CONSTRAINT `table_practice_ibfk_1` FOREIGN KEY (`termPracticeClass`) REFERENCES `table_practiceclass` (`termPracticeClass`),
+  ADD CONSTRAINT `table_practice_ibfk_2` FOREIGN KEY (`yearYearPracticeClass`) REFERENCES `table_practiceclass` (`yearYearPracticeClass`),
+  ADD CONSTRAINT `table_practice_ibfk_3` FOREIGN KEY (`groupeNumberPracticeClass`) REFERENCES `table_practiceclass` (`groupeNumberPracticeClass`);
 
 --
 -- Constraints for table `table_practiceclass`
