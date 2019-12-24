@@ -23,3 +23,26 @@ E:\Programing\University Projects\DataBase - Design Analysis\Practice-Class\C#\P
 E:\Programing\University Projects\DataBase - Design Analysis\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.pdb
 E:\Programing\University Projects\DataBase - Design Analysis\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.csprojAssemblyReference.cache
 E:\Programing\University Projects\DataBase - Design Analysis\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass_Content.g.cs
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\PracticeClass.exe.config
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.exe
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.pdb
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\PracticeClass.exe
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\PracticeClass.pdb
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\EntityFramework.dll
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\EntityFramework.SqlServer.dll
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\MySql.Data.dll
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\MySql.Data.Entity.EF6.dll
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\EntityFramework.xml
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\EntityFramework.SqlServer.xml
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\MySql.Data.xml
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\MySql.Data.Entity.EF6.xml
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.csprojResolveAssemblyReference.cache
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\MainWindow.g.cs
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\App.g.cs
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass_Content.g.cs
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass_MarkupCompile.cache
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass_MarkupCompile.lref
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\MainWindow.baml
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.g.resources
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.Properties.Resources.resources
+D:\Programing\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.csproj.GenerateResource.Cache
