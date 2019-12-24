@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2019 at 01:40 PM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.6
+-- Generation Time: Dec 24, 2019 at 10:11 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -166,17 +166,18 @@ CREATE TABLE `table_practicestudent` (
 --
 
 CREATE TABLE `table_professor` (
-  `idProfessor` char(10) COLLATE utf8_persian_ci NOT NULL
+  `idProfessor` char(10) COLLATE utf8_persian_ci NOT NULL,
+  `isPrime` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
 --
 -- Dumping data for table `table_professor`
 --
 
-INSERT INTO `table_professor` (`idProfessor`) VALUES
-('380395'),
-('380460'),
-('380491');
+INSERT INTO `table_professor` (`idProfessor`, `isPrime`) VALUES
+('380395', b'0'),
+('380460', b'0'),
+('380491', b'0');
 
 -- --------------------------------------------------------
 
