@@ -1,0 +1,794 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="database_practiceclassModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="table_course">
+    <Key>
+      <PropertyRef Name="idCourse" />
+    </Key>
+    <Property Name="idCourse" Type="char" MaxLength="7" Nullable="false" />
+    <Property Name="nameCourse" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="table_practice">
+    <Key>
+      <PropertyRef Name="numberPractice" />
+      <PropertyRef Name="partPractice" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+    </Key>
+    <Property Name="idTable" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="numberPractice" Type="smallint" Nullable="false" />
+    <Property Name="partPractice" Type="smallint" Nullable="false" />
+    <Property Name="linkPractice" Type="text" />
+    <Property Name="idUploader" Type="char" MaxLength="10" />
+    <Property Name="groupeNumberPracticeClass" Type="smallint" Nullable="false" />
+    <Property Name="termPracticeClass" Type="bit" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="smallint" Nullable="false" />
+    <Property Name="deleted" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="table_practiceclass">
+    <Key>
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+    </Key>
+    <Property Name="idTable" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status" Type="bit" />
+    <Property Name="idCourse" Type="char" MaxLength="7" />
+    <Property Name="idProfessor" Type="char" MaxLength="10" />
+    <Property Name="idTA" Type="char" MaxLength="10" />
+    <Property Name="groupeNumberPracticeClass" Type="smallint" Nullable="false" />
+    <Property Name="termPracticeClass" Type="bit" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="smallint" Nullable="false" />
+    <Property Name="deleted" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="table_practicestudent">
+    <Key>
+      <PropertyRef Name="numberPractice" />
+      <PropertyRef Name="partPractice" />
+      <PropertyRef Name="idStudent" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+    </Key>
+    <Property Name="idTable" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="numberPractice" Type="smallint" Nullable="false" />
+    <Property Name="partPractice" Type="smallint" Nullable="false" />
+    <Property Name="idStudent" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="linkSolvedPractice" Type="text" Nullable="false" />
+    <Property Name="timePracticeStudent" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="checked" Type="bit" Nullable="false" />
+    <Property Name="gradePracticeStudent" Type="smallint" />
+    <Property Name="groupeNumberPracticeClass" Type="smallint" Nullable="false" />
+    <Property Name="termPracticeClass" Type="bit" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="smallint" Nullable="false" />
+    <Property Name="deleted" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="table_professor">
+    <Key>
+      <PropertyRef Name="idProfessor" />
+    </Key>
+    <Property Name="idProfessor" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="table_quiz">
+    <Key>
+      <PropertyRef Name="numberQuiz" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+    </Key>
+    <Property Name="idTable" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="numberQuiz" Type="smallint" Nullable="false" />
+    <Property Name="dateQuiz" Type="date" />
+    <Property Name="groupeNumberPracticeClass" Type="smallint" Nullable="false" />
+    <Property Name="termPracticeClass" Type="bit" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="smallint" Nullable="false" />
+    <Property Name="deleted" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="table_quizstudent">
+    <Key>
+      <PropertyRef Name="numberQuiz" />
+      <PropertyRef Name="idStudent" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+    </Key>
+    <Property Name="idTable" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="numberQuiz" Type="smallint" Nullable="false" />
+    <Property Name="idStudent" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="gradeQuizStudent" Type="smallint" />
+    <Property Name="groupeNumberPracticeClass" Type="smallint" Nullable="false" />
+    <Property Name="termPracticeClass" Type="bit" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="smallint" Nullable="false" />
+    <Property Name="deleted" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="table_resource">
+    <Key>
+      <PropertyRef Name="numberResource" />
+      <PropertyRef Name="idCourse" />
+    </Key>
+    <Property Name="idTable" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="numberResource" Type="smallint" Nullable="false" />
+    <Property Name="nameResource" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="linkResource" Type="text" />
+    <Property Name="idCourse" Type="char" MaxLength="7" Nullable="false" />
+    <Property Name="idProfessor" Type="char" MaxLength="10" />
+    <Property Name="deleted" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="table_student">
+    <Key>
+      <PropertyRef Name="idStudent" />
+    </Key>
+    <Property Name="idStudent" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="table_studentpracticeclass">
+    <Key>
+      <PropertyRef Name="idStudent" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+    </Key>
+    <Property Name="idTable" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idStudent" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="gradePracticeClassStudent" Type="float" />
+    <Property Name="groupeNumberPracticeClass" Type="smallint" Nullable="false" />
+    <Property Name="termPracticeClass" Type="bit" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="smallint" Nullable="false" />
+    <Property Name="deleted" Type="bool" Nullable="false" />
+    <Property Name="checked" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="table_user">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="firstNameUser" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="lastNameUser" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.database_practiceclass.viewadminlistprofessor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="viewadminlistprofessor">
+    <Key>
+      <PropertyRef Name="idUser" />
+      <PropertyRef Name="firstNameUser" />
+      <PropertyRef Name="lastNameUser" />
+      <PropertyRef Name="password" />
+    </Key>
+    <Property Name="idUser" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="firstNameUser" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="lastNameUser" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.database_practiceclass.viewadminliststudent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="viewadminliststudent">
+    <Key>
+      <PropertyRef Name="idUser" />
+      <PropertyRef Name="firstNameUser" />
+      <PropertyRef Name="lastNameUser" />
+      <PropertyRef Name="password" />
+    </Key>
+    <Property Name="idUser" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="firstNameUser" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="lastNameUser" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.database_practiceclass.viewlistclass' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="viewlistclass">
+    <Key>
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+      <PropertyRef Name="prffn" />
+      <PropertyRef Name="pfln" />
+      <PropertyRef Name="tafn" />
+      <PropertyRef Name="taln" />
+      <PropertyRef Name="nameCourse" />
+      <PropertyRef Name="classDel" />
+      <PropertyRef Name="stuDel" />
+    </Key>
+    <Property Name="groupeNumberPracticeClass" Type="smallint" Nullable="false" />
+    <Property Name="termPracticeClass" Type="bit" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="smallint" Nullable="false" />
+    <Property Name="idProfessor" Type="char" MaxLength="10" />
+    <Property Name="prffn" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="pfln" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="idTA" Type="char" MaxLength="10" />
+    <Property Name="tafn" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="taln" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="status" Type="bit" />
+    <Property Name="nameCourse" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="AVG(c.gradePracticeClassStudent)" Type="double" />
+    <Property Name="classDel" Type="bool" Nullable="false" />
+    <Property Name="stuDel" Type="bool" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.database_practiceclass.viewlistclassmember' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="viewlistclassmember">
+    <Key>
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+      <PropertyRef Name="idStudent" />
+      <PropertyRef Name="stufn" />
+      <PropertyRef Name="stuln" />
+      <PropertyRef Name="stuDel" />
+    </Key>
+    <Property Name="gradePracticeClassStudent" Type="float" />
+    <Property Name="groupeNumberPracticeClass" Type="smallint" Nullable="false" />
+    <Property Name="termPracticeClass" Type="bit" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="smallint" Nullable="false" />
+    <Property Name="idStudent" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="stufn" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="stuln" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="stuDel" Type="bool" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.database_practiceclass.viewlistcourseresourse' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="viewlistcourseresourse">
+    <Key>
+      <PropertyRef Name="idCourse" />
+      <PropertyRef Name="nameCourse" />
+      <PropertyRef Name="nameResource" />
+      <PropertyRef Name="numberResource" />
+      <PropertyRef Name="deleted" />
+    </Key>
+    <Property Name="idCourse" Type="char" MaxLength="7" Nullable="false" />
+    <Property Name="nameCourse" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="nameResource" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="linkResource" Type="text" />
+    <Property Name="numberResource" Type="smallint" Nullable="false" />
+    <Property Name="deleted" Type="bool" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.database_practiceclass.viewlistpractice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="viewlistpractice">
+    <Key>
+      <PropertyRef Name="partPractice" />
+      <PropertyRef Name="numberPractice" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="pracDel" />
+      <PropertyRef Name="pracStuDel" />
+    </Key>
+    <Property Name="partPractice" Type="smallint" Nullable="false" />
+    <Property Name="numberPractice" Type="smallint" Nullable="false" />
+    <Property Name="linkPractice" Type="text" />
+    <Property Name="termPracticeClass" Type="bit" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="smallint" Nullable="false" />
+    <Property Name="groupeNumberPracticeClass" Type="smallint" Nullable="false" />
+    <Property Name="AVG(b.gradePracticeStudent)" Type="decimal" Precision="9" Scale="4" />
+    <Property Name="pracDel" Type="bool" Nullable="false" />
+    <Property Name="pracStuDel" Type="bool" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.database_practiceclass.viewlistpracticesolved' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="viewlistpracticesolved">
+    <Key>
+      <PropertyRef Name="idStudent" />
+      <PropertyRef Name="firstNameUser" />
+      <PropertyRef Name="lastNameUser" />
+      <PropertyRef Name="partPractice" />
+      <PropertyRef Name="numberPractice" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="linkSolvedPractice" />
+      <PropertyRef Name="timePracticeStudent" />
+      <PropertyRef Name="checked" />
+      <PropertyRef Name="deleted" />
+    </Key>
+    <Property Name="idStudent" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="firstNameUser" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="lastNameUser" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="partPractice" Type="smallint" Nullable="false" />
+    <Property Name="numberPractice" Type="smallint" Nullable="false" />
+    <Property Name="termPracticeClass" Type="bit" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="smallint" Nullable="false" />
+    <Property Name="groupeNumberPracticeClass" Type="smallint" Nullable="false" />
+    <Property Name="gradePracticeStudent" Type="smallint" />
+    <Property Name="linkSolvedPractice" Type="text" Nullable="false" />
+    <Property Name="timePracticeStudent" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="checked" Type="bit" Nullable="false" />
+    <Property Name="deleted" Type="bool" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.database_practiceclass.viewlistquiz' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="viewlistquiz">
+    <Key>
+      <PropertyRef Name="numberQuiz" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="quizdDel" />
+      <PropertyRef Name="quizStuDel" />
+    </Key>
+    <Property Name="numberQuiz" Type="smallint" Nullable="false" />
+    <Property Name="dateQuiz" Type="date" />
+    <Property Name="termPracticeClass" Type="bit" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="smallint" Nullable="false" />
+    <Property Name="groupeNumberPracticeClass" Type="smallint" Nullable="false" />
+    <Property Name="avg(b.gradeQuizStudent)" Type="decimal" Precision="9" Scale="4" />
+    <Property Name="quizdDel" Type="bool" Nullable="false" />
+    <Property Name="quizStuDel" Type="bool" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.database_practiceclass.viewlistquizstudent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="viewlistquizstudent">
+    <Key>
+      <PropertyRef Name="numberQuiz" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="idUser" />
+      <PropertyRef Name="firstNameUser" />
+      <PropertyRef Name="lastNameUser" />
+      <PropertyRef Name="quizdDel" />
+      <PropertyRef Name="quizStuDel" />
+    </Key>
+    <Property Name="numberQuiz" Type="smallint" Nullable="false" />
+    <Property Name="dateQuiz" Type="date" />
+    <Property Name="termPracticeClass" Type="bit" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="smallint" Nullable="false" />
+    <Property Name="groupeNumberPracticeClass" Type="smallint" Nullable="false" />
+    <Property Name="gradeQuizStudent" Type="smallint" />
+    <Property Name="idUser" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="firstNameUser" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="lastNameUser" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="quizdDel" Type="bool" Nullable="false" />
+    <Property Name="quizStuDel" Type="bool" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.database_practiceclass.viewstudentlistclass' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="viewstudentlistclass">
+    <Key>
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+      <PropertyRef Name="idStudent" />
+      <PropertyRef Name="nameCourse" />
+      <PropertyRef Name="proffnam" />
+      <PropertyRef Name="proflnam" />
+      <PropertyRef Name="tafn" />
+      <PropertyRef Name="talnm" />
+    </Key>
+    <Property Name="gradePracticeClassStudent" Type="float" />
+    <Property Name="groupeNumberPracticeClass" Type="smallint" Nullable="false" />
+    <Property Name="termPracticeClass" Type="bit" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="smallint" Nullable="false" />
+    <Property Name="idStudent" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="idCourse" Type="char" MaxLength="7" />
+    <Property Name="nameCourse" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="idProfessor" Type="char" MaxLength="10" />
+    <Property Name="proffnam" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="proflnam" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="idTA" Type="char" MaxLength="10" />
+    <Property Name="tafn" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="talnm" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.database_practiceclass.viewstudentlistpractice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="viewstudentlistpractice">
+    <Key>
+      <PropertyRef Name="idStudent" />
+      <PropertyRef Name="linkSolvedPractice" />
+      <PropertyRef Name="timePracticeStudent" />
+      <PropertyRef Name="checked" />
+    </Key>
+    <Property Name="partPractice" Type="smallint" />
+    <Property Name="numberPractice" Type="smallint" />
+    <Property Name="linkPractice" Type="text" />
+    <Property Name="termPracticeClass" Type="bit" />
+    <Property Name="numberYearFromStart" Type="smallint" />
+    <Property Name="groupeNumberPracticeClass" Type="smallint" />
+    <Property Name="gradePracticeStudent" Type="smallint" />
+    <Property Name="idStudent" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="linkSolvedPractice" Type="text" Nullable="false" />
+    <Property Name="timePracticeStudent" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="checked" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.database_practiceclass.viewstudentlistquiz' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="viewstudentlistquiz">
+    <Key>
+      <PropertyRef Name="numberQuiz" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="idStudent" />
+    </Key>
+    <Property Name="numberQuiz" Type="smallint" Nullable="false" />
+    <Property Name="dateQuiz" Type="date" />
+    <Property Name="termPracticeClass" Type="bit" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="smallint" Nullable="false" />
+    <Property Name="groupeNumberPracticeClass" Type="smallint" Nullable="false" />
+    <Property Name="idStudent" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="gradeQuizStudent" Type="smallint" />
+  </EntityType>
+  <Association Name="fk_idProfessor">
+    <End Role="table_professor" Type="Self.table_professor" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_resource" Type="Self.table_resource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_professor">
+        <PropertyRef Name="idProfessor" />
+      </Principal>
+      <Dependent Role="table_resource">
+        <PropertyRef Name="idProfessor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_idProfessor2">
+    <End Role="table_professor" Type="Self.table_professor" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_practiceclass" Type="Self.table_practiceclass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_professor">
+        <PropertyRef Name="idProfessor" />
+      </Principal>
+      <Dependent Role="table_practiceclass">
+        <PropertyRef Name="idProfessor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_table_practiceclass_idTA">
+    <End Role="table_student" Type="Self.table_student" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_practiceclass" Type="Self.table_practiceclass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_student">
+        <PropertyRef Name="idStudent" />
+      </Principal>
+      <Dependent Role="table_practiceclass">
+        <PropertyRef Name="idTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idUploader_foreingKey">
+    <End Role="table_user" Type="Self.table_user" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_practice" Type="Self.table_practice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_user">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="table_practice">
+        <PropertyRef Name="idUploader" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'table_practice_ibfk_3' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="table_practice_ibfk_3" />-->
+  <Association Name="table_practiceclass_ibfk_3">
+    <End Role="table_course" Type="Self.table_course" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_practiceclass" Type="Self.table_practiceclass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_course">
+        <PropertyRef Name="idCourse" />
+      </Principal>
+      <Dependent Role="table_practiceclass">
+        <PropertyRef Name="idCourse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="table_practicestudent_ibfk_1">
+    <End Role="table_student" Type="Self.table_student" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_practicestudent" Type="Self.table_practicestudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_student">
+        <PropertyRef Name="idStudent" />
+      </Principal>
+      <Dependent Role="table_practicestudent">
+        <PropertyRef Name="idStudent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'table_practicestudent_ibfk_2' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="table_practicestudent_ibfk_2" />-->
+  <Association Name="table_professor_ibfk_1">
+    <End Role="table_user" Type="Self.table_user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_professor" Type="Self.table_professor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="table_user">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="table_professor">
+        <PropertyRef Name="idProfessor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'table_quiz_ibfk_3' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="table_quiz_ibfk_3" />-->
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'table_quizstudent_ibfk_1' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="table_quizstudent_ibfk_1" />-->
+  <Association Name="table_quizstudent_ibfk_2">
+    <End Role="table_student" Type="Self.table_student" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_quizstudent" Type="Self.table_quizstudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_student">
+        <PropertyRef Name="idStudent" />
+      </Principal>
+      <Dependent Role="table_quizstudent">
+        <PropertyRef Name="idStudent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="table_resource_ibfk_2">
+    <End Role="table_course" Type="Self.table_course" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_resource" Type="Self.table_resource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_course">
+        <PropertyRef Name="idCourse" />
+      </Principal>
+      <Dependent Role="table_resource">
+        <PropertyRef Name="idCourse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="table_student_ibfk_1">
+    <End Role="table_user" Type="Self.table_user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_student" Type="Self.table_student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="table_user">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="table_student">
+        <PropertyRef Name="idStudent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'table_studentpracticeclass_ibfk_1' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="table_studentpracticeclass_ibfk_1" />-->
+  <Association Name="table_studentpracticeclass_ibfk_2">
+    <End Role="table_student" Type="Self.table_student" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_studentpracticeclass" Type="Self.table_studentpracticeclass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_student">
+        <PropertyRef Name="idStudent" />
+      </Principal>
+      <Dependent Role="table_studentpracticeclass">
+        <PropertyRef Name="idStudent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="database_practiceclassModelStoreContainer">
+    <EntitySet Name="table_course" EntityType="Self.table_course" Schema="database_practiceclass" store:Type="Tables" />
+    <EntitySet Name="table_practice" EntityType="Self.table_practice" Schema="database_practiceclass" store:Type="Tables" />
+    <EntitySet Name="table_practiceclass" EntityType="Self.table_practiceclass" Schema="database_practiceclass" store:Type="Tables" />
+    <EntitySet Name="table_practicestudent" EntityType="Self.table_practicestudent" Schema="database_practiceclass" store:Type="Tables" />
+    <EntitySet Name="table_professor" EntityType="Self.table_professor" Schema="database_practiceclass" store:Type="Tables" />
+    <EntitySet Name="table_quiz" EntityType="Self.table_quiz" Schema="database_practiceclass" store:Type="Tables" />
+    <EntitySet Name="table_quizstudent" EntityType="Self.table_quizstudent" Schema="database_practiceclass" store:Type="Tables" />
+    <EntitySet Name="table_resource" EntityType="Self.table_resource" Schema="database_practiceclass" store:Type="Tables" />
+    <EntitySet Name="table_student" EntityType="Self.table_student" Schema="database_practiceclass" store:Type="Tables" />
+    <EntitySet Name="table_studentpracticeclass" EntityType="Self.table_studentpracticeclass" Schema="database_practiceclass" store:Type="Tables" />
+    <EntitySet Name="table_user" EntityType="Self.table_user" Schema="database_practiceclass" store:Type="Tables" />
+    <EntitySet Name="viewadminlistprofessor" EntityType="Self.viewadminlistprofessor" store:Type="Views" store:Schema="database_practiceclass">
+      <DefiningQuery>SELECT
+`viewadminlistprofessor`.`idUser`, 
+`viewadminlistprofessor`.`firstNameUser`, 
+`viewadminlistprofessor`.`lastNameUser`, 
+`viewadminlistprofessor`.`password`
+FROM `viewadminlistprofessor` AS `viewadminlistprofessor`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="viewadminliststudent" EntityType="Self.viewadminliststudent" store:Type="Views" store:Schema="database_practiceclass">
+      <DefiningQuery>SELECT
+`viewadminliststudent`.`idUser`, 
+`viewadminliststudent`.`firstNameUser`, 
+`viewadminliststudent`.`lastNameUser`, 
+`viewadminliststudent`.`password`
+FROM `viewadminliststudent` AS `viewadminliststudent`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="viewlistclass" EntityType="Self.viewlistclass" store:Type="Views" store:Schema="database_practiceclass">
+      <DefiningQuery>SELECT
+`viewlistclass`.`groupeNumberPracticeClass`, 
+`viewlistclass`.`termPracticeClass`, 
+`viewlistclass`.`numberYearFromStart`, 
+`viewlistclass`.`idProfessor`, 
+`viewlistclass`.`prffn`, 
+`viewlistclass`.`pfln`, 
+`viewlistclass`.`idTA`, 
+`viewlistclass`.`tafn`, 
+`viewlistclass`.`taln`, 
+`viewlistclass`.`status`, 
+`viewlistclass`.`nameCourse`, 
+`viewlistclass`.`AVG(c.gradePracticeClassStudent)`, 
+`viewlistclass`.`classDel`, 
+`viewlistclass`.`stuDel`
+FROM `viewlistclass` AS `viewlistclass`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="viewlistclassmember" EntityType="Self.viewlistclassmember" store:Type="Views" store:Schema="database_practiceclass">
+      <DefiningQuery>SELECT
+`viewlistclassmember`.`gradePracticeClassStudent`, 
+`viewlistclassmember`.`groupeNumberPracticeClass`, 
+`viewlistclassmember`.`termPracticeClass`, 
+`viewlistclassmember`.`numberYearFromStart`, 
+`viewlistclassmember`.`idStudent`, 
+`viewlistclassmember`.`stufn`, 
+`viewlistclassmember`.`stuln`, 
+`viewlistclassmember`.`stuDel`
+FROM `viewlistclassmember` AS `viewlistclassmember`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="viewlistcourseresourse" EntityType="Self.viewlistcourseresourse" store:Type="Views" store:Schema="database_practiceclass">
+      <DefiningQuery>SELECT
+`viewlistcourseresourse`.`idCourse`, 
+`viewlistcourseresourse`.`nameCourse`, 
+`viewlistcourseresourse`.`nameResource`, 
+`viewlistcourseresourse`.`linkResource`, 
+`viewlistcourseresourse`.`numberResource`, 
+`viewlistcourseresourse`.`deleted`
+FROM `viewlistcourseresourse` AS `viewlistcourseresourse`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="viewlistpractice" EntityType="Self.viewlistpractice" store:Type="Views" store:Schema="database_practiceclass">
+      <DefiningQuery>SELECT
+`viewlistpractice`.`partPractice`, 
+`viewlistpractice`.`numberPractice`, 
+`viewlistpractice`.`linkPractice`, 
+`viewlistpractice`.`termPracticeClass`, 
+`viewlistpractice`.`numberYearFromStart`, 
+`viewlistpractice`.`groupeNumberPracticeClass`, 
+`viewlistpractice`.`AVG(b.gradePracticeStudent)`, 
+`viewlistpractice`.`pracDel`, 
+`viewlistpractice`.`pracStuDel`
+FROM `viewlistpractice` AS `viewlistpractice`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="viewlistpracticesolved" EntityType="Self.viewlistpracticesolved" store:Type="Views" store:Schema="database_practiceclass">
+      <DefiningQuery>SELECT
+`viewlistpracticesolved`.`idStudent`, 
+`viewlistpracticesolved`.`firstNameUser`, 
+`viewlistpracticesolved`.`lastNameUser`, 
+`viewlistpracticesolved`.`partPractice`, 
+`viewlistpracticesolved`.`numberPractice`, 
+`viewlistpracticesolved`.`termPracticeClass`, 
+`viewlistpracticesolved`.`numberYearFromStart`, 
+`viewlistpracticesolved`.`groupeNumberPracticeClass`, 
+`viewlistpracticesolved`.`gradePracticeStudent`, 
+`viewlistpracticesolved`.`linkSolvedPractice`, 
+`viewlistpracticesolved`.`timePracticeStudent`, 
+`viewlistpracticesolved`.`checked`, 
+`viewlistpracticesolved`.`deleted`
+FROM `viewlistpracticesolved` AS `viewlistpracticesolved`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="viewlistquiz" EntityType="Self.viewlistquiz" store:Type="Views" store:Schema="database_practiceclass">
+      <DefiningQuery>SELECT
+`viewlistquiz`.`numberQuiz`, 
+`viewlistquiz`.`dateQuiz`, 
+`viewlistquiz`.`termPracticeClass`, 
+`viewlistquiz`.`numberYearFromStart`, 
+`viewlistquiz`.`groupeNumberPracticeClass`, 
+`viewlistquiz`.`avg(b.gradeQuizStudent)`, 
+`viewlistquiz`.`quizdDel`, 
+`viewlistquiz`.`quizStuDel`
+FROM `viewlistquiz` AS `viewlistquiz`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="viewlistquizstudent" EntityType="Self.viewlistquizstudent" store:Type="Views" store:Schema="database_practiceclass">
+      <DefiningQuery>SELECT
+`viewlistquizstudent`.`numberQuiz`, 
+`viewlistquizstudent`.`dateQuiz`, 
+`viewlistquizstudent`.`termPracticeClass`, 
+`viewlistquizstudent`.`numberYearFromStart`, 
+`viewlistquizstudent`.`groupeNumberPracticeClass`, 
+`viewlistquizstudent`.`gradeQuizStudent`, 
+`viewlistquizstudent`.`idUser`, 
+`viewlistquizstudent`.`firstNameUser`, 
+`viewlistquizstudent`.`lastNameUser`, 
+`viewlistquizstudent`.`quizdDel`, 
+`viewlistquizstudent`.`quizStuDel`
+FROM `viewlistquizstudent` AS `viewlistquizstudent`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="viewstudentlistclass" EntityType="Self.viewstudentlistclass" store:Type="Views" store:Schema="database_practiceclass">
+      <DefiningQuery>SELECT
+`viewstudentlistclass`.`gradePracticeClassStudent`, 
+`viewstudentlistclass`.`groupeNumberPracticeClass`, 
+`viewstudentlistclass`.`termPracticeClass`, 
+`viewstudentlistclass`.`numberYearFromStart`, 
+`viewstudentlistclass`.`idStudent`, 
+`viewstudentlistclass`.`idCourse`, 
+`viewstudentlistclass`.`nameCourse`, 
+`viewstudentlistclass`.`idProfessor`, 
+`viewstudentlistclass`.`proffnam`, 
+`viewstudentlistclass`.`proflnam`, 
+`viewstudentlistclass`.`idTA`, 
+`viewstudentlistclass`.`tafn`, 
+`viewstudentlistclass`.`talnm`, 
+`viewstudentlistclass`.`status`
+FROM `viewstudentlistclass` AS `viewstudentlistclass`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="viewstudentlistpractice" EntityType="Self.viewstudentlistpractice" store:Type="Views" store:Schema="database_practiceclass">
+      <DefiningQuery>SELECT
+`viewstudentlistpractice`.`partPractice`, 
+`viewstudentlistpractice`.`numberPractice`, 
+`viewstudentlistpractice`.`linkPractice`, 
+`viewstudentlistpractice`.`termPracticeClass`, 
+`viewstudentlistpractice`.`numberYearFromStart`, 
+`viewstudentlistpractice`.`groupeNumberPracticeClass`, 
+`viewstudentlistpractice`.`gradePracticeStudent`, 
+`viewstudentlistpractice`.`idStudent`, 
+`viewstudentlistpractice`.`linkSolvedPractice`, 
+`viewstudentlistpractice`.`timePracticeStudent`, 
+`viewstudentlistpractice`.`checked`
+FROM `viewstudentlistpractice` AS `viewstudentlistpractice`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="viewstudentlistquiz" EntityType="Self.viewstudentlistquiz" store:Type="Views" store:Schema="database_practiceclass">
+      <DefiningQuery>SELECT
+`viewstudentlistquiz`.`numberQuiz`, 
+`viewstudentlistquiz`.`dateQuiz`, 
+`viewstudentlistquiz`.`termPracticeClass`, 
+`viewstudentlistquiz`.`numberYearFromStart`, 
+`viewstudentlistquiz`.`groupeNumberPracticeClass`, 
+`viewstudentlistquiz`.`idStudent`, 
+`viewstudentlistquiz`.`gradeQuizStudent`
+FROM `viewstudentlistquiz` AS `viewstudentlistquiz`</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="fk_idProfessor" Association="Self.fk_idProfessor">
+      <End Role="table_professor" EntitySet="table_professor" />
+      <End Role="table_resource" EntitySet="table_resource" />
+    </AssociationSet>
+    <AssociationSet Name="fk_idProfessor2" Association="Self.fk_idProfessor2">
+      <End Role="table_professor" EntitySet="table_professor" />
+      <End Role="table_practiceclass" EntitySet="table_practiceclass" />
+    </AssociationSet>
+    <AssociationSet Name="fk_table_practiceclass_idTA" Association="Self.fk_table_practiceclass_idTA">
+      <End Role="table_student" EntitySet="table_student" />
+      <End Role="table_practiceclass" EntitySet="table_practiceclass" />
+    </AssociationSet>
+    <AssociationSet Name="idUploader_foreingKey" Association="Self.idUploader_foreingKey">
+      <End Role="table_user" EntitySet="table_user" />
+      <End Role="table_practice" EntitySet="table_practice" />
+    </AssociationSet>
+    <AssociationSet Name="table_practiceclass_ibfk_3" Association="Self.table_practiceclass_ibfk_3">
+      <End Role="table_course" EntitySet="table_course" />
+      <End Role="table_practiceclass" EntitySet="table_practiceclass" />
+    </AssociationSet>
+    <AssociationSet Name="table_practicestudent_ibfk_1" Association="Self.table_practicestudent_ibfk_1">
+      <End Role="table_student" EntitySet="table_student" />
+      <End Role="table_practicestudent" EntitySet="table_practicestudent" />
+    </AssociationSet>
+    <AssociationSet Name="table_professor_ibfk_1" Association="Self.table_professor_ibfk_1">
+      <End Role="table_user" EntitySet="table_user" />
+      <End Role="table_professor" EntitySet="table_professor" />
+    </AssociationSet>
+    <AssociationSet Name="table_quizstudent_ibfk_2" Association="Self.table_quizstudent_ibfk_2">
+      <End Role="table_student" EntitySet="table_student" />
+      <End Role="table_quizstudent" EntitySet="table_quizstudent" />
+    </AssociationSet>
+    <AssociationSet Name="table_resource_ibfk_2" Association="Self.table_resource_ibfk_2">
+      <End Role="table_course" EntitySet="table_course" />
+      <End Role="table_resource" EntitySet="table_resource" />
+    </AssociationSet>
+    <AssociationSet Name="table_student_ibfk_1" Association="Self.table_student_ibfk_1">
+      <End Role="table_user" EntitySet="table_user" />
+      <End Role="table_student" EntitySet="table_student" />
+    </AssociationSet>
+    <AssociationSet Name="table_studentpracticeclass_ibfk_2" Association="Self.table_studentpracticeclass_ibfk_2">
+      <End Role="table_student" EntitySet="table_student" />
+      <End Role="table_studentpracticeclass" EntitySet="table_studentpracticeclass" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
