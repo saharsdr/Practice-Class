@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("databasepracticeclass.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("databasepracticeclass.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database.tt")]
 
 

@@ -1,0 +1,633 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="database_practiceclassModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="table_course">
+    <Key>
+      <PropertyRef Name="idCourse" />
+    </Key>
+    <Property Name="idCourse" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nameCourse" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="table_practiceclass" Relationship="Self.table_practiceclass_ibfk_3" FromRole="table_course" ToRole="table_practiceclass" />
+    <NavigationProperty Name="table_resource" Relationship="Self.table_resource_ibfk_2" FromRole="table_course" ToRole="table_resource" />
+  </EntityType>
+  <EntityType Name="table_practice">
+    <Key>
+      <PropertyRef Name="numberPractice" />
+      <PropertyRef Name="partPractice" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+    </Key>
+    <Property Name="idTable" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numberPractice" Type="Int16" Nullable="false" />
+    <Property Name="partPractice" Type="Int16" Nullable="false" />
+    <Property Name="linkPractice" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="idUploader" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="groupeNumberPracticeClass" Type="Int16" Nullable="false" />
+    <Property Name="termPracticeClass" Type="Boolean" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="Int16" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="table_user" Relationship="Self.idUploader_foreingKey" FromRole="table_practice" ToRole="table_user" />
+  </EntityType>
+  <EntityType Name="table_practiceclass">
+    <Key>
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+    </Key>
+    <Property Name="idTable" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Boolean" />
+    <Property Name="idCourse" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="idProfessor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="idTA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="groupeNumberPracticeClass" Type="Int16" Nullable="false" />
+    <Property Name="termPracticeClass" Type="Boolean" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="Int16" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="table_course" Relationship="Self.table_practiceclass_ibfk_3" FromRole="table_practiceclass" ToRole="table_course" />
+    <NavigationProperty Name="table_professor" Relationship="Self.fk_idProfessor2" FromRole="table_practiceclass" ToRole="table_professor" />
+    <NavigationProperty Name="table_student" Relationship="Self.fk_table_practiceclass_idTA" FromRole="table_practiceclass" ToRole="table_student" />
+  </EntityType>
+  <EntityType Name="table_practicestudent">
+    <Key>
+      <PropertyRef Name="numberPractice" />
+      <PropertyRef Name="partPractice" />
+      <PropertyRef Name="idStudent" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+    </Key>
+    <Property Name="idTable" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numberPractice" Type="Int16" Nullable="false" />
+    <Property Name="partPractice" Type="Int16" Nullable="false" />
+    <Property Name="idStudent" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="linkSolvedPractice" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="timePracticeStudent" Type="DateTime" Nullable="false" />
+    <Property Name="checked" Type="Boolean" Nullable="false" />
+    <Property Name="gradePracticeStudent" Type="Int16" />
+    <Property Name="groupeNumberPracticeClass" Type="Int16" Nullable="false" />
+    <Property Name="termPracticeClass" Type="Boolean" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="Int16" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="table_student" Relationship="Self.table_practicestudent_ibfk_1" FromRole="table_practicestudent" ToRole="table_student" />
+  </EntityType>
+  <EntityType Name="table_professor">
+    <Key>
+      <PropertyRef Name="idProfessor" />
+    </Key>
+    <Property Name="idProfessor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="isPrime" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="table_practiceclass" Relationship="Self.fk_idProfessor2" FromRole="table_professor" ToRole="table_practiceclass" />
+    <NavigationProperty Name="table_resource" Relationship="Self.fk_idProfessor" FromRole="table_professor" ToRole="table_resource" />
+    <NavigationProperty Name="table_user" Relationship="Self.table_professor_ibfk_1" FromRole="table_professor" ToRole="table_user" />
+  </EntityType>
+  <EntityType Name="table_quiz">
+    <Key>
+      <PropertyRef Name="numberQuiz" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+    </Key>
+    <Property Name="idTable" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numberQuiz" Type="Int16" Nullable="false" />
+    <Property Name="dateQuiz" Type="DateTime" />
+    <Property Name="groupeNumberPracticeClass" Type="Int16" Nullable="false" />
+    <Property Name="termPracticeClass" Type="Boolean" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="Int16" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="table_quizstudent">
+    <Key>
+      <PropertyRef Name="numberQuiz" />
+      <PropertyRef Name="idStudent" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+    </Key>
+    <Property Name="idTable" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numberQuiz" Type="Int16" Nullable="false" />
+    <Property Name="idStudent" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="gradeQuizStudent" Type="Int16" />
+    <Property Name="groupeNumberPracticeClass" Type="Int16" Nullable="false" />
+    <Property Name="termPracticeClass" Type="Boolean" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="Int16" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="table_student" Relationship="Self.table_quizstudent_ibfk_2" FromRole="table_quizstudent" ToRole="table_student" />
+  </EntityType>
+  <EntityType Name="table_resource">
+    <Key>
+      <PropertyRef Name="numberResource" />
+      <PropertyRef Name="idCourse" />
+    </Key>
+    <Property Name="idTable" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numberResource" Type="Int16" Nullable="false" />
+    <Property Name="nameResource" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="linkResource" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="idCourse" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idProfessor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="table_course" Relationship="Self.table_resource_ibfk_2" FromRole="table_resource" ToRole="table_course" />
+    <NavigationProperty Name="table_professor" Relationship="Self.fk_idProfessor" FromRole="table_resource" ToRole="table_professor" />
+  </EntityType>
+  <EntityType Name="table_student">
+    <Key>
+      <PropertyRef Name="idStudent" />
+    </Key>
+    <Property Name="idStudent" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="table_practiceclass" Relationship="Self.fk_table_practiceclass_idTA" FromRole="table_student" ToRole="table_practiceclass" />
+    <NavigationProperty Name="table_practicestudent" Relationship="Self.table_practicestudent_ibfk_1" FromRole="table_student" ToRole="table_practicestudent" />
+    <NavigationProperty Name="table_quizstudent" Relationship="Self.table_quizstudent_ibfk_2" FromRole="table_student" ToRole="table_quizstudent" />
+    <NavigationProperty Name="table_user" Relationship="Self.table_student_ibfk_1" FromRole="table_student" ToRole="table_user" />
+    <NavigationProperty Name="table_studentpracticeclass" Relationship="Self.table_studentpracticeclass_ibfk_2" FromRole="table_student" ToRole="table_studentpracticeclass" />
+  </EntityType>
+  <EntityType Name="table_studentpracticeclass">
+    <Key>
+      <PropertyRef Name="idStudent" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+    </Key>
+    <Property Name="idTable" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idStudent" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="gradePracticeClassStudent" Type="Single" />
+    <Property Name="groupeNumberPracticeClass" Type="Int16" Nullable="false" />
+    <Property Name="termPracticeClass" Type="Boolean" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="Int16" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+    <Property Name="checked" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="table_student" Relationship="Self.table_studentpracticeclass_ibfk_2" FromRole="table_studentpracticeclass" ToRole="table_student" />
+  </EntityType>
+  <EntityType Name="table_user">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstNameUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastNameUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="table_practice" Relationship="Self.idUploader_foreingKey" FromRole="table_user" ToRole="table_practice" />
+    <NavigationProperty Name="table_professor" Relationship="Self.table_professor_ibfk_1" FromRole="table_user" ToRole="table_professor" />
+    <NavigationProperty Name="table_student" Relationship="Self.table_student_ibfk_1" FromRole="table_user" ToRole="table_student" />
+  </EntityType>
+  <EntityType Name="viewadminlistprofessor">
+    <Key>
+      <PropertyRef Name="idUser" />
+      <PropertyRef Name="firstNameUser" />
+      <PropertyRef Name="lastNameUser" />
+      <PropertyRef Name="password" />
+    </Key>
+    <Property Name="idUser" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstNameUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastNameUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="viewadminliststudent">
+    <Key>
+      <PropertyRef Name="idUser" />
+      <PropertyRef Name="firstNameUser" />
+      <PropertyRef Name="lastNameUser" />
+      <PropertyRef Name="password" />
+    </Key>
+    <Property Name="idUser" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstNameUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastNameUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="viewlistclass">
+    <Key>
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+      <PropertyRef Name="prffn" />
+      <PropertyRef Name="pfln" />
+      <PropertyRef Name="tafn" />
+      <PropertyRef Name="taln" />
+      <PropertyRef Name="nameCourse" />
+      <PropertyRef Name="classDel" />
+      <PropertyRef Name="stuDel" />
+    </Key>
+    <Property Name="groupeNumberPracticeClass" Type="Int16" Nullable="false" />
+    <Property Name="termPracticeClass" Type="Boolean" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="Int16" Nullable="false" />
+    <Property Name="idProfessor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="prffn" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pfln" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idTA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="tafn" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="taln" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="Boolean" />
+    <Property Name="nameCourse" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AVG_c_gradePracticeClassStudent_" Type="Double" />
+    <Property Name="classDel" Type="Boolean" Nullable="false" />
+    <Property Name="stuDel" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="viewlistclassmember">
+    <Key>
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+      <PropertyRef Name="idStudent" />
+      <PropertyRef Name="stufn" />
+      <PropertyRef Name="stuln" />
+      <PropertyRef Name="stuDel" />
+    </Key>
+    <Property Name="gradePracticeClassStudent" Type="Single" />
+    <Property Name="groupeNumberPracticeClass" Type="Int16" Nullable="false" />
+    <Property Name="termPracticeClass" Type="Boolean" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="Int16" Nullable="false" />
+    <Property Name="idStudent" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="stufn" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="stuln" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="stuDel" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="viewlistcourseresourse">
+    <Key>
+      <PropertyRef Name="idCourse" />
+      <PropertyRef Name="nameCourse" />
+      <PropertyRef Name="nameResource" />
+      <PropertyRef Name="numberResource" />
+      <PropertyRef Name="deleted" />
+    </Key>
+    <Property Name="idCourse" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nameCourse" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nameResource" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="linkResource" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="numberResource" Type="Int16" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="viewlistpractice">
+    <Key>
+      <PropertyRef Name="partPractice" />
+      <PropertyRef Name="numberPractice" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="pracDel" />
+      <PropertyRef Name="pracStuDel" />
+    </Key>
+    <Property Name="partPractice" Type="Int16" Nullable="false" />
+    <Property Name="numberPractice" Type="Int16" Nullable="false" />
+    <Property Name="linkPractice" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="termPracticeClass" Type="Boolean" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="Int16" Nullable="false" />
+    <Property Name="groupeNumberPracticeClass" Type="Int16" Nullable="false" />
+    <Property Name="AVG_b_gradePracticeStudent_" Type="Decimal" />
+    <Property Name="pracDel" Type="Boolean" Nullable="false" />
+    <Property Name="pracStuDel" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="viewlistpracticesolved">
+    <Key>
+      <PropertyRef Name="idStudent" />
+      <PropertyRef Name="firstNameUser" />
+      <PropertyRef Name="lastNameUser" />
+      <PropertyRef Name="partPractice" />
+      <PropertyRef Name="numberPractice" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="linkSolvedPractice" />
+      <PropertyRef Name="timePracticeStudent" />
+      <PropertyRef Name="checked" />
+      <PropertyRef Name="deleted" />
+    </Key>
+    <Property Name="idStudent" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstNameUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastNameUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="partPractice" Type="Int16" Nullable="false" />
+    <Property Name="numberPractice" Type="Int16" Nullable="false" />
+    <Property Name="termPracticeClass" Type="Boolean" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="Int16" Nullable="false" />
+    <Property Name="groupeNumberPracticeClass" Type="Int16" Nullable="false" />
+    <Property Name="gradePracticeStudent" Type="Int16" />
+    <Property Name="linkSolvedPractice" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="timePracticeStudent" Type="DateTime" Nullable="false" />
+    <Property Name="checked" Type="Boolean" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="viewlistquiz">
+    <Key>
+      <PropertyRef Name="numberQuiz" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="quizdDel" />
+      <PropertyRef Name="quizStuDel" />
+    </Key>
+    <Property Name="numberQuiz" Type="Int16" Nullable="false" />
+    <Property Name="dateQuiz" Type="DateTime" />
+    <Property Name="termPracticeClass" Type="Boolean" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="Int16" Nullable="false" />
+    <Property Name="groupeNumberPracticeClass" Type="Int16" Nullable="false" />
+    <Property Name="avg_b_gradeQuizStudent_" Type="Decimal" />
+    <Property Name="quizdDel" Type="Boolean" Nullable="false" />
+    <Property Name="quizStuDel" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="viewlistquizstudent">
+    <Key>
+      <PropertyRef Name="numberQuiz" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="idUser" />
+      <PropertyRef Name="firstNameUser" />
+      <PropertyRef Name="lastNameUser" />
+      <PropertyRef Name="quizdDel" />
+      <PropertyRef Name="quizStuDel" />
+    </Key>
+    <Property Name="numberQuiz" Type="Int16" Nullable="false" />
+    <Property Name="dateQuiz" Type="DateTime" />
+    <Property Name="termPracticeClass" Type="Boolean" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="Int16" Nullable="false" />
+    <Property Name="groupeNumberPracticeClass" Type="Int16" Nullable="false" />
+    <Property Name="gradeQuizStudent" Type="Int16" />
+    <Property Name="idUser" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstNameUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastNameUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="quizdDel" Type="Boolean" Nullable="false" />
+    <Property Name="quizStuDel" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="viewstudentlistclass">
+    <Key>
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+      <PropertyRef Name="idStudent" />
+      <PropertyRef Name="nameCourse" />
+      <PropertyRef Name="proffnam" />
+      <PropertyRef Name="proflnam" />
+      <PropertyRef Name="tafn" />
+      <PropertyRef Name="talnm" />
+    </Key>
+    <Property Name="gradePracticeClassStudent" Type="Single" />
+    <Property Name="groupeNumberPracticeClass" Type="Int16" Nullable="false" />
+    <Property Name="termPracticeClass" Type="Boolean" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="Int16" Nullable="false" />
+    <Property Name="idStudent" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idCourse" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="nameCourse" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idProfessor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="proffnam" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="proflnam" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idTA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="tafn" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="talnm" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="viewstudentlistpractice">
+    <Key>
+      <PropertyRef Name="idStudent" />
+      <PropertyRef Name="linkSolvedPractice" />
+      <PropertyRef Name="timePracticeStudent" />
+      <PropertyRef Name="checked" />
+    </Key>
+    <Property Name="partPractice" Type="Int16" />
+    <Property Name="numberPractice" Type="Int16" />
+    <Property Name="linkPractice" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="termPracticeClass" Type="Boolean" />
+    <Property Name="numberYearFromStart" Type="Int16" />
+    <Property Name="groupeNumberPracticeClass" Type="Int16" />
+    <Property Name="gradePracticeStudent" Type="Int16" />
+    <Property Name="idStudent" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="linkSolvedPractice" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="timePracticeStudent" Type="DateTime" Nullable="false" />
+    <Property Name="checked" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="viewstudentlistquiz">
+    <Key>
+      <PropertyRef Name="numberQuiz" />
+      <PropertyRef Name="termPracticeClass" />
+      <PropertyRef Name="numberYearFromStart" />
+      <PropertyRef Name="groupeNumberPracticeClass" />
+      <PropertyRef Name="idStudent" />
+    </Key>
+    <Property Name="numberQuiz" Type="Int16" Nullable="false" />
+    <Property Name="dateQuiz" Type="DateTime" />
+    <Property Name="termPracticeClass" Type="Boolean" Nullable="false" />
+    <Property Name="numberYearFromStart" Type="Int16" Nullable="false" />
+    <Property Name="groupeNumberPracticeClass" Type="Int16" Nullable="false" />
+    <Property Name="idStudent" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="gradeQuizStudent" Type="Int16" />
+  </EntityType>
+  <Association Name="table_practiceclass_ibfk_3">
+    <End Role="table_course" Type="Self.table_course" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_practiceclass" Type="Self.table_practiceclass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_course">
+        <PropertyRef Name="idCourse" />
+      </Principal>
+      <Dependent Role="table_practiceclass">
+        <PropertyRef Name="idCourse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="table_resource_ibfk_2">
+    <End Role="table_course" Type="Self.table_course" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_resource" Type="Self.table_resource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_course">
+        <PropertyRef Name="idCourse" />
+      </Principal>
+      <Dependent Role="table_resource">
+        <PropertyRef Name="idCourse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idUploader_foreingKey">
+    <End Role="table_user" Type="Self.table_user" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_practice" Type="Self.table_practice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_user">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="table_practice">
+        <PropertyRef Name="idUploader" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_idProfessor2">
+    <End Role="table_professor" Type="Self.table_professor" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_practiceclass" Type="Self.table_practiceclass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_professor">
+        <PropertyRef Name="idProfessor" />
+      </Principal>
+      <Dependent Role="table_practiceclass">
+        <PropertyRef Name="idProfessor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_table_practiceclass_idTA">
+    <End Role="table_student" Type="Self.table_student" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_practiceclass" Type="Self.table_practiceclass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_student">
+        <PropertyRef Name="idStudent" />
+      </Principal>
+      <Dependent Role="table_practiceclass">
+        <PropertyRef Name="idTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="table_practicestudent_ibfk_1">
+    <End Role="table_student" Type="Self.table_student" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_practicestudent" Type="Self.table_practicestudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_student">
+        <PropertyRef Name="idStudent" />
+      </Principal>
+      <Dependent Role="table_practicestudent">
+        <PropertyRef Name="idStudent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_idProfessor">
+    <End Role="table_professor" Type="Self.table_professor" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_resource" Type="Self.table_resource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_professor">
+        <PropertyRef Name="idProfessor" />
+      </Principal>
+      <Dependent Role="table_resource">
+        <PropertyRef Name="idProfessor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="table_professor_ibfk_1">
+    <End Role="table_user" Type="Self.table_user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_professor" Type="Self.table_professor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="table_user">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="table_professor">
+        <PropertyRef Name="idProfessor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="table_quizstudent_ibfk_2">
+    <End Role="table_student" Type="Self.table_student" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_quizstudent" Type="Self.table_quizstudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_student">
+        <PropertyRef Name="idStudent" />
+      </Principal>
+      <Dependent Role="table_quizstudent">
+        <PropertyRef Name="idStudent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="table_student_ibfk_1">
+    <End Role="table_user" Type="Self.table_user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_student" Type="Self.table_student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="table_user">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="table_student">
+        <PropertyRef Name="idStudent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="table_studentpracticeclass_ibfk_2">
+    <End Role="table_student" Type="Self.table_student" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="table_studentpracticeclass" Type="Self.table_studentpracticeclass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table_student">
+        <PropertyRef Name="idStudent" />
+      </Principal>
+      <Dependent Role="table_studentpracticeclass">
+        <PropertyRef Name="idStudent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="database_practiceclass" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="table_course" EntityType="Self.table_course" />
+    <EntitySet Name="table_practice" EntityType="Self.table_practice" />
+    <EntitySet Name="table_practiceclass" EntityType="Self.table_practiceclass" />
+    <EntitySet Name="table_practicestudent" EntityType="Self.table_practicestudent" />
+    <EntitySet Name="table_professor" EntityType="Self.table_professor" />
+    <EntitySet Name="table_quiz" EntityType="Self.table_quiz" />
+    <EntitySet Name="table_quizstudent" EntityType="Self.table_quizstudent" />
+    <EntitySet Name="table_resource" EntityType="Self.table_resource" />
+    <EntitySet Name="table_student" EntityType="Self.table_student" />
+    <EntitySet Name="table_studentpracticeclass" EntityType="Self.table_studentpracticeclass" />
+    <EntitySet Name="table_user" EntityType="Self.table_user" />
+    <EntitySet Name="viewadminlistprofessor" EntityType="Self.viewadminlistprofessor" />
+    <EntitySet Name="viewadminliststudent" EntityType="Self.viewadminliststudent" />
+    <EntitySet Name="viewlistclass" EntityType="Self.viewlistclass" />
+    <EntitySet Name="viewlistclassmember" EntityType="Self.viewlistclassmember" />
+    <EntitySet Name="viewlistcourseresourse" EntityType="Self.viewlistcourseresourse" />
+    <EntitySet Name="viewlistpractice" EntityType="Self.viewlistpractice" />
+    <EntitySet Name="viewlistpracticesolved" EntityType="Self.viewlistpracticesolved" />
+    <EntitySet Name="viewlistquiz" EntityType="Self.viewlistquiz" />
+    <EntitySet Name="viewlistquizstudent" EntityType="Self.viewlistquizstudent" />
+    <EntitySet Name="viewstudentlistclass" EntityType="Self.viewstudentlistclass" />
+    <EntitySet Name="viewstudentlistpractice" EntityType="Self.viewstudentlistpractice" />
+    <EntitySet Name="viewstudentlistquiz" EntityType="Self.viewstudentlistquiz" />
+    <AssociationSet Name="table_practiceclass_ibfk_3" Association="Self.table_practiceclass_ibfk_3">
+      <End Role="table_course" EntitySet="table_course" />
+      <End Role="table_practiceclass" EntitySet="table_practiceclass" />
+    </AssociationSet>
+    <AssociationSet Name="table_resource_ibfk_2" Association="Self.table_resource_ibfk_2">
+      <End Role="table_course" EntitySet="table_course" />
+      <End Role="table_resource" EntitySet="table_resource" />
+    </AssociationSet>
+    <AssociationSet Name="idUploader_foreingKey" Association="Self.idUploader_foreingKey">
+      <End Role="table_user" EntitySet="table_user" />
+      <End Role="table_practice" EntitySet="table_practice" />
+    </AssociationSet>
+    <AssociationSet Name="fk_idProfessor2" Association="Self.fk_idProfessor2">
+      <End Role="table_professor" EntitySet="table_professor" />
+      <End Role="table_practiceclass" EntitySet="table_practiceclass" />
+    </AssociationSet>
+    <AssociationSet Name="fk_table_practiceclass_idTA" Association="Self.fk_table_practiceclass_idTA">
+      <End Role="table_student" EntitySet="table_student" />
+      <End Role="table_practiceclass" EntitySet="table_practiceclass" />
+    </AssociationSet>
+    <AssociationSet Name="table_practicestudent_ibfk_1" Association="Self.table_practicestudent_ibfk_1">
+      <End Role="table_student" EntitySet="table_student" />
+      <End Role="table_practicestudent" EntitySet="table_practicestudent" />
+    </AssociationSet>
+    <AssociationSet Name="fk_idProfessor" Association="Self.fk_idProfessor">
+      <End Role="table_professor" EntitySet="table_professor" />
+      <End Role="table_resource" EntitySet="table_resource" />
+    </AssociationSet>
+    <AssociationSet Name="table_professor_ibfk_1" Association="Self.table_professor_ibfk_1">
+      <End Role="table_user" EntitySet="table_user" />
+      <End Role="table_professor" EntitySet="table_professor" />
+    </AssociationSet>
+    <AssociationSet Name="table_quizstudent_ibfk_2" Association="Self.table_quizstudent_ibfk_2">
+      <End Role="table_student" EntitySet="table_student" />
+      <End Role="table_quizstudent" EntitySet="table_quizstudent" />
+    </AssociationSet>
+    <AssociationSet Name="table_student_ibfk_1" Association="Self.table_student_ibfk_1">
+      <End Role="table_user" EntitySet="table_user" />
+      <End Role="table_student" EntitySet="table_student" />
+    </AssociationSet>
+    <AssociationSet Name="table_studentpracticeclass_ibfk_2" Association="Self.table_studentpracticeclass_ibfk_2">
+      <End Role="table_student" EntitySet="table_student" />
+      <End Role="table_studentpracticeclass" EntitySet="table_studentpracticeclass" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

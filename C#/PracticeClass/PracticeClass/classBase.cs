@@ -17,7 +17,7 @@ namespace PracticeClass
     struct ShowQuiz
     {
         public DateTime date;
-        public int number; 
+        public int number;
     }
     //taples of PracticeList
     struct ShowPractice
@@ -60,23 +60,22 @@ namespace PracticeClass
             //return true if exist a class that (TA id = this.id)
             return database.table_practiceclass.Any(Practiceclass => Practiceclass.idTA == id);
         }
-        /* //login method and creater of professor
-         public classProfessor LoginProfessor(string id, string password)
-         {
-             //first check if user exists as a professor then check if password is true
-             if (database.table_professor.Any(user => user.idProfessor == id) && database.table_user.Any(user => user.idUser == id && user.password == password))
-             {
-                 //return professor if user is valid
-                 return true;
-             }
-         }*/
         //login method and creater of professor
-        /* //return true if user is a PrimeProfessor
-        //not implemeted yet...
+        public classProfessor LoginProfessor(string id, string password)
+        {
+            //first check if user exists as a professor then check if password is true
+            if (database.table_professor.Any(user => user.idProfessor == id) && database.table_user.Any(user => user.idUser == id && user.password == password))
+            {
+                //return professor if user is valid
+                return new classProfessor(id, database, this.IsPrimeProfessor(id), numberYearFromStart, term);
+            }
+            return null;
+        }
+        //return true if user is a PrimeProfessor
         public bool IsPrimeProfessor(string id)
         {
-            return false;
-        }*/
+            return database.table_professor.Any(professor => professor.idProfessor == id && professor.isPrime == true);
+        }
     }
 }
 

@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="database_practiceclassModelStoreContainer" CdmEntityContainer="database_practiceclass">
+    <EntitySetMapping Name="table_course">
+      <EntityTypeMapping TypeName="database_practiceclassModel.table_course">
+        <MappingFragment StoreEntitySet="table_course">
+          <ScalarProperty Name="idCourse" ColumnName="idCourse" />
+          <ScalarProperty Name="nameCourse" ColumnName="nameCourse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="table_practice">
+      <EntityTypeMapping TypeName="database_practiceclassModel.table_practice">
+        <MappingFragment StoreEntitySet="table_practice">
+          <ScalarProperty Name="idTable" ColumnName="idTable" />
+          <ScalarProperty Name="numberPractice" ColumnName="numberPractice" />
+          <ScalarProperty Name="partPractice" ColumnName="partPractice" />
+          <ScalarProperty Name="linkPractice" ColumnName="linkPractice" />
+          <ScalarProperty Name="idUploader" ColumnName="idUploader" />
+          <ScalarProperty Name="groupeNumberPracticeClass" ColumnName="groupeNumberPracticeClass" />
+          <ScalarProperty Name="termPracticeClass" ColumnName="termPracticeClass" />
+          <ScalarProperty Name="numberYearFromStart" ColumnName="numberYearFromStart" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="table_practiceclass">
+      <EntityTypeMapping TypeName="database_practiceclassModel.table_practiceclass">
+        <MappingFragment StoreEntitySet="table_practiceclass">
+          <ScalarProperty Name="idTable" ColumnName="idTable" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="idCourse" ColumnName="idCourse" />
+          <ScalarProperty Name="idProfessor" ColumnName="idProfessor" />
+          <ScalarProperty Name="idTA" ColumnName="idTA" />
+          <ScalarProperty Name="groupeNumberPracticeClass" ColumnName="groupeNumberPracticeClass" />
+          <ScalarProperty Name="termPracticeClass" ColumnName="termPracticeClass" />
+          <ScalarProperty Name="numberYearFromStart" ColumnName="numberYearFromStart" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="table_practicestudent">
+      <EntityTypeMapping TypeName="database_practiceclassModel.table_practicestudent">
+        <MappingFragment StoreEntitySet="table_practicestudent">
+          <ScalarProperty Name="idTable" ColumnName="idTable" />
+          <ScalarProperty Name="numberPractice" ColumnName="numberPractice" />
+          <ScalarProperty Name="partPractice" ColumnName="partPractice" />
+          <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+          <ScalarProperty Name="linkSolvedPractice" ColumnName="linkSolvedPractice" />
+          <ScalarProperty Name="timePracticeStudent" ColumnName="timePracticeStudent" />
+          <ScalarProperty Name="checked" ColumnName="checked" />
+          <ScalarProperty Name="gradePracticeStudent" ColumnName="gradePracticeStudent" />
+          <ScalarProperty Name="groupeNumberPracticeClass" ColumnName="groupeNumberPracticeClass" />
+          <ScalarProperty Name="termPracticeClass" ColumnName="termPracticeClass" />
+          <ScalarProperty Name="numberYearFromStart" ColumnName="numberYearFromStart" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="table_professor">
+      <EntityTypeMapping TypeName="database_practiceclassModel.table_professor">
+        <MappingFragment StoreEntitySet="table_professor">
+          <ScalarProperty Name="idProfessor" ColumnName="idProfessor" />
+          <ScalarProperty Name="isPrime" ColumnName="isPrime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="table_quiz">
+      <EntityTypeMapping TypeName="database_practiceclassModel.table_quiz">
+        <MappingFragment StoreEntitySet="table_quiz">
+          <ScalarProperty Name="idTable" ColumnName="idTable" />
+          <ScalarProperty Name="numberQuiz" ColumnName="numberQuiz" />
+          <ScalarProperty Name="dateQuiz" ColumnName="dateQuiz" />
+          <ScalarProperty Name="groupeNumberPracticeClass" ColumnName="groupeNumberPracticeClass" />
+          <ScalarProperty Name="termPracticeClass" ColumnName="termPracticeClass" />
+          <ScalarProperty Name="numberYearFromStart" ColumnName="numberYearFromStart" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="table_quizstudent">
+      <EntityTypeMapping TypeName="database_practiceclassModel.table_quizstudent">
+        <MappingFragment StoreEntitySet="table_quizstudent">
+          <ScalarProperty Name="idTable" ColumnName="idTable" />
+          <ScalarProperty Name="numberQuiz" ColumnName="numberQuiz" />
+          <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+          <ScalarProperty Name="gradeQuizStudent" ColumnName="gradeQuizStudent" />
+          <ScalarProperty Name="groupeNumberPracticeClass" ColumnName="groupeNumberPracticeClass" />
+          <ScalarProperty Name="termPracticeClass" ColumnName="termPracticeClass" />
+          <ScalarProperty Name="numberYearFromStart" ColumnName="numberYearFromStart" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="table_resource">
+      <EntityTypeMapping TypeName="database_practiceclassModel.table_resource">
+        <MappingFragment StoreEntitySet="table_resource">
+          <ScalarProperty Name="idTable" ColumnName="idTable" />
+          <ScalarProperty Name="numberResource" ColumnName="numberResource" />
+          <ScalarProperty Name="nameResource" ColumnName="nameResource" />
+          <ScalarProperty Name="linkResource" ColumnName="linkResource" />
+          <ScalarProperty Name="idCourse" ColumnName="idCourse" />
+          <ScalarProperty Name="idProfessor" ColumnName="idProfessor" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="table_student">
+      <EntityTypeMapping TypeName="database_practiceclassModel.table_student">
+        <MappingFragment StoreEntitySet="table_student">
+          <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="table_studentpracticeclass">
+      <EntityTypeMapping TypeName="database_practiceclassModel.table_studentpracticeclass">
+        <MappingFragment StoreEntitySet="table_studentpracticeclass">
+          <ScalarProperty Name="idTable" ColumnName="idTable" />
+          <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+          <ScalarProperty Name="gradePracticeClassStudent" ColumnName="gradePracticeClassStudent" />
+          <ScalarProperty Name="groupeNumberPracticeClass" ColumnName="groupeNumberPracticeClass" />
+          <ScalarProperty Name="termPracticeClass" ColumnName="termPracticeClass" />
+          <ScalarProperty Name="numberYearFromStart" ColumnName="numberYearFromStart" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+          <ScalarProperty Name="checked" ColumnName="checked" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="table_user">
+      <EntityTypeMapping TypeName="database_practiceclassModel.table_user">
+        <MappingFragment StoreEntitySet="table_user">
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="firstNameUser" ColumnName="firstNameUser" />
+          <ScalarProperty Name="lastNameUser" ColumnName="lastNameUser" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewadminlistprofessor">
+      <EntityTypeMapping TypeName="database_practiceclassModel.viewadminlistprofessor">
+        <MappingFragment StoreEntitySet="viewadminlistprofessor">
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="firstNameUser" ColumnName="firstNameUser" />
+          <ScalarProperty Name="lastNameUser" ColumnName="lastNameUser" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewadminliststudent">
+      <EntityTypeMapping TypeName="database_practiceclassModel.viewadminliststudent">
+        <MappingFragment StoreEntitySet="viewadminliststudent">
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="firstNameUser" ColumnName="firstNameUser" />
+          <ScalarProperty Name="lastNameUser" ColumnName="lastNameUser" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewlistclass">
+      <EntityTypeMapping TypeName="database_practiceclassModel.viewlistclass">
+        <MappingFragment StoreEntitySet="viewlistclass">
+          <ScalarProperty Name="groupeNumberPracticeClass" ColumnName="groupeNumberPracticeClass" />
+          <ScalarProperty Name="termPracticeClass" ColumnName="termPracticeClass" />
+          <ScalarProperty Name="numberYearFromStart" ColumnName="numberYearFromStart" />
+          <ScalarProperty Name="idProfessor" ColumnName="idProfessor" />
+          <ScalarProperty Name="prffn" ColumnName="prffn" />
+          <ScalarProperty Name="pfln" ColumnName="pfln" />
+          <ScalarProperty Name="idTA" ColumnName="idTA" />
+          <ScalarProperty Name="tafn" ColumnName="tafn" />
+          <ScalarProperty Name="taln" ColumnName="taln" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="nameCourse" ColumnName="nameCourse" />
+          <ScalarProperty Name="AVG_c_gradePracticeClassStudent_" ColumnName="AVG(c.gradePracticeClassStudent)" />
+          <ScalarProperty Name="classDel" ColumnName="classDel" />
+          <ScalarProperty Name="stuDel" ColumnName="stuDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewlistclassmember">
+      <EntityTypeMapping TypeName="database_practiceclassModel.viewlistclassmember">
+        <MappingFragment StoreEntitySet="viewlistclassmember">
+          <ScalarProperty Name="gradePracticeClassStudent" ColumnName="gradePracticeClassStudent" />
+          <ScalarProperty Name="groupeNumberPracticeClass" ColumnName="groupeNumberPracticeClass" />
+          <ScalarProperty Name="termPracticeClass" ColumnName="termPracticeClass" />
+          <ScalarProperty Name="numberYearFromStart" ColumnName="numberYearFromStart" />
+          <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+          <ScalarProperty Name="stufn" ColumnName="stufn" />
+          <ScalarProperty Name="stuln" ColumnName="stuln" />
+          <ScalarProperty Name="stuDel" ColumnName="stuDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewlistcourseresourse">
+      <EntityTypeMapping TypeName="database_practiceclassModel.viewlistcourseresourse">
+        <MappingFragment StoreEntitySet="viewlistcourseresourse">
+          <ScalarProperty Name="idCourse" ColumnName="idCourse" />
+          <ScalarProperty Name="nameCourse" ColumnName="nameCourse" />
+          <ScalarProperty Name="nameResource" ColumnName="nameResource" />
+          <ScalarProperty Name="linkResource" ColumnName="linkResource" />
+          <ScalarProperty Name="numberResource" ColumnName="numberResource" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewlistpractice">
+      <EntityTypeMapping TypeName="database_practiceclassModel.viewlistpractice">
+        <MappingFragment StoreEntitySet="viewlistpractice">
+          <ScalarProperty Name="partPractice" ColumnName="partPractice" />
+          <ScalarProperty Name="numberPractice" ColumnName="numberPractice" />
+          <ScalarProperty Name="linkPractice" ColumnName="linkPractice" />
+          <ScalarProperty Name="termPracticeClass" ColumnName="termPracticeClass" />
+          <ScalarProperty Name="numberYearFromStart" ColumnName="numberYearFromStart" />
+          <ScalarProperty Name="groupeNumberPracticeClass" ColumnName="groupeNumberPracticeClass" />
+          <ScalarProperty Name="AVG_b_gradePracticeStudent_" ColumnName="AVG(b.gradePracticeStudent)" />
+          <ScalarProperty Name="pracDel" ColumnName="pracDel" />
+          <ScalarProperty Name="pracStuDel" ColumnName="pracStuDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewlistpracticesolved">
+      <EntityTypeMapping TypeName="database_practiceclassModel.viewlistpracticesolved">
+        <MappingFragment StoreEntitySet="viewlistpracticesolved">
+          <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+          <ScalarProperty Name="firstNameUser" ColumnName="firstNameUser" />
+          <ScalarProperty Name="lastNameUser" ColumnName="lastNameUser" />
+          <ScalarProperty Name="partPractice" ColumnName="partPractice" />
+          <ScalarProperty Name="numberPractice" ColumnName="numberPractice" />
+          <ScalarProperty Name="termPracticeClass" ColumnName="termPracticeClass" />
+          <ScalarProperty Name="numberYearFromStart" ColumnName="numberYearFromStart" />
+          <ScalarProperty Name="groupeNumberPracticeClass" ColumnName="groupeNumberPracticeClass" />
+          <ScalarProperty Name="gradePracticeStudent" ColumnName="gradePracticeStudent" />
+          <ScalarProperty Name="linkSolvedPractice" ColumnName="linkSolvedPractice" />
+          <ScalarProperty Name="timePracticeStudent" ColumnName="timePracticeStudent" />
+          <ScalarProperty Name="checked" ColumnName="checked" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewlistquiz">
+      <EntityTypeMapping TypeName="database_practiceclassModel.viewlistquiz">
+        <MappingFragment StoreEntitySet="viewlistquiz">
+          <ScalarProperty Name="numberQuiz" ColumnName="numberQuiz" />
+          <ScalarProperty Name="dateQuiz" ColumnName="dateQuiz" />
+          <ScalarProperty Name="termPracticeClass" ColumnName="termPracticeClass" />
+          <ScalarProperty Name="numberYearFromStart" ColumnName="numberYearFromStart" />
+          <ScalarProperty Name="groupeNumberPracticeClass" ColumnName="groupeNumberPracticeClass" />
+          <ScalarProperty Name="avg_b_gradeQuizStudent_" ColumnName="avg(b.gradeQuizStudent)" />
+          <ScalarProperty Name="quizdDel" ColumnName="quizdDel" />
+          <ScalarProperty Name="quizStuDel" ColumnName="quizStuDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewlistquizstudent">
+      <EntityTypeMapping TypeName="database_practiceclassModel.viewlistquizstudent">
+        <MappingFragment StoreEntitySet="viewlistquizstudent">
+          <ScalarProperty Name="numberQuiz" ColumnName="numberQuiz" />
+          <ScalarProperty Name="dateQuiz" ColumnName="dateQuiz" />
+          <ScalarProperty Name="termPracticeClass" ColumnName="termPracticeClass" />
+          <ScalarProperty Name="numberYearFromStart" ColumnName="numberYearFromStart" />
+          <ScalarProperty Name="groupeNumberPracticeClass" ColumnName="groupeNumberPracticeClass" />
+          <ScalarProperty Name="gradeQuizStudent" ColumnName="gradeQuizStudent" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="firstNameUser" ColumnName="firstNameUser" />
+          <ScalarProperty Name="lastNameUser" ColumnName="lastNameUser" />
+          <ScalarProperty Name="quizdDel" ColumnName="quizdDel" />
+          <ScalarProperty Name="quizStuDel" ColumnName="quizStuDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewstudentlistclass">
+      <EntityTypeMapping TypeName="database_practiceclassModel.viewstudentlistclass">
+        <MappingFragment StoreEntitySet="viewstudentlistclass">
+          <ScalarProperty Name="gradePracticeClassStudent" ColumnName="gradePracticeClassStudent" />
+          <ScalarProperty Name="groupeNumberPracticeClass" ColumnName="groupeNumberPracticeClass" />
+          <ScalarProperty Name="termPracticeClass" ColumnName="termPracticeClass" />
+          <ScalarProperty Name="numberYearFromStart" ColumnName="numberYearFromStart" />
+          <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+          <ScalarProperty Name="idCourse" ColumnName="idCourse" />
+          <ScalarProperty Name="nameCourse" ColumnName="nameCourse" />
+          <ScalarProperty Name="idProfessor" ColumnName="idProfessor" />
+          <ScalarProperty Name="proffnam" ColumnName="proffnam" />
+          <ScalarProperty Name="proflnam" ColumnName="proflnam" />
+          <ScalarProperty Name="idTA" ColumnName="idTA" />
+          <ScalarProperty Name="tafn" ColumnName="tafn" />
+          <ScalarProperty Name="talnm" ColumnName="talnm" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewstudentlistpractice">
+      <EntityTypeMapping TypeName="database_practiceclassModel.viewstudentlistpractice">
+        <MappingFragment StoreEntitySet="viewstudentlistpractice">
+          <ScalarProperty Name="partPractice" ColumnName="partPractice" />
+          <ScalarProperty Name="numberPractice" ColumnName="numberPractice" />
+          <ScalarProperty Name="linkPractice" ColumnName="linkPractice" />
+          <ScalarProperty Name="termPracticeClass" ColumnName="termPracticeClass" />
+          <ScalarProperty Name="numberYearFromStart" ColumnName="numberYearFromStart" />
+          <ScalarProperty Name="groupeNumberPracticeClass" ColumnName="groupeNumberPracticeClass" />
+          <ScalarProperty Name="gradePracticeStudent" ColumnName="gradePracticeStudent" />
+          <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+          <ScalarProperty Name="linkSolvedPractice" ColumnName="linkSolvedPractice" />
+          <ScalarProperty Name="timePracticeStudent" ColumnName="timePracticeStudent" />
+          <ScalarProperty Name="checked" ColumnName="checked" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewstudentlistquiz">
+      <EntityTypeMapping TypeName="database_practiceclassModel.viewstudentlistquiz">
+        <MappingFragment StoreEntitySet="viewstudentlistquiz">
+          <ScalarProperty Name="numberQuiz" ColumnName="numberQuiz" />
+          <ScalarProperty Name="dateQuiz" ColumnName="dateQuiz" />
+          <ScalarProperty Name="termPracticeClass" ColumnName="termPracticeClass" />
+          <ScalarProperty Name="numberYearFromStart" ColumnName="numberYearFromStart" />
+          <ScalarProperty Name="groupeNumberPracticeClass" ColumnName="groupeNumberPracticeClass" />
+          <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+          <ScalarProperty Name="gradeQuizStudent" ColumnName="gradeQuizStudent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
