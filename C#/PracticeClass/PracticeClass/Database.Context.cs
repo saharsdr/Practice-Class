@@ -13,10 +13,10 @@ namespace PracticeClass
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class database_practiceclassEntities : DbContext
+    public partial class database_practiceclass : DbContext
     {
-        public database_practiceclassEntities()
-            : base("name=database_practiceclassEntities")
+        public database_practiceclass()
+            : base("name=database_practiceclass")
         {
         }
     

@@ -10,7 +10,7 @@ namespace PracticeClass
     {
         //variables
         //to access to app database
-        private database_practiceclassEntities database;
+        private database_practiceclass database;
         private bool term { get; }
         private int numberYearFromStart { get; }
         private int groupNumber { get; }
@@ -21,7 +21,7 @@ namespace PracticeClass
         private string idTA { get; }
         private string fullNameTA { get; }
         //methods
-        public classPracticeClass(database_practiceclassEntities database, bool term, int numberYearFromStart, int groupNumber)
+        public classPracticeClass(database_practiceclass database, bool term, int numberYearFromStart, int groupNumber)
         {
             //set basic data
             this.database = database;

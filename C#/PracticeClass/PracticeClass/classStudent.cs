@@ -17,10 +17,10 @@ namespace PracticeClass
         //1 = student, 2 = TA
         private int accessLevel;
         //to access to app database
-        private database_practiceclassEntities database;
+        private database_practiceclass database;
 
         //methods
-        public classStudent(string newID, database_practiceclassEntities newDatabase, bool newIsTA, int newNumberYearFromStart, bool newTerm)
+        public classStudent(string newID, database_practiceclass newDatabase, bool newIsTA, int newNumberYearFromStart, bool newTerm)
         {
             //set values on creat
             this.id = newID;

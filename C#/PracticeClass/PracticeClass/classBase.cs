@@ -29,17 +29,20 @@ namespace PracticeClass
     }
     class classBase
     {
-        private database_practiceclassEntities database;
+        private database_practiceclass database;
         private classUser user { get; set; }
         private bool userType;
         private int numberYearFromStart;
         private bool term;
         public classBase()
         {
-            database = new database_practiceclassEntities();
+            database = new database_practiceclass();
+            //test basic data
             //set basic App Datas
             //term=this.database.table_systemDatas.termNow;
+            term = true;
             //numberYearFromStart= this.database.table_systemDatas.numberYearNow;
+            numberYearFromStart = 98;
         }
         public classStudent LoginStudent(string id, string password)
         {

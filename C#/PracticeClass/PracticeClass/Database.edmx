@@ -73,6 +73,7 @@
             <PropertyRef Name="idProfessor" />
           </Key>
           <Property Name="idProfessor" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="isPrime" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="table_quiz">
           <Key>
@@ -876,6 +877,7 @@ FROM `viewstudentlistquiz` AS `viewstudentlistquiz`</DefiningQuery>
             <PropertyRef Name="idProfessor" />
           </Key>
           <Property Name="idProfessor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isPrime" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="table_practiceclass" Relationship="Self.fk_idProfessor2" FromRole="table_professor" ToRole="table_practiceclass" />
           <NavigationProperty Name="table_resource" Relationship="Self.fk_idProfessor" FromRole="table_professor" ToRole="table_resource" />
           <NavigationProperty Name="table_user" Relationship="Self.table_professor_ibfk_1" FromRole="table_professor" ToRole="table_user" />
@@ -1361,7 +1363,7 @@ FROM `viewstudentlistquiz` AS `viewstudentlistquiz`</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="database_practiceclassEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="database_practiceclass" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="table_course" EntityType="Self.table_course" />
           <EntitySet Name="table_practice" EntityType="Self.table_practice" />
           <EntitySet Name="table_practiceclass" EntityType="Self.table_practiceclass" />
@@ -1435,7 +1437,7 @@ FROM `viewstudentlistquiz` AS `viewstudentlistquiz`</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="database_practiceclassModelStoreContainer" CdmEntityContainer="database_practiceclassEntities">
+        <EntityContainerMapping StorageEntityContainer="database_practiceclassModelStoreContainer" CdmEntityContainer="database_practiceclass">
           <EntitySetMapping Name="table_course">
             <EntityTypeMapping TypeName="database_practiceclassModel.table_course">
               <MappingFragment StoreEntitySet="table_course">
@@ -1496,6 +1498,7 @@ FROM `viewstudentlistquiz` AS `viewstudentlistquiz`</DefiningQuery>
             <EntityTypeMapping TypeName="database_practiceclassModel.table_professor">
               <MappingFragment StoreEntitySet="table_professor">
                 <ScalarProperty Name="idProfessor" ColumnName="idProfessor" />
+                <ScalarProperty Name="isPrime" ColumnName="isPrime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -22,6 +22,7 @@ namespace PracticeClass
         }
     
         public string idProfessor { get; set; }
+        public bool isPrime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<table_practiceclass> table_practiceclass { get; set; }
