@@ -28,6 +28,16 @@ namespace PracticeClass
             this.database = newDatabase;
             this.numberYearFromStart = newNumberYearFromStart;
             this.term = newTerm;
+            var firstAndLastName = from professor in database.table_user
+                                   where (professor.idUser == this.id)
+                                   select new
+                                   {
+                                       firstName = professor.firstNameUser,
+                                       lastName = professor.lastNameUser
+                                   };
+            this.firstName = firstAndLastName.First().firstName;
+            this.lastName = firstAndLastName.First().lastName;
+
         }
         //returns student homePage's list of classes as a list of struct "ShowClass"
         public override string GetID()
@@ -55,9 +65,9 @@ namespace PracticeClass
                                   )
                                   select new
                                   {
-                                      nameCourse = practiceClass.nameCourse,
-                                      fullNameTA = practiceClass.tafn + ' ' + practiceClass.taln,
-                                      fullNameProfessor = practiceClass.prffn + ' ' + practiceClass.pfln
+                                      nameCourse = practiceClass.nameCourse.ToString(),
+                                      fullNameTA = practiceClass.tafn + " " + practiceClass.taln,
+                                      fullNameProfessor = practiceClass.prffn + " " + practiceClass.pfln
                                   };
             //add values to list
             List<ShowClass> result = new List<ShowClass>();
