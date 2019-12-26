@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2019 at 10:11 PM
+-- Generation Time: Dec 26, 2019 at 12:13 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -69,7 +69,7 @@ CREATE TABLE `table_practice` (
 
 INSERT INTO `table_practice` (`idTable`, `numberPractice`, `partPractice`, `linkPractice`, `idUploader`, `groupeNumberPracticeClass`, `termPracticeClass`, `numberYearFromStart`, `deleted`) VALUES
 (1, 1, 1, NULL, '380395', 2, b'1', 98, 0),
-(2, 2, 1, NULL, '961845126', 1, b'1', 96, 1);
+(2, 2, 1, NULL, '961845126', 1, b'1', 96, 0);
 
 --
 -- Triggers `table_practice`
@@ -105,8 +105,8 @@ CREATE TABLE `table_practiceclass` (
 --
 
 INSERT INTO `table_practiceclass` (`idTable`, `status`, `idCourse`, `idProfessor`, `idTA`, `groupeNumberPracticeClass`, `termPracticeClass`, `numberYearFromStart`, `deleted`) VALUES
-(1, NULL, '3', '380460', '222', 1, b'1', 96, 0),
-(2, NULL, '2', '380491', '9418451027', 2, b'1', 98, 0);
+(1, b'0', '3', '380460', '222', 1, b'1', 96, 0),
+(2, b'1', '2', '380491', '9418451027', 2, b'1', 98, 0);
 
 --
 -- Triggers `table_practiceclass`
@@ -581,7 +581,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `viewlistclass`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `viewlistclass`  AS  select `a`.`groupeNumberPracticeClass` AS `groupeNumberPracticeClass`,`a`.`termPracticeClass` AS `termPracticeClass`,`a`.`numberYearFromStart` AS `numberYearFromStart`,`a`.`idProfessor` AS `idProfessor`,`d`.`firstNameUser` AS `prffn`,`d`.`lastNameUser` AS `pfln`,`a`.`idTA` AS `idTA`,`e`.`firstNameUser` AS `tafn`,`e`.`lastNameUser` AS `taln`,`a`.`status` AS `status`,`b`.`nameCourse` AS `nameCourse`,avg(`c`.`gradePracticeClassStudent`) AS `AVG(c.gradePracticeClassStudent)`,`a`.`deleted` AS `classDel`,`c`.`deleted` AS `stuDel` from ((((`table_practiceclass` `a` join `table_course` `b` on(`a`.`idCourse` = `b`.`idCourse`)) join `table_studentpracticeclass` `c` on(`a`.`groupeNumberPracticeClass` = `c`.`groupeNumberPracticeClass` and `a`.`termPracticeClass` = `c`.`termPracticeClass` and `a`.`numberYearFromStart` = `c`.`numberYearFromStart`)) join `table_user` `d` on(`a`.`idProfessor` = `d`.`idUser`)) join `table_user` `e` on(`a`.`idTA` = `e`.`idUser`)) group by `a`.`groupeNumberPracticeClass`,`a`.`termPracticeClass`,`a`.`numberYearFromStart` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `viewlistclass`  AS  select `a`.`groupeNumberPracticeClass` AS `groupeNumberPracticeClass`,`a`.`termPracticeClass` AS `termPracticeClass`,`a`.`numberYearFromStart` AS `numberYearFromStart`,`a`.`idProfessor` AS `idProfessor`,`d`.`firstNameUser` AS `prffn`,`d`.`lastNameUser` AS `pfln`,`a`.`idTA` AS `idTA`,`e`.`firstNameUser` AS `tafn`,`e`.`lastNameUser` AS `taln`,`a`.`status` AS `status`,`b`.`nameCourse` AS `nameCourse`,avg(`c`.`gradePracticeClassStudent`) AS `AVG(c.gradePracticeClassStudent)`,`a`.`deleted` AS `classDel`,`c`.`deleted` AS `stuDel` from ((((`table_practiceclass` `a` join `table_course` `b` on(`a`.`idCourse` = `b`.`idCourse`)) left join `table_studentpracticeclass` `c` on(`a`.`groupeNumberPracticeClass` = `c`.`groupeNumberPracticeClass` and `a`.`termPracticeClass` = `c`.`termPracticeClass` and `a`.`numberYearFromStart` = `c`.`numberYearFromStart`)) join `table_user` `d` on(`a`.`idProfessor` = `d`.`idUser`)) join `table_user` `e` on(`a`.`idTA` = `e`.`idUser`)) group by `a`.`groupeNumberPracticeClass`,`a`.`termPracticeClass`,`a`.`numberYearFromStart` ;
 
 -- --------------------------------------------------------
 
@@ -608,7 +608,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `viewlistpractice`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `viewlistpractice`  AS  select `a`.`partPractice` AS `partPractice`,`a`.`numberPractice` AS `numberPractice`,`a`.`linkPractice` AS `linkPractice`,`a`.`termPracticeClass` AS `termPracticeClass`,`a`.`numberYearFromStart` AS `numberYearFromStart`,`a`.`groupeNumberPracticeClass` AS `groupeNumberPracticeClass`,avg(`b`.`gradePracticeStudent`) AS `AVG(b.gradePracticeStudent)`,`a`.`deleted` AS `pracDel`,`b`.`deleted` AS `pracStuDel` from (`table_practice` `a` join `table_practicestudent` `b` on(`a`.`partPractice` = `b`.`partPractice` and `a`.`numberPractice` = `b`.`numberPractice` and `a`.`termPracticeClass` = `b`.`termPracticeClass` and `a`.`numberYearFromStart` = `b`.`numberYearFromStart` and `a`.`groupeNumberPracticeClass` = `b`.`groupeNumberPracticeClass`)) group by `a`.`groupeNumberPracticeClass`,`a`.`termPracticeClass`,`a`.`numberYearFromStart`,`a`.`partPractice`,`a`.`numberPractice` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `viewlistpractice`  AS  select `a`.`partPractice` AS `partPractice`,`a`.`numberPractice` AS `numberPractice`,`a`.`linkPractice` AS `linkPractice`,`a`.`termPracticeClass` AS `termPracticeClass`,`a`.`numberYearFromStart` AS `numberYearFromStart`,`a`.`groupeNumberPracticeClass` AS `groupeNumberPracticeClass`,avg(`b`.`gradePracticeStudent`) AS `AVG(b.gradePracticeStudent)`,`a`.`deleted` AS `pracDel`,`b`.`deleted` AS `pracStuDel` from (`table_practice` `a` left join `table_practicestudent` `b` on(`a`.`partPractice` = `b`.`partPractice` and `a`.`numberPractice` = `b`.`numberPractice` and `a`.`termPracticeClass` = `b`.`termPracticeClass` and `a`.`numberYearFromStart` = `b`.`numberYearFromStart` and `a`.`groupeNumberPracticeClass` = `b`.`groupeNumberPracticeClass`)) group by `a`.`groupeNumberPracticeClass`,`a`.`termPracticeClass`,`a`.`numberYearFromStart`,`a`.`partPractice`,`a`.`numberPractice` ;
 
 -- --------------------------------------------------------
 
@@ -653,7 +653,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `viewstudentlistpractice`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `viewstudentlistpractice`  AS  select `a`.`partPractice` AS `partPractice`,`a`.`numberPractice` AS `numberPractice`,`a`.`linkPractice` AS `linkPractice`,`a`.`termPracticeClass` AS `termPracticeClass`,`a`.`numberYearFromStart` AS `numberYearFromStart`,`a`.`groupeNumberPracticeClass` AS `groupeNumberPracticeClass`,`b`.`gradePracticeStudent` AS `gradePracticeStudent`,`b`.`idStudent` AS `idStudent`,`b`.`linkSolvedPractice` AS `linkSolvedPractice`,`b`.`timePracticeStudent` AS `timePracticeStudent`,`b`.`checked` AS `checked` from (`table_practicestudent` `b` left join `table_practice` `a` on(`a`.`partPractice` = `b`.`partPractice` and `a`.`numberPractice` = `b`.`numberPractice` and `a`.`termPracticeClass` = `b`.`termPracticeClass` and `a`.`groupeNumberPracticeClass` = `b`.`groupeNumberPracticeClass` and `a`.`numberYearFromStart` = `b`.`numberYearFromStart`)) where `a`.`deleted` = 0 and `b`.`deleted` = 0 ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `viewstudentlistpractice`  AS  select `a`.`partPractice` AS `partPractice`,`a`.`numberPractice` AS `numberPractice`,`a`.`linkPractice` AS `linkPractice`,`a`.`termPracticeClass` AS `termPracticeClass`,`a`.`numberYearFromStart` AS `numberYearFromStart`,`a`.`groupeNumberPracticeClass` AS `groupeNumberPracticeClass`,`b`.`gradePracticeStudent` AS `gradePracticeStudent`,`b`.`idStudent` AS `idStudent`,`b`.`linkSolvedPractice` AS `linkSolvedPractice`,`b`.`timePracticeStudent` AS `timePracticeStudent`,`b`.`checked` AS `checked` from (`table_practice` `a` left join `table_practicestudent` `b` on(`a`.`partPractice` = `b`.`partPractice` and `a`.`numberPractice` = `b`.`numberPractice` and `a`.`termPracticeClass` = `b`.`termPracticeClass` and `a`.`groupeNumberPracticeClass` = `b`.`groupeNumberPracticeClass` and `a`.`numberYearFromStart` = `b`.`numberYearFromStart`)) where `a`.`deleted` = 0 and `b`.`deleted` = 0 ;
 
 -- --------------------------------------------------------
 
