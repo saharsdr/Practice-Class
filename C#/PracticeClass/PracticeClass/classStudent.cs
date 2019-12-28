@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PracticeClass
-{
-    class classStudent : classUser
-    {
+namespace PracticeClass {
+    class classStudent : classUser {
         //variables
         private string id;
         private string firstName;
@@ -20,8 +15,7 @@ namespace PracticeClass
         private database_practiceclass database;
 
         //methods
-        public classStudent(string newID, database_practiceclass newDatabase, bool newIsTA, int newNumberYearFromStart, bool newTerm)
-        {
+        public classStudent(string newID, database_practiceclass newDatabase, bool newIsTA, int newNumberYearFromStart, bool newTerm) {
             //set values on creat
             this.id = newID;
             this.accessLevel = newIsTA ? 2 : 1;
@@ -30,8 +24,7 @@ namespace PracticeClass
             this.term = newTerm;
             var firstAndLastName = from strudent in database.table_user
                                    where (strudent.idUser == this.id)
-                                   select new
-                                   {
+                                   select new {
                                        firstName = strudent.firstNameUser,
                                        lastName = strudent.lastNameUser
                                    };
@@ -39,21 +32,17 @@ namespace PracticeClass
             this.lastName = firstAndLastName.First().lastName;
         }
         //returns student homePage's list of classes as a list of struct "ShowClass"
-        public override string GetID()
-        {
+        public override string GetID() {
             return this.id;
         }
         //return full name
-        public override string GetFullName()
-        {
+        public override string GetFullName() {
             return firstName + ' ' + lastName;
         }
-        public override int GetAccessLevel()
-        {
+        public override int GetAccessLevel() {
             return this.accessLevel;
         }
-        public List<ShowClass> GetStudentClassesList()
-        {
+        public List<ShowClass> GetStudentClassesList() {
             //select values from database
             var practiceClasses = from practiceClass in database.viewstudentlistclass
                                   where (
@@ -62,8 +51,7 @@ namespace PracticeClass
                                   practiceClass.status == true &&
                                   practiceClass.idStudent == this.id
                                   )
-                                  select new
-                                  {
+                                  select new {
                                       nameCourse = practiceClass.nameCourse,
                                       fullNameTA = practiceClass.tafn + " " + practiceClass.talnm,
                                       fullNameProfessor = practiceClass.proffnam + " " + practiceClass.proflnam
