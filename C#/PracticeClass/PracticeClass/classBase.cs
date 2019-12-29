@@ -7,15 +7,20 @@ namespace PracticeClass {
         public string nameCourse;
         public string fullNameTA;
         public string fullNameProfessor;
+        public short groupNumber;
+        public bool term;
+        public short year;
+        //"grade = -1" means no grade or profrssor/TA class list
+        public Nullable<float> grade;
     }
     //taples of QuizList
     struct ShowQuiz {
         public DateTime date;
-        public int number;
+        public short number;
     }
     //taples of PracticeList
     struct ShowPractice {
-        public int number;
+        public short number;
         public string link;
         public int part;
         public string idUploader;
@@ -24,7 +29,7 @@ namespace PracticeClass {
         private database_practiceclass database;
         private classUser user { get; set; }
         private bool userType;
-        private int numberYearFromStart;
+        private short numberYearFromStart;
         private bool term;
         public classBase() {
             database = new database_practiceclass();

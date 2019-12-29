@@ -7,7 +7,7 @@ namespace PracticeClass {
         private string id;
         private string firstName;
         private string lastName;
-        private int numberYearFromStart;
+        private short numberYearFromStart;
         private bool term;
         //1 = student, 2 = TA
         private int accessLevel;
@@ -15,7 +15,7 @@ namespace PracticeClass {
         private database_practiceclass database;
 
         //methods
-        public classStudent(string newID, database_practiceclass newDatabase, bool newIsTA, int newNumberYearFromStart, bool newTerm) {
+        public classStudent(string newID, database_practiceclass newDatabase, bool newIsTA, short newNumberYearFromStart, bool newTerm) {
             //set values on creat
             this.id = newID;
             this.accessLevel = newIsTA ? 2 : 1;
@@ -42,25 +42,46 @@ namespace PracticeClass {
         public override int GetAccessLevel() {
             return this.accessLevel;
         }
-        public List<ShowClass> GetStudentClassesList() {
-            //select values from database
-            var practiceClasses = from practiceClass in database.viewstudentlistclass
-                                  where (
-                                  practiceClass.numberYearFromStart == this.numberYearFromStart &&
-                                  practiceClass.termPracticeClass == this.term &&
-                                  practiceClass.status == true &&
-                                  practiceClass.idStudent == this.id
-                                  )
-                                  select new {
-                                      nameCourse = practiceClass.nameCourse,
-                                      fullNameTA = practiceClass.tafn + " " + practiceClass.talnm,
-                                      fullNameProfessor = practiceClass.proffnam + " " + practiceClass.proflnam
-                                  };
-            //add values to list
-            List<ShowClass> result = new List<ShowClass>();
-            foreach (var item in practiceClasses)
-                result.Add(new ShowClass { nameCourse = item.nameCourse, fullNameTA = item.fullNameTA, fullNameProfessor = item.fullNameProfessor });
-            return result;
+        //return on going classes list for this user
+        public List<ShowClass> GetStudentOnGoingClassesList() {
+            //select values from database and add values to list
+            List<ShowClass> practiceClasses = (from practiceClass in database.viewstudentlistclass
+                                               where (
+                                               practiceClass.numberYearFromStart == this.numberYearFromStart &&
+                                               practiceClass.termPracticeClass == this.term &&
+                                               practiceClass.status == true &&
+                                               practiceClass.idStudent == this.id
+                                               )
+                                               select new ShowClass {
+                                                   nameCourse = practiceClass.nameCourse,
+                                                   fullNameTA = practiceClass.tafn + " " + practiceClass.talnm,
+                                                   fullNameProfessor = practiceClass.proffnam + " " + practiceClass.proflnam,
+                                                   groupNumber = practiceClass.groupeNumberPracticeClass,
+                                                   year = this.numberYearFromStart,
+                                                   term = this.term,
+                                                   grade = 0
+                                               }
+                                               ).ToList<ShowClass>();
+            return practiceClasses;
+        }
+        public List<ShowClass> GetStudentArchivedClassesList() {
+            List<ShowClass> archivedClasses=(from practiceClass in database.viewstudentlistclass
+                                             where(
+                                             practiceClass.idStudent==this.id&&
+                                             practiceClass.numberYearFromStart!=this.numberYearFromStart&&
+                                             practiceClass.termPracticeClass!=this.term
+                                             )
+                                             select new ShowClass{
+                                                 nameCourse = practiceClass.nameCourse,
+                                                 fullNameTA = practiceClass.tafn + " " + practiceClass.talnm,
+                                                 fullNameProfessor = practiceClass.proffnam + " " + practiceClass.proflnam,
+                                                 groupNumber = practiceClass.groupeNumberPracticeClass,
+                                                 year = this.numberYearFromStart,
+                                                 term = this.term,
+                                                 grade = practiceClass.gradePracticeClassStudent
+                                             }
+                                             ).ToList<ShowClass>();
+            return archivedClasses;
         }
     }
 }
