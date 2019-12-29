@@ -13,7 +13,7 @@ namespace PracticeClass
     public partial class formLogin : Form
     {
         public string id = "";
-        public string pas = "";
+        public string pass = "";
 
         classBase temp = new classBase();
 
@@ -31,14 +31,14 @@ namespace PracticeClass
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             id = textBoxId.Text;
-            pas = textBoxPassword.Text;
+            pass = textBoxPassword.Text;
             if (radioButtonStudent.Checked == true)
             {
                 classStudent accountStudent = null;
                 accountStudent = temp.LoginStudent(id, pas);
                 if (accountStudent != null)
                 {
-                    formStudent formForStudent = new formStudent();
+                    formStudent formForStudent = new formStudent(id,pass);
                     formForStudent.Activate();
                 }
                 else
