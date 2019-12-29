@@ -53,11 +53,12 @@ namespace PracticeClass {
                                    practiceClass.idProfessor == this.id
                                    )
                                    select new ShowClass {
-                                       nameCourse = practiceClass.nameCourse.ToString(),
-                                       fullNameTA = practiceClass.tafn + " " + practiceClass.taln,
                                        fullNameProfessor = practiceClass.prffn + " " + practiceClass.pfln,
-                                       year = this.numberYearFromStart,
+                                       fullNameTA = practiceClass.tafn + " " + practiceClass.taln,
+                                       groupNumber = practiceClass.groupeNumberPracticeClass,
+                                       nameCourse = practiceClass.nameCourse.ToString(),
                                        term = this.term,
+                                       year = this.numberYearFromStart,
                                        grade = -1
                                    }).ToList<ShowClass>();
             return practiceClasses;
