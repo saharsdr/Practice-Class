@@ -23,3 +23,6 @@ E:\Programing\University Projects\DataBase - Design Analysis\Practice-Class\C#\P
 E:\Programing\University Projects\DataBase - Design Analysis\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.pdb
 E:\Programing\University Projects\DataBase - Design Analysis\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.csprojAssemblyReference.cache
 E:\Programing\University Projects\DataBase - Design Analysis\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass_Content.g.cs
+D:\Practice-Class_last version\Practice-Class_last version\C#\PracticeClass\PracticeClass\bin\Debug\PracticeClass.exe.config
+D:\Practice-Class_last version\Practice-Class_last version\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.exe
+D:\Practice-Class_last version\Practice-Class_last version\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.pdb

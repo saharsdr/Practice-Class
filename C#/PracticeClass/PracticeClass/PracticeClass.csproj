@@ -78,11 +78,24 @@
     <Compile Include="classPracticeClass.cs" />
     <Compile Include="classProfessor.cs" />
     <Compile Include="classStudent.cs" />
+    <Compile Include="classThem.cs" />
     <Compile Include="classUser.cs" />
     <Compile Include="Database.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="formLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formLogin.Designer.cs">
+      <DependentUpon>formLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formStudent.Designer.cs">
+      <DependentUpon>formStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="table_course.cs">
       <DependentUpon>Database.tt</DependentUpon>
@@ -190,6 +203,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="formLogin.resx">
+      <DependentUpon>formLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formStudent.resx">
+      <DependentUpon>formStudent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -224,6 +243,15 @@
       <DependentUpon>Database.edmx</DependentUpon>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\sort %281%29%402x.png" />
+    <None Include="Resources\Search%402x.png" />
+    <None Include="Resources\login.png" />
+    <None Include="Resources\Icon material-account-circle%402x.png" />
+    <None Include="Resources\Icon ionic-ios-settings%402x.png" />
+    <None Include="Resources\Icon home%402x.png" />
+    <None Include="Resources\Icon feather-upload%402x.png" />
+    <None Include="Resources\Icon feather-download%402x.png" />
+    <None Include="Resources\education-2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
