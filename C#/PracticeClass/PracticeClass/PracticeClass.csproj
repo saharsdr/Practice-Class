@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\..\..\..\Downloads\Bunifu_UI_WinForms_1.11.5.1_Downloadly.ir\Bunifu UI WinForms 1.11.5.1\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -53,6 +56,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
@@ -78,11 +82,24 @@
     <Compile Include="classPracticeClass.cs" />
     <Compile Include="classProfessor.cs" />
     <Compile Include="classStudent.cs" />
+    <Compile Include="classThem.cs" />
     <Compile Include="classUser.cs" />
     <Compile Include="Database.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="formLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formLogin.Designer.cs">
+      <DependentUpon>formLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formStudent.Designer.cs">
+      <DependentUpon>formStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="table_course.cs">
       <DependentUpon>Database.tt</DependentUpon>
@@ -190,6 +207,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="formLogin.resx">
+      <DependentUpon>formLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formStudent.resx">
+      <DependentUpon>formStudent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -224,6 +247,15 @@
       <DependentUpon>Database.edmx</DependentUpon>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\sort %281%29%402x.png" />
+    <None Include="Resources\Search%402x.png" />
+    <None Include="Resources\login.png" />
+    <None Include="Resources\Icon material-account-circle%402x.png" />
+    <None Include="Resources\Icon ionic-ios-settings%402x.png" />
+    <None Include="Resources\Icon home%402x.png" />
+    <None Include="Resources\Icon feather-upload%402x.png" />
+    <None Include="Resources\Icon feather-download%402x.png" />
+    <None Include="Resources\education-2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
