@@ -25,6 +25,12 @@ namespace PracticeClass {
         public int part;
         public string idUploader;
     }
+    struct ShowStudent {
+        public string fullName;
+        public string id;
+        //"grade = -1" means no grade
+        public Nullable<float> grade;
+    }
     class classBase {
         private database_practiceclass database;
         private classUser user { get; set; }
@@ -50,8 +56,12 @@ namespace PracticeClass {
         }
         //return true if user is a TA for a Class or some classes
         public bool IsTA(string id) {
-            //return true if exist a class that (TA id = this.id)
-            return database.table_practiceclass.Any(Practiceclass => Practiceclass.idTA == id);
+            //return true if exist a class that (TA id = this.id) in this term
+            return database.table_practiceclass.Any(practiceClass =>
+            practiceClass.idTA == id &&
+            practiceClass.numberYearFromStart == this.numberYearFromStart &&
+            practiceClass.termPracticeClass == this.term
+            );
         }
         //login method and creater of professor
         public classProfessor LoginProfessor(string id, string password) {

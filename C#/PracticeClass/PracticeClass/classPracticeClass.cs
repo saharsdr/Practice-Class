@@ -45,6 +45,27 @@ namespace PracticeClass {
             this.idTA = temp.First().idTA;
             this.fullNameTA = temp.First().fullNameTA;
         }
+        private bool IsStudentOfClass(string id) {
+            return this.database.table_studentpracticeclass.Any(
+                    practiceClass =>
+                    practiceClass.groupeNumberPracticeClass == this.groupNumber &&
+                    practiceClass.numberYearFromStart == this.numberYearFromStart &&
+                    practiceClass.termPracticeClass == this.term &&
+                    practiceClass.idStudent == id &&
+                    practiceClass.deleted == false
+                );
+        }
+        private bool IsPracticeOfClass(short number, short part) {
+            return this.database.table_practice.Any(
+                    practice =>
+                    practice.groupeNumberPracticeClass == this.groupNumber &&
+                    practice.numberYearFromStart == this.numberYearFromStart &&
+                    practice.termPracticeClass == this.term &&
+                    practice.numberPractice == number &&
+                    practice.partPractice == part &&
+                    practice.deleted == false
+                );
+        }
         public List<ShowQuiz> GetClassQuizList() {
             //get quizList from database
             var quizList = from quiz in database.table_quiz
@@ -91,27 +112,44 @@ namespace PracticeClass {
                 });
             return result;
         }
-        private bool IsStudentOfClass(string id) {
-            return this.database.table_studentpracticeclass.Any(
-                    practiceClass =>
-                    practiceClass.groupeNumberPracticeClass == this.groupNumber &&
-                    practiceClass.numberYearFromStart == this.numberYearFromStart &&
-                    practiceClass.termPracticeClass == this.term &&
-                    practiceClass.idStudent == id &&
-                    practiceClass.deleted == false
-                );
+        public List<ShowStudent> GetClassStudentList() {
+            List<ShowStudent> students = (from practiceClass in database.viewlistclassmember
+                                          where (
+                                          practiceClass.numberYearFromStart == this.numberYearFromStart &&
+                                          practiceClass.termPracticeClass == this.term
+                                          )
+                                          select new ShowStudent {
+                                              fullName = practiceClass.stufn + " " + practiceClass.stuln,
+                                              id = practiceClass.idStudent,
+                                              // grade may be "null" 
+                                              grade = practiceClass.gradePracticeClassStudent
+                                          }).ToList<ShowStudent>();
+            return students;
         }
-        private bool IsPracticeOfClass(short number, short part) {
-            return this.database.table_practice.Any(
-                    practice =>
-                    practice.groupeNumberPracticeClass == this.groupNumber &&
-                    practice.numberYearFromStart == this.numberYearFromStart &&
-                    practice.termPracticeClass == this.term &&
-                    practice.numberPractice == number &&
-                    practice.partPractice == part &&
-                    practice.deleted == false
-                );
+        //set final grade for student
+        //"-2" means "wrong student id", "-3" means "wrong TAid", "-1" means "somthing went wrong" and "1" means "Done!" 
+        public int SetStudentGrade(string idTA, string idStudent, float grade) {
+            if (!IsStudentOfClass(idStudent))
+                return -2;
+            if (idTA != this.idTA)
+                return -3;
+            try {
+                var student = (from item in database.table_studentpracticeclass
+                               where (
+                                    item.idStudent == idStudent &&
+                                    item.groupeNumberPracticeClass == this.groupNumber &&
+                                    item.termPracticeClass == this.term)
+                               select item
+                           ).ToList().First();
+                student.gradePracticeClassStudent = grade;
+                database.SaveChanges();
+                return 1;
+            }
+            catch (Exception) {
+                return -1;
+            }
         }
+        //phase 2 or 3
         //"-2" means "wrong student id", "-3" means "wrong practice (does not exists)", "-4" means "reapeted solved pracrice or link"
         public int AddSolvedPractice(short practiceNumber, short practicePart, string userID, string SolvedPracticelink) {
             if (!IsStudentOfClass(userID))
