@@ -35,7 +35,7 @@ namespace PracticeClass
             if (radioButtonStudent.Checked == true)
             {
                 classStudent accountStudent = null;
-                accountStudent = temp.LoginStudent(id, pas);
+                accountStudent = temp.LoginStudent(id, pass);
                 if (accountStudent != null)
                 {
                     formStudent formForStudent = new formStudent(id,pass);

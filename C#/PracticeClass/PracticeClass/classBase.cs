@@ -2,6 +2,7 @@
 using System.Linq;
 
 namespace PracticeClass {
+    ///Streucts
     //taples of ClassList
     struct ShowClass {
         public string nameCourse;
@@ -32,11 +33,13 @@ namespace PracticeClass {
         public Nullable<float> grade;
     }
     class classBase {
+        ///Class Varibles
         private database_practiceclass database;
         private classUser user { get; set; }
         private bool userType;
         private short numberYearFromStart;
         private bool term;
+        ///Class Methods
         public classBase() {
             database = new database_practiceclass();
             //test basic data

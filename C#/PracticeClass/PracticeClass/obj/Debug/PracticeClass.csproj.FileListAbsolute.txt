@@ -26,3 +26,6 @@ E:\Programing\University Projects\DataBase - Design Analysis\Practice-Class\C#\P
 D:\Practice-Class_last version\Practice-Class_last version\C#\PracticeClass\PracticeClass\bin\Debug\PracticeClass.exe.config
 D:\Practice-Class_last version\Practice-Class_last version\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.exe
 D:\Practice-Class_last version\Practice-Class_last version\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.pdb
+E:\Programing\University Projects\DataBase - Design Analysis\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\Bunifu_UI_v1.5.3.xml
+E:\Programing\University Projects\DataBase - Design Analysis\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.formLogin.resources
+E:\Programing\University Projects\DataBase - Design Analysis\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.formStudent.resources

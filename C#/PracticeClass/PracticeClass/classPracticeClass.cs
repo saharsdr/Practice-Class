@@ -45,8 +45,7 @@ namespace PracticeClass {
             this.idTA = temp.First().idTA;
             this.fullNameTA = temp.First().fullNameTA;
         }
-        private bool IsStudentOfClass(string id) {
-            return this.database.table_studentpracticeclass.Any(
+        private bool IsStudentOfClass(string id) => this.database.table_studentpracticeclass.Any(
                     practiceClass =>
                     practiceClass.groupeNumberPracticeClass == this.groupNumber &&
                     practiceClass.numberYearFromStart == this.numberYearFromStart &&
@@ -54,77 +53,26 @@ namespace PracticeClass {
                     practiceClass.idStudent == id &&
                     practiceClass.deleted == false
                 );
-        }
-        private bool IsPracticeOfClass(short number, short part) {
-            return this.database.table_practice.Any(
-                    practice =>
-                    practice.groupeNumberPracticeClass == this.groupNumber &&
-                    practice.numberYearFromStart == this.numberYearFromStart &&
-                    practice.termPracticeClass == this.term &&
-                    practice.numberPractice == number &&
-                    practice.partPractice == part &&
-                    practice.deleted == false
-                );
-        }
-        public List<ShowQuiz> GetClassQuizList() {
-            //get quizList from database
-            var quizList = from quiz in database.table_quiz
-                           where (
-                           quiz.groupeNumberPracticeClass == this.groupNumber &&
-                           quiz.numberYearFromStart == this.numberYearFromStart &&
-                           quiz.termPracticeClass == this.term &&
-                           quiz.deleted == false
-                           )
-                           select new {
-                               date = quiz.dateQuiz.ToString(),
-                               number = quiz.numberQuiz
-                           };
-            //convert quizList to a List of struct "ShoeQuiz"
-            List<ShowQuiz> result = new List<ShowQuiz>();
-            foreach (var item in quizList)
-                result.Add(new ShowQuiz {
-                    date = DateTime.Parse(item.date),
-                    number = item.number
-                });
-            return result;
-        }
-        public List<ShowPractice> GetClassPracticeList() {
-            var practiceList = from practice in database.table_practice
-                               where (
-                               practice.groupeNumberPracticeClass == this.groupNumber &&
-                               practice.numberYearFromStart == this.numberYearFromStart &&
-                               practice.termPracticeClass == this.term &&
-                               practice.deleted == false
-                               )
-                               select new {
-                                   number = practice.numberPractice,
-                                   link = practice.linkPractice,
-                                   part = practice.partPractice,
-                                   idUploader = practice.idUploader
-                               };
-            List<ShowPractice> result = new List<ShowPractice>();
-            foreach (var item in practiceList)
-                result.Add(new ShowPractice {
-                    number = item.number,
-                    link = item.link,
-                    part = item.part,
-                    idUploader = item.idUploader
-                });
-            return result;
-        }
         public List<ShowStudent> GetClassStudentList() {
-            List<ShowStudent> students = (from practiceClass in database.viewlistclassmember
-                                          where (
-                                          practiceClass.numberYearFromStart == this.numberYearFromStart &&
-                                          practiceClass.termPracticeClass == this.term
-                                          )
-                                          select new ShowStudent {
-                                              fullName = practiceClass.stufn + " " + practiceClass.stuln,
-                                              id = practiceClass.idStudent,
-                                              // grade may be "null" 
-                                              grade = practiceClass.gradePracticeClassStudent
-                                          }).ToList<ShowStudent>();
-            return students;
+            var students = (from practiceClass in database.viewlistclassmember
+                            where (
+                            practiceClass.numberYearFromStart == this.numberYearFromStart &&
+                            practiceClass.termPracticeClass == this.term
+                            )
+                            select new {
+                                fullName = practiceClass.stufn + " " + practiceClass.stuln,
+                                id = practiceClass.idStudent,
+                                // grade may be "null" 
+                                grade = practiceClass.gradePracticeClassStudent
+                            }).ToList();
+            List<ShowStudent> result = new List<ShowStudent>();
+            foreach (var item in students)
+                result.Add(new ShowStudent {
+                    fullName = item.fullName,
+                    grade = item.grade,
+                    id = item.id
+                });
+            return result;
         }
         //set final grade for student
         //"-2" means "wrong student id", "-3" means "wrong TAid", "-1" means "somthing went wrong" and "1" means "Done!" 
@@ -150,6 +98,61 @@ namespace PracticeClass {
             }
         }
         //phase 2 or 3
+        private bool IsPracticeOfClass(short number, short part) => this.database.table_practice.Any(
+                    practice =>
+                    practice.groupeNumberPracticeClass == this.groupNumber &&
+                    practice.numberYearFromStart == this.numberYearFromStart &&
+                    practice.termPracticeClass == this.term &&
+                    practice.numberPractice == number &&
+                    practice.partPractice == part &&
+                    practice.deleted == false
+                );
+        public List<ShowPractice> GetClassPracticeList() {
+            var practiceList = from practice in database.table_practice
+                               where (
+                               practice.groupeNumberPracticeClass == this.groupNumber &&
+                               practice.numberYearFromStart == this.numberYearFromStart &&
+                               practice.termPracticeClass == this.term &&
+                               practice.deleted == false
+                               )
+                               select new {
+                                   number = practice.numberPractice,
+                                   link = practice.linkPractice,
+                                   part = practice.partPractice,
+                                   idUploader = practice.idUploader
+                               };
+            List<ShowPractice> result = new List<ShowPractice>();
+            foreach (var item in practiceList)
+                result.Add(new ShowPractice {
+                    number = item.number,
+                    link = item.link,
+                    part = item.part,
+                    idUploader = item.idUploader
+                });
+            return result;
+        }
+        public List<ShowQuiz> GetClassQuizList() {
+            //get quizList from database
+            var quizList = from quiz in database.table_quiz
+                           where (
+                           quiz.groupeNumberPracticeClass == this.groupNumber &&
+                           quiz.numberYearFromStart == this.numberYearFromStart &&
+                           quiz.termPracticeClass == this.term &&
+                           quiz.deleted == false
+                           )
+                           select new {
+                               date = quiz.dateQuiz.ToString(),
+                               number = quiz.numberQuiz
+                           };
+            //convert quizList to a List of struct "ShoeQuiz"
+            List<ShowQuiz> result = new List<ShowQuiz>();
+            foreach (var item in quizList)
+                result.Add(new ShowQuiz {
+                    date = DateTime.Parse(item.date),
+                    number = item.number
+                });
+            return result;
+        }
         //"-2" means "wrong student id", "-3" means "wrong practice (does not exists)", "-4" means "reapeted solved pracrice or link"
         public int AddSolvedPractice(short practiceNumber, short practicePart, string userID, string SolvedPracticelink) {
             if (!IsStudentOfClass(userID))
@@ -178,6 +181,5 @@ namespace PracticeClass {
             });
             return 1;
         }
-
     }
 }

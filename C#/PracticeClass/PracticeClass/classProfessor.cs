@@ -49,7 +49,7 @@ namespace PracticeClass {
                                    where (
                                    practiceClass.numberYearFromStart == this.numberYearFromStart &&
                                    practiceClass.termPracticeClass == this.term &&
-                                   practiceClass.status == true &&
+                                //   practiceClass.status == true &&
                                    practiceClass.idProfessor == this.id
                                    )
                                    select new ShowClass {
