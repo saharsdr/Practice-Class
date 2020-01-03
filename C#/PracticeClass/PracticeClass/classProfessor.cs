@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PracticeClass {
@@ -49,10 +50,10 @@ namespace PracticeClass {
                                    where (
                                    practiceClass.numberYearFromStart == this.numberYearFromStart &&
                                    practiceClass.termPracticeClass == this.term &&
-                                //   practiceClass.status == true &&
+                                   //   practiceClass.status == true &&
                                    practiceClass.idProfessor == this.id
                                    )
-                                   select new ShowClass {
+                                   select new {
                                        fullNameProfessor = practiceClass.prffn + " " + practiceClass.pfln,
                                        fullNameTA = practiceClass.tafn + " " + practiceClass.taln,
                                        groupNumber = practiceClass.groupeNumberPracticeClass,
@@ -60,8 +61,101 @@ namespace PracticeClass {
                                        term = this.term,
                                        year = this.numberYearFromStart,
                                        grade = -1
-                                   }).ToList<ShowClass>();
-            return practiceClasses;
+                                   }).ToList();
+            List<ShowClass> result = new List<ShowClass>();
+            foreach (var item in practiceClasses)
+                result.Add(new ShowClass {
+                    fullNameProfessor = item.fullNameProfessor,
+                    fullNameTA = item.fullNameTA,
+                    groupNumber = item.groupNumber,
+                    nameCourse = item.nameCourse,
+                    term = item.term,
+                    year = item.year
+                });
+            return result;
+        }
+        //add new resource for a course
+        //"-2" means wrong idCourse, "-3" means "resource already exists", "-1" means "general error" and "1" means "done"
+        public int AddResource(string idCourse, string linkResource, string nameResource) {
+            if (!this.database.table_course.Any(course => course.idCourse == idCourse))
+                return -2;
+            if (this.database.table_resource.Any(resource => resource.nameResource == nameResource || resource.linkResource == linkResource))
+                return -3;
+            try {
+                table_resource newResourse = new table_resource {
+                    idCourse = idCourse,
+                    idProfessor = this.id,
+                    linkResource = linkResource,
+                    nameResource = nameResource,
+                    numberResource = (short)((from res in database.table_resource
+                                              where res.idCourse == idCourse
+                                              select res)
+                                              .ToList()
+                                              .Max(num => num.numberResource) + 1),
+                    deleted = false
+                };
+                return 1;
+            }
+            catch (Exception) {
+                return -1;
+            }
+        }
+        public List<ShowResource> GetProfessorResourcesList() {
+            var resources = (from resourse in database.table_resource
+                             where (resourse.idProfessor == this.id)
+                             select new {
+                                 idCourse = resourse.idCourse,
+                                 idProfessor = resourse.idProfessor,
+                                 linkResource = resourse.linkResource,
+                                 nameResource = resourse.nameResource,
+                                 numberResource = resourse.numberResource
+                             }).ToList();
+            List<ShowResource> result = new List<ShowResource>();
+            foreach (var item in resources)
+                result.Add(new ShowResource {
+                    idCourse = item.idCourse,
+                    idProfessor = item.idProfessor,
+                    linkResource = item.linkResource,
+                    nameResource = item.nameResource,
+                    numberResource = item.numberResource
+                });
+            return result;
+        }
+        //edit Professor's Resources
+        public int EditProfessorResource(string idCourse, short numberResource, string newIDCourse, string newLinkResource, string newNameResource) {
+
+            if (!this.database.table_resource.Any(res =>
+            res.idCourse == idCourse &&
+            res.numberResource == numberResource &&
+            res.idProfessor == this.id))
+                return -2;
+            try {
+                var resource = (from res in this.database.table_resource
+                                where (res.idCourse == idCourse &&
+                                res.numberResource == numberResource &&
+                                res.idProfessor == this.id)
+                                select res).ToList().First();
+                if (newIDCourse != resource.idCourse) {
+                    resource.idCourse = newIDCourse;
+                    resource.numberResource = (short)((from res in this.database.table_resource
+                                                       where (res.idCourse == newIDCourse)
+                                                       select res).ToList().Max(num => num.numberResource) + 1);
+                    var temp = (from res in this.database.table_resource
+                                where (res.idCourse == idCourse && res.numberResource > numberResource)
+                                select res).ToList();
+                    foreach (var item in temp)
+                        item.numberResource--;
+                }
+                if (newLinkResource != resource.linkResource)
+                    resource.linkResource = newLinkResource;
+                if (newNameResource != newNameResource)
+                    resource.nameResource = newNameResource;
+                database.SaveChanges();
+                return 1;
+            }
+            catch (Exception) {
+                return -1;
+            }
         }
     }
 }

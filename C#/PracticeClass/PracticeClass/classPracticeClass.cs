@@ -97,6 +97,75 @@ namespace PracticeClass {
                 return -1;
             }
         }
+        //add new student to class
+        //"-2" means "Professor does not have access to this class", "-3" means "wrong idStudent", "-4" means "idStudent = idTA", "-5" means "student_class relation already exists", "-1" means "general error" and "1" means "done"
+        public int AddStudentToClass(string idProfessor, string idStudent) {
+            if (idProfessor != this.idProfessor)
+                return -2;
+            if (!this.database.table_student.Any(student => student.idStudent == idStudent))
+                return -3;
+            if (idStudent == this.idTA)
+                return -4;
+            if (this.database.table_studentpracticeclass.Any(student =>
+             student.idStudent == idStudent &&
+             student.groupeNumberPracticeClass == this.groupNumber &&
+             student.numberYearFromStart == this.numberYearFromStart &&
+             student.termPracticeClass == this.term))
+                return -5;
+            try {
+                table_studentpracticeclass newClassStudent = new table_studentpracticeclass {
+                    groupeNumberPracticeClass = this.groupNumber,
+                    idStudent = idStudent,
+                    numberYearFromStart = this.numberYearFromStart,
+                    termPracticeClass = this.term,
+                    deleted = false
+                };
+                this.database.table_studentpracticeclass.Add(newClassStudent);
+                database.SaveChanges();
+                return 1;
+            }
+            catch (Exception) {
+                return -1;
+            }
+        }
+       //edit this class
+        //"-1" means "general ErroR" and "1" means "Done"
+        public int EditPracticeClass(string newIDCourse, string newIDTA, short newNumberYearFromStart, bool newTermPracticeClass) {
+            try {
+                var practiceClass = (from pClass in this.database.table_practiceclass
+                                     where (
+                                     pClass.groupeNumberPracticeClass == this.groupNumber &&
+                                     pClass.numberYearFromStart == this.numberYearFromStart &&
+                                     pClass.termPracticeClass == this.term)
+                                     select pClass).ToList().First();
+                if (newIDCourse != practiceClass.idCourse)
+                    practiceClass.idCourse = newIDCourse;
+                if (newIDTA != practiceClass.idTA)
+                    practiceClass.idTA = newIDTA;
+                if (newNumberYearFromStart != practiceClass.numberYearFromStart || newTermPracticeClass != practiceClass.termPracticeClass) {
+                    practiceClass.numberYearFromStart = newNumberYearFromStart;
+                    practiceClass.termPracticeClass = newTermPracticeClass;
+                    practiceClass.groupeNumberPracticeClass = (short)((from t in this.database.table_practiceclass
+                                                                       where (
+                                                                       t.numberYearFromStart == newNumberYearFromStart &&
+                                                                       t.termPracticeClass == newTermPracticeClass)
+                                                                       select t).ToList().Max(g => g.groupeNumberPracticeClass) + 1);
+                    //select classes with biger groupNumber and "--" groupNumber of them
+                    var shiftLeft = (from t in this.database.table_practiceclass
+                                     where (
+                                     t.numberYearFromStart == this.numberYearFromStart &&
+                                     t.termPracticeClass == this.term)
+                                     select t).ToList();
+                    foreach (var item in shiftLeft)
+                        item.groupeNumberPracticeClass--;
+                }
+                database.SaveChanges();
+                return 1;
+            }
+            catch (Exception) {
+                return -1;
+            }
+        }
         //phase 2 or 3
         private bool IsPracticeOfClass(short number, short part) => this.database.table_practice.Any(
                     practice =>

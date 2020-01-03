@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PracticeClass {
@@ -32,6 +33,13 @@ namespace PracticeClass {
         //"grade = -1" means no grade
         public Nullable<float> grade;
     }
+    struct ShowResource {
+        public string idCourse;
+        public string idProfessor;
+        public string linkResource;
+        public string nameResource;
+        public short numberResource;
+    }
     class classBase {
         ///Class Varibles
         private database_practiceclass database;
@@ -53,7 +61,8 @@ namespace PracticeClass {
             //first check if user exists as a Student then check if password is true
             if (database.table_student.Any(user => user.idStudent == id) && database.table_user.Any(user => user.idUser == id && user.password == password)) {
                 //return Class student
-                return new classStudent(id, database, this.IsTA(id), numberYearFromStart, term);
+                this.user = new classStudent(id, database, this.IsTA(id), numberYearFromStart, term);
+                return (classStudent)this.user;
             }
             return null;
         }
@@ -69,9 +78,11 @@ namespace PracticeClass {
         //login method and creater of professor
         public classProfessor LoginProfessor(string id, string password) {
             //first check if user exists as a professor then check if password is true
-            if (database.table_professor.Any(user => user.idProfessor == id) && database.table_user.Any(user => user.idUser == id && user.password == password)) {
+            if (database.table_professor.Any(user => user.idProfessor == id) &&
+                database.table_user.Any(user => user.idUser == id && user.password == password)) {
                 //return professor if user is valid
-                return new classProfessor(id, database, this.IsPrimeProfessor(id), numberYearFromStart, term);
+                this.user = new classProfessor(id, database, this.IsPrimeProfessor(id), numberYearFromStart, term);
+                return (classProfessor)this.user;
             }
             return null;
         }
@@ -118,6 +129,54 @@ namespace PracticeClass {
             }
             else
                 return -3;
+        }
+        //add new class to database
+        //"-2" means "access violation" , "-3" means "wrong course","-4" means "wrong idTA", "-1" means "general error" and "1" means "done"
+        public int AddNewPracticeClass(string idCourse, string idTA, short numberYearFromStart, bool termPracticeClass) {
+            if (this.user.GetAccessLevel() < 3)
+                return -2;
+            if (!database.table_course.Any(course => course.idCourse == idCourse))
+                return -3;
+            if (!database.table_student.Any(student => student.idStudent == idTA))
+                return -4;
+            try {
+                table_practiceclass newClass = new table_practiceclass {
+                    groupeNumberPracticeClass = (short)(this.database.table_practiceclass.Max(groupnum => groupnum.groupeNumberPracticeClass) + 1),
+                    idCourse = idCourse,
+                    idProfessor = this.user.GetID(),
+                    idTA = idTA,
+                    numberYearFromStart = numberYearFromStart,
+                    termPracticeClass = termPracticeClass
+                };
+                database.table_practiceclass.Add(newClass);
+                database.SaveChanges();
+                return 1;
+            }
+            catch (Exception) {
+                return -1;
+            }
+        }
+        //get course's resources
+        public List<ShowResource> GetCourseResourcesList(string idCourse) {
+            var resources = (from resourse in database.table_resource
+                             where (resourse.idCourse == idCourse)
+                             select new {
+                                 idCourse = resourse.idCourse,
+                                 idProfessor = resourse.idProfessor,
+                                 linkResource = resourse.linkResource,
+                                 nameResource = resourse.nameResource,
+                                 numberResource = resourse.numberResource
+                             }).ToList();
+            List<ShowResource> result = new List<ShowResource>();
+            foreach (var item in resources)
+                result.Add(new ShowResource {
+                    idCourse = item.idCourse,
+                    idProfessor = item.idProfessor,
+                    linkResource = item.linkResource,
+                    nameResource = item.nameResource,
+                    numberResource = item.numberResource
+                });
+            return result;
         }
     }
 }
