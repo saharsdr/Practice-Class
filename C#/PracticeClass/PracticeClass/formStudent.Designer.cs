@@ -32,6 +32,7 @@
             dataGridViewTab1.ColumnHeadersDefaultCellStyle.ForeColor = them.row;
             dataGridViewTab1.ColumnHeadersDefaultCellStyle.BackColor = them.mainText;
 
+            //dataGridView tab2 practice
             dataGridViewTab2Practice.RowsDefaultCellStyle.ForeColor = them.mainText;
             dataGridViewTab2Practice.BackgroundColor = them.row;
             dataGridViewTab2Practice.ForeColor = System.Drawing.Color.Black;
@@ -42,6 +43,7 @@
             dataGridViewTab2Practice.ColumnHeadersDefaultCellStyle.ForeColor = them.row;
             dataGridViewTab2Practice.ColumnHeadersDefaultCellStyle.BackColor = them.mainText;
 
+            //dataGridView tab2 quiz
             dataGridViewTab2Quiz.RowsDefaultCellStyle.ForeColor = them.mainText;
             dataGridViewTab2Quiz.BackgroundColor = them.row;
             dataGridViewTab2Quiz.ForeColor = System.Drawing.Color.Black;
@@ -52,6 +54,22 @@
             dataGridViewTab2Quiz.ColumnHeadersDefaultCellStyle.ForeColor = them.row;
             dataGridViewTab2Quiz.ColumnHeadersDefaultCellStyle.BackColor = them.mainText;
 
+            //dataGridView Tab 4
+            dataGridViewTab4.RowsDefaultCellStyle.ForeColor = them.mainText;
+            dataGridViewTab4.BackgroundColor = them.row;
+            dataGridViewTab4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewTab4.DefaultCellStyle.ForeColor = them.mainText;
+            dataGridViewTab4.DefaultCellStyle.SelectionForeColor = them.row;
+            dataGridViewTab4.DefaultCellStyle.SelectionBackColor = them.unmainText;
+            dataGridViewTab4.GridColor = them.unmainText;
+            dataGridViewTab4.ColumnHeadersDefaultCellStyle.ForeColor = them.row;
+            dataGridViewTab4.ColumnHeadersDefaultCellStyle.BackColor = them.mainText;
+
+            //page 4
+            labelTab4nameCourse.ForeColor = them.mainText;
+            panel4.BackColor = them.sideMenuBack;
+
+
             tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             panelTab2InfoClass.BackColor = them.row;
@@ -59,6 +77,29 @@
             buttonTab1Archve.BackColor = them.buttonOut;
             buttonTab4SaveNewPassword.ForeColor=
             buttonTab1Archve.ForeColor = them.row;
+
+            tabPage1.BackColor = them.background;
+            tabPage2.BackColor = them.background;
+            tabPage4.BackColor = them.background;
+            //page 3
+            bunifuMaterialTextboxTab3NewPassword.ForeColor = bunifuMaterialTextboxTab3RepeatNewPassword.ForeColor =
+                labelTab3FullNameStudent.ForeColor = labelTab3Id.ForeColor = labelTab3Title.ForeColor =
+                labelTab3TitleCurrentPassword.ForeColor = labelTab3NewPass.ForeColor = label2.ForeColor =
+                label3.ForeColor = bunifuMaterialTextboxCurrentPassword.ForeColor = them.mainText;
+
+            buttonTab3SaveNewPassword.ForeColor=panel2.BackColor=panel1.BackColor = them.row;
+            buttonTab3SaveNewPassword.BackColor = them.mainText;
+            panel3.BackColor = them.sideMenuBack;
+            tabPage3.BackColor = them.background;
+
+
+
+            //page 5
+            labelTab5NumberPractice.ForeColor = them.mainText;
+            bunifuMetroTextboxTab5LinkPractice.ForeColor = them.mainText;
+
+            //page 6
+            labelTab6Date.ForeColor = labelTab6Grade.ForeColor = labelTab6NumberPartPractice.ForeColor = them.mainText;
 
         }
 
@@ -95,6 +136,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSideMenu = new System.Windows.Forms.Panel();
             this.iconSetting = new System.Windows.Forms.PictureBox();
             this.iconProfile = new System.Windows.Forms.PictureBox();
@@ -112,10 +156,11 @@
             this.labelTab1Title = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridViewTab2Quiz = new System.Windows.Forms.DataGridView();
-            this.tab2NumberQuiz = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tab2DateQuiz = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tab2GradeQuiz = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTab2Practice = new System.Windows.Forms.DataGridView();
+            this.Tab2PartPractice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tab2NumberPractice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tab2DownloadPractice = new System.Windows.Forms.DataGridViewImageColumn();
+            this.tab2UploadPractice = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelTab2InfoClass = new System.Windows.Forms.Panel();
             this.labelTab2NameTa = new System.Windows.Forms.Label();
             this.labelTab2NameProfessor = new System.Windows.Forms.Label();
@@ -138,6 +183,28 @@
             this.labelTab3TitleCurrentPassword = new System.Windows.Forms.Label();
             this.labelTab3Id = new System.Windows.Forms.Label();
             this.labelTab3FullNameStudent = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.iconTab4BackArrow = new System.Windows.Forms.PictureBox();
+            this.labelTab4nameCourse = new System.Windows.Forms.Label();
+            this.dataGridViewTab4 = new System.Windows.Forms.DataGridView();
+            this.numberResource = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameResource = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.linkResourse = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.panelTab5 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.labelTab5NumberPractice = new System.Windows.Forms.Label();
+            this.bunifuMetroTextboxTab5LinkPractice = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.iconTab5Send = new System.Windows.Forms.PictureBox();
+            this.iconTab5Brows = new System.Windows.Forms.PictureBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.iconTab6EditPractice = new System.Windows.Forms.PictureBox();
+            this.iconTab6BackArrow = new System.Windows.Forms.PictureBox();
+            this.labelTab6Grade = new System.Windows.Forms.Label();
+            this.labelTab6NumberPartPractice = new System.Windows.Forms.Label();
+            this.labelTab6Date = new System.Windows.Forms.Label();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -156,10 +223,8 @@
             this.buttonTab4SaveNewPassword = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.Tab2PartPractice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tab2NumberPractice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tab2DownloadPractice = new System.Windows.Forms.DataGridViewImageColumn();
-            this.tab2UploadPractice = new System.Windows.Forms.DataGridViewImageColumn();
+            this.tab2NumberQuiz = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tab2DateQuiz = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelSideMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconSetting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconProfile)).BeginInit();
@@ -177,6 +242,19 @@
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconTab4BackArrow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTab4)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            this.panelTab5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconTab5Send)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconTab5Brows)).BeginInit();
+            this.tabPage6.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconTab6EditPractice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconTab6BackArrow)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSideMenu
@@ -202,6 +280,7 @@
             this.iconSetting.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.iconSetting.TabIndex = 6;
             this.iconSetting.TabStop = false;
+            this.iconSetting.Click += new System.EventHandler(this.iconSetting_Click);
             // 
             // iconProfile
             // 
@@ -246,6 +325,7 @@
             this.iconHome.TabIndex = 2;
             this.iconHome.TabStop = false;
             this.iconHome.Visible = false;
+            this.iconHome.Click += new System.EventHandler(this.iconHome_Click);
             this.iconHome.MouseHover += new System.EventHandler(this.iconHome_MouseHover);
             // 
             // tabControl1
@@ -253,10 +333,13 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(61, 0);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Location = new System.Drawing.Point(58, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1224, 753);
+            this.tabControl1.Size = new System.Drawing.Size(1227, 753);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -268,7 +351,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1216, 724);
+            this.tabPage1.Size = new System.Drawing.Size(1219, 724);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -387,7 +470,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1216, 724);
+            this.tabPage2.Size = new System.Drawing.Size(1219, 724);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -415,8 +498,7 @@
             this.dataGridViewTab2Quiz.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewTab2Quiz.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tab2NumberQuiz,
-            this.tab2DateQuiz,
-            this.tab2GradeQuiz});
+            this.tab2DateQuiz});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -446,25 +528,6 @@
             this.dataGridViewTab2Quiz.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTab2Quiz.Size = new System.Drawing.Size(529, 470);
             this.dataGridViewTab2Quiz.TabIndex = 8;
-            // 
-            // tab2NumberQuiz
-            // 
-            this.tab2NumberQuiz.HeaderText = "Number";
-            this.tab2NumberQuiz.Name = "tab2NumberQuiz";
-            this.tab2NumberQuiz.ReadOnly = true;
-            // 
-            // tab2DateQuiz
-            // 
-            this.tab2DateQuiz.HeaderText = "Date";
-            this.tab2DateQuiz.Name = "tab2DateQuiz";
-            this.tab2DateQuiz.ReadOnly = true;
-            // 
-            // tab2GradeQuiz
-            // 
-            this.tab2GradeQuiz.FillWeight = 50F;
-            this.tab2GradeQuiz.HeaderText = "Grade";
-            this.tab2GradeQuiz.Name = "tab2GradeQuiz";
-            this.tab2GradeQuiz.ReadOnly = true;
             // 
             // dataGridViewTab2Practice
             // 
@@ -521,7 +584,34 @@
             this.dataGridViewTab2Practice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewTab2Practice.Size = new System.Drawing.Size(529, 470);
             this.dataGridViewTab2Practice.TabIndex = 7;
+            this.dataGridViewTab2Practice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTab2Practice_CellContentClick);
             this.dataGridViewTab2Practice.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTab2Practice_CellContentDoubleClick);
+            // 
+            // Tab2PartPractice
+            // 
+            this.Tab2PartPractice.HeaderText = "Part";
+            this.Tab2PartPractice.Name = "Tab2PartPractice";
+            this.Tab2PartPractice.ReadOnly = true;
+            // 
+            // Tab2NumberPractice
+            // 
+            this.Tab2NumberPractice.HeaderText = "Number";
+            this.Tab2NumberPractice.Name = "Tab2NumberPractice";
+            this.Tab2NumberPractice.ReadOnly = true;
+            // 
+            // tab2DownloadPractice
+            // 
+            this.tab2DownloadPractice.FillWeight = 40F;
+            this.tab2DownloadPractice.HeaderText = "DL";
+            this.tab2DownloadPractice.Name = "tab2DownloadPractice";
+            this.tab2DownloadPractice.ReadOnly = true;
+            // 
+            // tab2UploadPractice
+            // 
+            this.tab2UploadPractice.FillWeight = 40F;
+            this.tab2UploadPractice.HeaderText = "UP";
+            this.tab2UploadPractice.Name = "tab2UploadPractice";
+            this.tab2UploadPractice.ReadOnly = true;
             // 
             // panelTab2InfoClass
             // 
@@ -536,37 +626,38 @@
             // 
             // labelTab2NameTa
             // 
-            this.labelTab2NameTa.AutoSize = true;
             this.labelTab2NameTa.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTab2NameTa.ForeColor = System.Drawing.Color.MediumTurquoise;
-            this.labelTab2NameTa.Location = new System.Drawing.Point(1045, 1);
+            this.labelTab2NameTa.Location = new System.Drawing.Point(933, 0);
             this.labelTab2NameTa.Name = "labelTab2NameTa";
-            this.labelTab2NameTa.Size = new System.Drawing.Size(123, 45);
+            this.labelTab2NameTa.Size = new System.Drawing.Size(274, 45);
             this.labelTab2NameTa.TabIndex = 8;
             this.labelTab2NameTa.Text = "Quizes";
+            this.labelTab2NameTa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelTab2NameProfessor
             // 
-            this.labelTab2NameProfessor.AutoSize = true;
             this.labelTab2NameProfessor.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTab2NameProfessor.ForeColor = System.Drawing.Color.MediumTurquoise;
-            this.labelTab2NameProfessor.Location = new System.Drawing.Point(543, 1);
+            this.labelTab2NameProfessor.Location = new System.Drawing.Point(407, 1);
             this.labelTab2NameProfessor.Name = "labelTab2NameProfessor";
-            this.labelTab2NameProfessor.Size = new System.Drawing.Size(123, 45);
+            this.labelTab2NameProfessor.Size = new System.Drawing.Size(392, 45);
             this.labelTab2NameProfessor.TabIndex = 7;
             this.labelTab2NameProfessor.Text = "Quizes";
+            this.labelTab2NameProfessor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelTab2NameProfessor.Click += new System.EventHandler(this.labelTab2NameProfessor_Click);
             // 
             // labelTab2NameCourse
             // 
-            this.labelTab2NameCourse.AutoSize = true;
             this.labelTab2NameCourse.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTab2NameCourse.ForeColor = System.Drawing.Color.MediumTurquoise;
-            this.labelTab2NameCourse.Location = new System.Drawing.Point(41, 1);
+            this.labelTab2NameCourse.Location = new System.Drawing.Point(9, 1);
             this.labelTab2NameCourse.Name = "labelTab2NameCourse";
-            this.labelTab2NameCourse.Size = new System.Drawing.Size(123, 45);
+            this.labelTab2NameCourse.Size = new System.Drawing.Size(260, 45);
             this.labelTab2NameCourse.TabIndex = 6;
             this.labelTab2NameCourse.Text = "Quizes";
+            this.labelTab2NameCourse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelTab2NameCourse.Click += new System.EventHandler(this.labelTab2NameCourse_Click);
             // 
             // labelTab2Quiz
             // 
@@ -600,7 +691,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1216, 724);
+            this.tabPage3.Size = new System.Drawing.Size(1219, 724);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             // 
@@ -657,6 +748,7 @@
             this.label3.Size = new System.Drawing.Size(105, 32);
             this.label3.TabIndex = 9;
             this.label3.Text = "Sign out";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -813,6 +905,289 @@
             this.labelTab3FullNameStudent.TabIndex = 3;
             this.labelTab3FullNameStudent.Text = "Name LName";
             this.labelTab3FullNameStudent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage4.Controls.Add(this.panel4);
+            this.tabPage4.Controls.Add(this.dataGridViewTab4);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1219, 724);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "tabPage4";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Teal;
+            this.panel4.Controls.Add(this.iconTab4BackArrow);
+            this.panel4.Controls.Add(this.labelTab4nameCourse);
+            this.panel4.Location = new System.Drawing.Point(55, 48);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1097, 53);
+            this.panel4.TabIndex = 11;
+            // 
+            // iconTab4BackArrow
+            // 
+            this.iconTab4BackArrow.Image = global::PracticeClass.Properties.Resources.Icon_ionic_ios_arrow_back_2x;
+            this.iconTab4BackArrow.Location = new System.Drawing.Point(3, 7);
+            this.iconTab4BackArrow.Name = "iconTab4BackArrow";
+            this.iconTab4BackArrow.Size = new System.Drawing.Size(40, 38);
+            this.iconTab4BackArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.iconTab4BackArrow.TabIndex = 12;
+            this.iconTab4BackArrow.TabStop = false;
+            this.iconTab4BackArrow.Click += new System.EventHandler(this.iconTab4BackArrow_Click);
+            // 
+            // labelTab4nameCourse
+            // 
+            this.labelTab4nameCourse.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTab4nameCourse.ForeColor = System.Drawing.Color.White;
+            this.labelTab4nameCourse.Location = new System.Drawing.Point(96, 0);
+            this.labelTab4nameCourse.Name = "labelTab4nameCourse";
+            this.labelTab4nameCourse.Size = new System.Drawing.Size(889, 51);
+            this.labelTab4nameCourse.TabIndex = 0;
+            this.labelTab4nameCourse.Text = "label1";
+            this.labelTab4nameCourse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dataGridViewTab4
+            // 
+            this.dataGridViewTab4.AllowUserToAddRows = false;
+            this.dataGridViewTab4.AllowUserToDeleteRows = false;
+            this.dataGridViewTab4.AllowUserToOrderColumns = true;
+            this.dataGridViewTab4.AllowUserToResizeRows = false;
+            this.dataGridViewTab4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewTab4.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridViewTab4.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewTab4.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataGridViewTab4.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTab4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGridViewTab4.ColumnHeadersHeight = 50;
+            this.dataGridViewTab4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewTab4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.numberResource,
+            this.nameResource,
+            this.linkResourse});
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTab4.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewTab4.Location = new System.Drawing.Point(55, 130);
+            this.dataGridViewTab4.Name = "dataGridViewTab4";
+            this.dataGridViewTab4.ReadOnly = true;
+            this.dataGridViewTab4.RowHeadersVisible = false;
+            this.dataGridViewTab4.RowHeadersWidth = 40;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewTab4.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.dataGridViewTab4.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewTab4.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTab4.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Teal;
+            this.dataGridViewTab4.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.dataGridViewTab4.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewTab4.RowTemplate.Height = 35;
+            this.dataGridViewTab4.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTab4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewTab4.Size = new System.Drawing.Size(1097, 1022);
+            this.dataGridViewTab4.TabIndex = 10;
+            // 
+            // numberResource
+            // 
+            this.numberResource.FillWeight = 30F;
+            this.numberResource.HeaderText = "Number";
+            this.numberResource.Name = "numberResource";
+            this.numberResource.ReadOnly = true;
+            // 
+            // nameResource
+            // 
+            this.nameResource.HeaderText = "Name";
+            this.nameResource.Name = "nameResource";
+            this.nameResource.ReadOnly = true;
+            // 
+            // linkResourse
+            // 
+            this.linkResourse.HeaderText = "Link";
+            this.linkResourse.Name = "linkResourse";
+            this.linkResourse.ReadOnly = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage5.Controls.Add(this.panelTab5);
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(1219, 724);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "tabPage5";
+            // 
+            // panelTab5
+            // 
+            this.panelTab5.BackColor = System.Drawing.Color.White;
+            this.panelTab5.Controls.Add(this.pictureBox1);
+            this.panelTab5.Controls.Add(this.labelTab5NumberPractice);
+            this.panelTab5.Controls.Add(this.bunifuMetroTextboxTab5LinkPractice);
+            this.panelTab5.Controls.Add(this.iconTab5Send);
+            this.panelTab5.Controls.Add(this.iconTab5Brows);
+            this.panelTab5.Location = new System.Drawing.Point(126, 204);
+            this.panelTab5.Name = "panelTab5";
+            this.panelTab5.Size = new System.Drawing.Size(954, 158);
+            this.panelTab5.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::PracticeClass.Properties.Resources.Icon_ionic_ios_arrow_back_2x;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 29);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(40, 38);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // labelTab5NumberPractice
+            // 
+            this.labelTab5NumberPractice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.labelTab5NumberPractice.Font = new System.Drawing.Font("Segoe UI Semibold", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTab5NumberPractice.ForeColor = System.Drawing.Color.MediumTurquoise;
+            this.labelTab5NumberPractice.Location = new System.Drawing.Point(30, 20);
+            this.labelTab5NumberPractice.Name = "labelTab5NumberPractice";
+            this.labelTab5NumberPractice.Size = new System.Drawing.Size(803, 53);
+            this.labelTab5NumberPractice.TabIndex = 7;
+            this.labelTab5NumberPractice.Text = "Practice number";
+            this.labelTab5NumberPractice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // bunifuMetroTextboxTab5LinkPractice
+            // 
+            this.bunifuMetroTextboxTab5LinkPractice.BorderColorFocused = System.Drawing.Color.Blue;
+            this.bunifuMetroTextboxTab5LinkPractice.BorderColorIdle = System.Drawing.Color.Teal;
+            this.bunifuMetroTextboxTab5LinkPractice.BorderColorMouseHover = System.Drawing.Color.Blue;
+            this.bunifuMetroTextboxTab5LinkPractice.BorderThickness = 3;
+            this.bunifuMetroTextboxTab5LinkPractice.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.bunifuMetroTextboxTab5LinkPractice.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMetroTextboxTab5LinkPractice.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.bunifuMetroTextboxTab5LinkPractice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.bunifuMetroTextboxTab5LinkPractice.isPassword = false;
+            this.bunifuMetroTextboxTab5LinkPractice.Location = new System.Drawing.Point(25, 92);
+            this.bunifuMetroTextboxTab5LinkPractice.Margin = new System.Windows.Forms.Padding(4);
+            this.bunifuMetroTextboxTab5LinkPractice.MaxLength = 32767;
+            this.bunifuMetroTextboxTab5LinkPractice.Name = "bunifuMetroTextboxTab5LinkPractice";
+            this.bunifuMetroTextboxTab5LinkPractice.Size = new System.Drawing.Size(816, 44);
+            this.bunifuMetroTextboxTab5LinkPractice.TabIndex = 6;
+            this.bunifuMetroTextboxTab5LinkPractice.Text = "bunifuMetroTextbox1";
+            this.bunifuMetroTextboxTab5LinkPractice.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // iconTab5Send
+            // 
+            this.iconTab5Send.Image = global::PracticeClass.Properties.Resources.Icon_feather_send_2x;
+            this.iconTab5Send.Location = new System.Drawing.Point(894, 95);
+            this.iconTab5Send.Name = "iconTab5Send";
+            this.iconTab5Send.Size = new System.Drawing.Size(40, 38);
+            this.iconTab5Send.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.iconTab5Send.TabIndex = 4;
+            this.iconTab5Send.TabStop = false;
+            this.iconTab5Send.Click += new System.EventHandler(this.iconTab5Send_Click);
+            // 
+            // iconTab5Brows
+            // 
+            this.iconTab5Brows.Image = global::PracticeClass.Properties.Resources.Icon_metro_attachment_2x;
+            this.iconTab5Brows.Location = new System.Drawing.Point(848, 95);
+            this.iconTab5Brows.Name = "iconTab5Brows";
+            this.iconTab5Brows.Size = new System.Drawing.Size(40, 38);
+            this.iconTab5Brows.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.iconTab5Brows.TabIndex = 5;
+            this.iconTab5Brows.TabStop = false;
+            this.iconTab5Brows.Click += new System.EventHandler(this.iconTab5Brows_Click);
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage6.Controls.Add(this.panel6);
+            this.tabPage6.Location = new System.Drawing.Point(4, 25);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(1219, 724);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "tabPage6";
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.Controls.Add(this.iconTab6EditPractice);
+            this.panel6.Controls.Add(this.iconTab6BackArrow);
+            this.panel6.Controls.Add(this.labelTab6Grade);
+            this.panel6.Controls.Add(this.labelTab6NumberPartPractice);
+            this.panel6.Controls.Add(this.labelTab6Date);
+            this.panel6.Location = new System.Drawing.Point(126, 204);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(956, 100);
+            this.panel6.TabIndex = 13;
+            // 
+            // iconTab6EditPractice
+            // 
+            this.iconTab6EditPractice.Image = global::PracticeClass.Properties.Resources.Icon_awesome_edit_2x;
+            this.iconTab6EditPractice.Location = new System.Drawing.Point(904, 28);
+            this.iconTab6EditPractice.Name = "iconTab6EditPractice";
+            this.iconTab6EditPractice.Size = new System.Drawing.Size(40, 38);
+            this.iconTab6EditPractice.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.iconTab6EditPractice.TabIndex = 15;
+            this.iconTab6EditPractice.TabStop = false;
+            // 
+            // iconTab6BackArrow
+            // 
+            this.iconTab6BackArrow.Image = global::PracticeClass.Properties.Resources.Icon_ionic_ios_arrow_back_2x;
+            this.iconTab6BackArrow.Location = new System.Drawing.Point(3, 28);
+            this.iconTab6BackArrow.Name = "iconTab6BackArrow";
+            this.iconTab6BackArrow.Size = new System.Drawing.Size(40, 38);
+            this.iconTab6BackArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.iconTab6BackArrow.TabIndex = 14;
+            this.iconTab6BackArrow.TabStop = false;
+            this.iconTab6BackArrow.Click += new System.EventHandler(this.iconTab6BackArrow_Click);
+            // 
+            // labelTab6Grade
+            // 
+            this.labelTab6Grade.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTab6Grade.ForeColor = System.Drawing.Color.MediumTurquoise;
+            this.labelTab6Grade.Location = new System.Drawing.Point(690, 28);
+            this.labelTab6Grade.Name = "labelTab6Grade";
+            this.labelTab6Grade.Size = new System.Drawing.Size(208, 32);
+            this.labelTab6Grade.TabIndex = 12;
+            this.labelTab6Grade.Text = "Sign out";
+            this.labelTab6Grade.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelTab6NumberPartPractice
+            // 
+            this.labelTab6NumberPartPractice.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTab6NumberPartPractice.ForeColor = System.Drawing.Color.MediumTurquoise;
+            this.labelTab6NumberPartPractice.Location = new System.Drawing.Point(41, 28);
+            this.labelTab6NumberPartPractice.Name = "labelTab6NumberPartPractice";
+            this.labelTab6NumberPartPractice.Size = new System.Drawing.Size(317, 32);
+            this.labelTab6NumberPartPractice.TabIndex = 10;
+            this.labelTab6NumberPartPractice.Text = "Sign out";
+            // 
+            // labelTab6Date
+            // 
+            this.labelTab6Date.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTab6Date.ForeColor = System.Drawing.Color.MediumTurquoise;
+            this.labelTab6Date.Location = new System.Drawing.Point(397, 28);
+            this.labelTab6Date.Name = "labelTab6Date";
+            this.labelTab6Date.Size = new System.Drawing.Size(287, 32);
+            this.labelTab6Date.TabIndex = 11;
+            this.labelTab6Date.Text = "Sign out";
             // 
             // Column4
             // 
@@ -993,31 +1368,17 @@
             this.label5.Size = new System.Drawing.Size(105, 32);
             this.label5.TabIndex = 9;
             // 
-            // Tab2PartPractice
+            // tab2NumberQuiz
             // 
-            this.Tab2PartPractice.HeaderText = "Part";
-            this.Tab2PartPractice.Name = "Tab2PartPractice";
-            this.Tab2PartPractice.ReadOnly = true;
+            this.tab2NumberQuiz.HeaderText = "Number";
+            this.tab2NumberQuiz.Name = "tab2NumberQuiz";
+            this.tab2NumberQuiz.ReadOnly = true;
             // 
-            // Tab2NumberPractice
+            // tab2DateQuiz
             // 
-            this.Tab2NumberPractice.HeaderText = "Number";
-            this.Tab2NumberPractice.Name = "Tab2NumberPractice";
-            this.Tab2NumberPractice.ReadOnly = true;
-            // 
-            // tab2DownloadPractice
-            // 
-            this.tab2DownloadPractice.FillWeight = 40F;
-            this.tab2DownloadPractice.HeaderText = "DL";
-            this.tab2DownloadPractice.Name = "tab2DownloadPractice";
-            this.tab2DownloadPractice.ReadOnly = true;
-            // 
-            // tab2UploadPractice
-            // 
-            this.tab2UploadPractice.FillWeight = 40F;
-            this.tab2UploadPractice.HeaderText = "UP";
-            this.tab2UploadPractice.Name = "tab2UploadPractice";
-            this.tab2UploadPractice.ReadOnly = true;
+            this.tab2DateQuiz.HeaderText = "Date";
+            this.tab2DateQuiz.Name = "tab2DateQuiz";
+            this.tab2DateQuiz.ReadOnly = true;
             // 
             // formStudent
             // 
@@ -1025,8 +1386,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1282, 753);
-            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panelSideMenu);
+            this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "formStudent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1046,7 +1407,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTab2Quiz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTab2Practice)).EndInit();
             this.panelTab2InfoClass.ResumeLayout(false);
-            this.panelTab2InfoClass.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -1054,6 +1414,19 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.iconTab4BackArrow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTab4)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.panelTab5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconTab5Send)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconTab5Brows)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.iconTab6EditPractice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconTab6BackArrow)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1089,9 +1462,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Course;
         private System.Windows.Forms.DataGridView dataGridViewTab1;
         private System.Windows.Forms.DataGridView dataGridViewTab2Quiz;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tab2NumberQuiz;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tab2DateQuiz;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tab2GradeQuiz;
         private System.Windows.Forms.DataGridView dataGridViewTab2Practice;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -1125,5 +1495,29 @@
         private System.Windows.Forms.DataGridViewImageColumn tab2DownloadPractice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tab2NumberPractice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tab2PartPractice;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label labelTab4nameCourse;
+        private System.Windows.Forms.DataGridView dataGridViewTab4;
+        private System.Windows.Forms.PictureBox iconTab4BackArrow;
+        private System.Windows.Forms.DataGridViewLinkColumn linkResourse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameResource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numberResource;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.PictureBox iconTab5Send;
+        private System.Windows.Forms.Panel panelTab5;
+        private System.Windows.Forms.PictureBox iconTab5Brows;
+        private System.Windows.Forms.Label labelTab5NumberPractice;
+        private Bunifu.Framework.UI.BunifuMetroTextbox bunifuMetroTextboxTab5LinkPractice;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.PictureBox iconTab6BackArrow;
+        private System.Windows.Forms.Label labelTab6Grade;
+        private System.Windows.Forms.Label labelTab6NumberPartPractice;
+        private System.Windows.Forms.Label labelTab6Date;
+        private System.Windows.Forms.PictureBox iconTab6EditPractice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tab2DateQuiz;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tab2NumberQuiz;
     }
 }
