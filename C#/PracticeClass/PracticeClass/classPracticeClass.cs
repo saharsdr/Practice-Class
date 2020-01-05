@@ -250,5 +250,13 @@ namespace PracticeClass {
             });
             return 1;
         }
+
+       
+        public string GetIdCourse()
+        {
+            classBase baseItem = new classBase();
+            return baseItem.GetIdCourse(this.numberYearFromStart, this.term, this.groupNumber);       
+        }
+
     }
 }

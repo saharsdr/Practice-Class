@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PracticeClass {
+namespace PracticeClass
+{
     ///Streucts
     //taples of ClassList
-    struct ShowClass {
+    struct ShowClass
+    {
         public string nameCourse;
         public string fullNameTA;
         public string fullNameProfessor;
@@ -16,31 +18,36 @@ namespace PracticeClass {
         public Nullable<float> grade;
     }
     //taples of QuizList
-    struct ShowQuiz {
+    struct ShowQuiz
+    {
         public DateTime date;
         public short number;
     }
     //taples of PracticeList
-    struct ShowPractice {
+    struct ShowPractice
+    {
         public short number;
         public string link;
-        public int part;
+        public short part;
         public string idUploader;
     }
-    struct ShowStudent {
+    struct ShowStudent
+    {
         public string fullName;
         public string id;
         //"grade = -1" means no grade
         public Nullable<float> grade;
     }
-    struct ShowResource {
+    struct ShowResource
+    {
         public string idCourse;
         public string idProfessor;
         public string linkResource;
         public string nameResource;
         public short numberResource;
     }
-    class classBase {
+    class classBase
+    {
         ///Class Varibles
         private database_practiceclass database;
         private classUser user { get; set; }
@@ -48,7 +55,8 @@ namespace PracticeClass {
         private short numberYearFromStart;
         private bool term;
         ///Class Methods
-        public classBase() {
+        public classBase()
+        {
             database = new database_practiceclass();
             //test basic data
             //set basic App Datas
@@ -57,9 +65,11 @@ namespace PracticeClass {
             //numberYearFromStart= this.database.table_systemDatas.numberYearNow;
             numberYearFromStart = 98;
         }
-        public classStudent LoginStudent(string id, string password) {
+        public classStudent LoginStudent(string id, string password)
+        {
             //first check if user exists as a Student then check if password is true
-            if (database.table_student.Any(user => user.idStudent == id) && database.table_user.Any(user => user.idUser == id && user.password == password)) {
+            if (database.table_student.Any(user => user.idStudent == id) && database.table_user.Any(user => user.idUser == id && user.password == password))
+            {
                 //return Class student
                 this.user = new classStudent(id, database, this.IsTA(id), numberYearFromStart, term);
                 return (classStudent)this.user;
@@ -67,7 +77,8 @@ namespace PracticeClass {
             return null;
         }
         //return true if user is a TA for a Class or some classes
-        public bool IsTA(string id) {
+        public bool IsTA(string id)
+        {
             //return true if exist a class that (TA id = this.id) in this term
             return database.table_practiceclass.Any(practiceClass =>
             practiceClass.idTA == id &&
@@ -76,10 +87,12 @@ namespace PracticeClass {
             );
         }
         //login method and creater of professor
-        public classProfessor LoginProfessor(string id, string password) {
+        public classProfessor LoginProfessor(string id, string password)
+        {
             //first check if user exists as a professor then check if password is true
             if (database.table_professor.Any(user => user.idProfessor == id) &&
-                database.table_user.Any(user => user.idUser == id && user.password == password)) {
+                database.table_user.Any(user => user.idUser == id && user.password == password))
+            {
                 //return professor if user is valid
                 this.user = new classProfessor(id, database, this.IsPrimeProfessor(id), numberYearFromStart, term);
                 return (classProfessor)this.user;
@@ -87,13 +100,15 @@ namespace PracticeClass {
             return null;
         }
         //return true if user is a PrimeProfessor
-        public bool IsPrimeProfessor(string id) {
+        public bool IsPrimeProfessor(string id)
+        {
             return database.table_professor.Any(professor => professor.idProfessor == id && professor.isPrime == true);
         }
         //edit first name , last name , password
         //empty string("") means attribute is "unchenged" 
         //"return -1" means "ErroR" and "return 1" means "Done"
-        public int EditUser(string newFirstName = "", string newLastName = "", string newPassword = "") {
+        public int EditUser(string newFirstName = "", string newLastName = "", string newPassword = "")
+        {
             var selectedUser = (from item in this.database.table_user
                                 where (item.idUser == this.user.GetID())
                                 select item).ToList().First();
@@ -110,17 +125,21 @@ namespace PracticeClass {
         }
         //add new user to database
         //"return -2" means "User exists", "return -3" means "wrong accessLevel" and "return 1" means "Done"
-        public int AddNewUser(string id, int accessLevel) {
+        public int AddNewUser(string id, int accessLevel)
+        {
             if (this.database.table_user.Any(item => item.idUser == id))
                 return -2;
             this.database.table_user.Add(new table_user { idUser = id, firstNameUser = "", lastNameUser = "", password = "" });
-            if (accessLevel == 1) {
+            if (accessLevel == 1)
+            {
                 this.database.table_student.Add(new table_student { idStudent = id });
                 this.database.SaveChanges();
                 return 1;
             }
-            else if (accessLevel == 3 || accessLevel == 4) {
-                this.database.table_professor.Add(new table_professor {
+            else if (accessLevel == 3 || accessLevel == 4)
+            {
+                this.database.table_professor.Add(new table_professor
+                {
                     idProfessor = id,
                     isPrime = (accessLevel == 3) ? false : true
                 });
@@ -132,15 +151,18 @@ namespace PracticeClass {
         }
         //add new class to database
         //"-2" means "access violation" , "-3" means "wrong course","-4" means "wrong idTA", "-1" means "general error" and "1" means "done"
-        public int AddNewPracticeClass(string idCourse, string idTA, short numberYearFromStart, bool termPracticeClass) {
+        public int AddNewPracticeClass(string idCourse, string idTA, short numberYearFromStart, bool termPracticeClass)
+        {
             if (this.user.GetAccessLevel() < 3)
                 return -2;
             if (!database.table_course.Any(course => course.idCourse == idCourse))
                 return -3;
             if (!database.table_student.Any(student => student.idStudent == idTA))
                 return -4;
-            try {
-                table_practiceclass newClass = new table_practiceclass {
+            try
+            {
+                table_practiceclass newClass = new table_practiceclass
+                {
                     groupeNumberPracticeClass = (short)(this.database.table_practiceclass.Max(groupnum => groupnum.groupeNumberPracticeClass) + 1),
                     idCourse = idCourse,
                     idProfessor = this.user.GetID(),
@@ -152,15 +174,18 @@ namespace PracticeClass {
                 database.SaveChanges();
                 return 1;
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 return -1;
             }
         }
         //get course's resources
-        public List<ShowResource> GetCourseResourcesList(string idCourse) {
+        public List<ShowResource> GetCourseResourcesList(string idCourse)
+        {
             var resources = (from resourse in database.table_resource
                              where (resourse.idCourse == idCourse)
-                             select new {
+                             select new
+                             {
                                  idCourse = resourse.idCourse,
                                  idProfessor = resourse.idProfessor,
                                  linkResource = resourse.linkResource,
@@ -169,7 +194,8 @@ namespace PracticeClass {
                              }).ToList();
             List<ShowResource> result = new List<ShowResource>();
             foreach (var item in resources)
-                result.Add(new ShowResource {
+                result.Add(new ShowResource
+                {
                     idCourse = item.idCourse,
                     idProfessor = item.idProfessor,
                     linkResource = item.linkResource,
@@ -177,6 +203,22 @@ namespace PracticeClass {
                     numberResource = item.numberResource
                 });
             return result;
+        }
+        public string GetIdCourse(short groupNumber, bool term, short year)
+        {
+            string idCours="";
+            var ID = from practiceClass in database.viewstudentlistclass
+                     where (
+                         practiceClass.numberYearFromStart == year &&
+                         practiceClass.termPracticeClass == term &&
+                         practiceClass.groupeNumberPracticeClass == groupNumber
+                         )
+                     select new
+                     {  idCours = practiceClass.idCourse };
+            foreach (var item in ID)
+                idCours = item.idCours;
+                             
+            return idCours;
         }
     }
 }
