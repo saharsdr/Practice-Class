@@ -148,7 +148,7 @@ namespace PracticeClass {
                 }
                 if (newLinkResource != resource.linkResource)
                     resource.linkResource = newLinkResource;
-                if (newNameResource != newNameResource)
+                if (newNameResource != resource.nameResource)
                     resource.nameResource = newNameResource;
                 database.SaveChanges();
                 return 1;
