@@ -44,7 +44,8 @@ namespace PracticeClass {
         public override int GetAccessLevel() {
             return this.accessLevel;
         }
-        public List<ShowClass> GetProfessorClassesList() {
+        //get professor's classes for this term and year
+        public List<ShowClass> GetProfessorOnGoingClassesList() {
             //select values from database and add them to list
             var practiceClasses = (from practiceClass in database.viewlistclass
                                    where (
@@ -75,13 +76,41 @@ namespace PracticeClass {
             return result;
         }
         //add new resource for a course
-        //"-2" means wrong idCourse, "-3" means "resource already exists", "-1" means "general error" and "1" means "done"
+        //"-2" means wrong idCourse, "-3" means "resourceName or Link already exists","-4" means "this resource alrady exists", "-1" means "general error" and "1" means "done"
         public int AddResource(string idCourse, string linkResource, string nameResource) {
             if (!this.database.table_course.Any(course => course.idCourse == idCourse))
                 return -2;
-            if (this.database.table_resource.Any(resource => resource.nameResource == nameResource || resource.linkResource == linkResource))
+            if (this.database.table_resource.Any(resource => resource.nameResource == nameResource || resource.linkResource == linkResource && resource.deleted == false))
                 return -3;
             try {
+                //resource already exists
+                if (this.database.table_resource.Any(resource =>
+                   resource.idCourse == idCourse &&
+                       resource.idProfessor == this.id &&
+                       resource.linkResource == linkResource &&
+                       resource.nameResource == nameResource
+                    )) {
+                    var res = this.database.table_resource.Where(resource =>
+                      resource.idCourse == idCourse &&
+                          resource.idProfessor == this.id &&
+                          resource.linkResource == linkResource &&
+                          resource.nameResource == nameResource
+                        ).First();
+                    //resource is deleted so unDelete it
+                    if (res.deleted) {
+                        res.deleted = false;
+                        //res.numberResource = (short)((from selectres in database.table_resource
+                        //                              where selectres.idCourse == idCourse
+                        //                              select selectres)
+                        //                      .ToList()
+                        //                      .Max(num => num.numberResource) + 1);
+                        this.database.SaveChanges();
+                        return 1;
+                    }
+                    //resource is not deleted
+                    else
+                        return -4;
+                }
                 table_resource newResourse = new table_resource {
                     idCourse = idCourse,
                     idProfessor = this.id,
@@ -156,6 +185,52 @@ namespace PracticeClass {
             catch (Exception) {
                 return -1;
             }
+        }
+        //delete professor's resource
+        //"-2" means "resource doesen't exists", "-1" means "general ErroR" and "1" means "done"
+        public int DeleteProfessorResource(short numberResource, string idCourse) {
+            var resource = this.database.table_resource.Where(res => res.idCourse == idCourse && res.numberResource == numberResource).First();
+            if (resource == null)
+                return -2;
+            try {
+                resource.deleted = true;
+                this.database.SaveChanges();
+                return 1;
+            }
+            catch (Exception) {
+                return -1;
+            }
+        }
+        //get professor's classes but not for this term and year
+        public List<ShowClass> GetProfessorArchivedClassesList() {
+            //select values from database and add them to list
+            var practiceClasses = (from practiceClass in database.viewlistclass
+                                   where (
+                                   (practiceClass.numberYearFromStart != this.numberYearFromStart ||
+                                   practiceClass.termPracticeClass != this.term) &&
+                                   //   practiceClass.status == true &&
+                                   practiceClass.idProfessor == this.id
+                                   )
+                                   select new {
+                                       fullNameProfessor = practiceClass.prffn + " " + practiceClass.pfln,
+                                       fullNameTA = practiceClass.tafn + " " + practiceClass.taln,
+                                       groupNumber = practiceClass.groupeNumberPracticeClass,
+                                       nameCourse = practiceClass.nameCourse.ToString(),
+                                       term = this.term,
+                                       year = this.numberYearFromStart,
+                                       grade = -1
+                                   }).ToList();
+            List<ShowClass> result = new List<ShowClass>();
+            foreach (var item in practiceClasses)
+                result.Add(new ShowClass {
+                    fullNameProfessor = item.fullNameProfessor,
+                    fullNameTA = item.fullNameTA,
+                    groupNumber = item.groupNumber,
+                    nameCourse = item.nameCourse,
+                    term = item.term,
+                    year = item.year
+                });
+            return result;
         }
     }
 }

@@ -40,6 +40,10 @@ namespace PracticeClass {
         public string nameResource;
         public short numberResource;
     }
+    struct ShowCourse {
+        public string id;
+        public string name;
+    }
     class classBase {
         ///Class Varibles
         private database_practiceclass database;
@@ -135,22 +139,48 @@ namespace PracticeClass {
         public int AddNewPracticeClass(string idCourse, string idTA, short numberYearFromStart, bool termPracticeClass) {
             if (this.user.GetAccessLevel() < 3)
                 return -2;
-            if (!database.table_course.Any(course => course.idCourse == idCourse))
+            if (!this.database.table_course.Any(course => course.idCourse == idCourse))
                 return -3;
-            if (!database.table_student.Any(student => student.idStudent == idTA))
+            if (!this.database.table_student.Any(student => student.idStudent == idTA))
                 return -4;
             try {
-                table_practiceclass newClass = new table_practiceclass {
-                    groupeNumberPracticeClass = (short)(this.database.table_practiceclass.Max(groupnum => groupnum.groupeNumberPracticeClass) + 1),
-                    idCourse = idCourse,
-                    idProfessor = this.user.GetID(),
-                    idTA = idTA,
-                    numberYearFromStart = numberYearFromStart,
-                    termPracticeClass = termPracticeClass
-                };
-                database.table_practiceclass.Add(newClass);
-                database.SaveChanges();
-                return 1;
+                //class already exists
+                if (this.database.table_practiceclass.Any(practiceClass =>
+                    practiceClass.numberYearFromStart == numberYearFromStart &&
+                    practiceClass.termPracticeClass == term &&
+                    practiceClass.idCourse == idCourse &&
+                    practiceClass.idProfessor == this.user.GetID() &&
+                    practiceClass.idTA == idTA)) {
+                    var temp = this.database.table_practiceclass.Where(practiceClass =>
+                     practiceClass.numberYearFromStart == numberYearFromStart &&
+                     practiceClass.termPracticeClass == term &&
+                     practiceClass.idCourse == idCourse &&
+                     practiceClass.idProfessor == this.user.GetID() &&
+                     practiceClass.idTA == idTA).First();
+                    //class is deleted so unDelete it
+                    if (temp.deleted) {
+                        temp.deleted = false;
+                        temp.groupeNumberPracticeClass = (short)(this.database.table_practiceclass.Max(groupnum => groupnum.groupeNumberPracticeClass) + 1);
+                        this.database.SaveChanges();
+                        return 1;
+                    }
+                    //class already exists and not deleted
+                    else
+                        return -5;
+                }
+                else {
+                    table_practiceclass newClass = new table_practiceclass {
+                        groupeNumberPracticeClass = (short)(this.database.table_practiceclass.Max(groupnum => groupnum.groupeNumberPracticeClass) + 1),
+                        idCourse = idCourse,
+                        idProfessor = this.user.GetID(),
+                        idTA = idTA,
+                        numberYearFromStart = numberYearFromStart,
+                        termPracticeClass = termPracticeClass
+                    };
+                    this.database.table_practiceclass.Add(newClass);
+                    this.database.SaveChanges();
+                    return 1;
+                }
             }
             catch (Exception) {
                 return -1;
@@ -176,6 +206,50 @@ namespace PracticeClass {
                     nameResource = item.nameResource,
                     numberResource = item.numberResource
                 });
+            return result;
+        }
+        //delete a PracticeClass
+        public int DeletePracticeClass(short groupNumber, short numberYearFromStart, bool termPracticeClass) {
+            if (this.user.GetAccessLevel() < 3)
+                return -2;
+            if (!this.database.table_practiceclass.Any(practiceClass =>
+             practiceClass.groupeNumberPracticeClass == groupNumber &&
+             practiceClass.numberYearFromStart == numberYearFromStart &&
+             practiceClass.termPracticeClass == term))
+                return -3;
+            try {
+                //delete students from class
+                var student_Class_relations = this.database.table_studentpracticeclass.Where(studentPrClass =>
+                  studentPrClass.groupeNumberPracticeClass == groupNumber &&
+               studentPrClass.numberYearFromStart == numberYearFromStart &&
+               studentPrClass.termPracticeClass == term).ToList();
+                foreach (var item in student_Class_relations)
+                    item.deleted = true;
+                //DeletePracticeClass Class
+                this.database.table_practiceclass.Where(practiceClass =>
+                  practiceClass.groupeNumberPracticeClass == groupNumber &&
+               practiceClass.numberYearFromStart == numberYearFromStart &&
+               practiceClass.termPracticeClass == term).First().deleted = true;
+                var temp = this.database.table_practiceclass.Where(practiceClass =>
+                  practiceClass.groupeNumberPracticeClass > groupNumber &&
+               practiceClass.numberYearFromStart == numberYearFromStart &&
+               practiceClass.termPracticeClass == term).ToList();
+                foreach (var item in temp)
+                    item.groupeNumberPracticeClass--;
+                this.database.SaveChanges();
+                return 1;
+            }
+            catch (Exception) {
+                return -1;
+            }
+        }
+        //get all courses from database
+        public List<ShowCourse> GetAllCourses() {
+            var temp = this.database.table_course.ToList();
+            List<ShowCourse> result = new List<ShowCourse>();
+            foreach (var item in temp) {
+                result.Add(new ShowCourse { id = item.idCourse, name = item.nameCourse });
+            }
             return result;
         }
     }
