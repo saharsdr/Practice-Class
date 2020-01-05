@@ -98,37 +98,52 @@ namespace PracticeClass {
             }
         }
         //add new student to class
-        //"-2" means "Professor does not have access to this class", "-3" means "wrong idStudent", "-4" means "idStudent = idTA", "-5" means "student_class relation already exists", "-1" means "general error" and "1" means "done"
-        public int AddStudentToClass(string idProfessor, string idStudent) {
-            if (idProfessor != this.idProfessor)
-                return -2;
+        //"-2" means "wrong idStudent", "-3" means "idStudent = idTA", "-4" means "student_class relation already exists and not deleted", "-1" means "general error" and "1" means "done"
+        public int AddStudentToClass(string idStudent) {
             if (!this.database.table_student.Any(student => student.idStudent == idStudent))
-                return -3;
+                return -2;
             if (idStudent == this.idTA)
-                return -4;
-            if (this.database.table_studentpracticeclass.Any(student =>
-             student.idStudent == idStudent &&
-             student.groupeNumberPracticeClass == this.groupNumber &&
-             student.numberYearFromStart == this.numberYearFromStart &&
-             student.termPracticeClass == this.term))
-                return -5;
+                return -3;
             try {
-                table_studentpracticeclass newClassStudent = new table_studentpracticeclass {
-                    groupeNumberPracticeClass = this.groupNumber,
-                    idStudent = idStudent,
-                    numberYearFromStart = this.numberYearFromStart,
-                    termPracticeClass = this.term,
-                    deleted = false
-                };
-                this.database.table_studentpracticeclass.Add(newClassStudent);
-                database.SaveChanges();
-                return 1;
+                //Student_class relation already exists
+                if (this.database.table_studentpracticeclass.Any(student =>
+                 student.idStudent == idStudent &&
+                 student.groupeNumberPracticeClass == this.groupNumber &&
+                 student.numberYearFromStart == this.numberYearFromStart &&
+                 student.termPracticeClass == this.term)) {
+                    var temp = this.database.table_studentpracticeclass.Where(student =>
+                                   student.idStudent == idStudent &&
+                                   student.groupeNumberPracticeClass == this.groupNumber &&
+                                   student.numberYearFromStart == this.numberYearFromStart &&
+                                   student.termPracticeClass == this.term).First();
+                    //Student_class relation is deleted so we unDelete it
+                    if (temp.deleted) {
+                        temp.deleted = false;
+                        this.database.SaveChanges();
+                        return 1;
+                    }
+                    //student_class relation is not deleted
+                    else
+                        return -4;
+                }
+                else {
+                    table_studentpracticeclass newClassStudent = new table_studentpracticeclass {
+                        groupeNumberPracticeClass = this.groupNumber,
+                        idStudent = idStudent,
+                        numberYearFromStart = this.numberYearFromStart,
+                        termPracticeClass = this.term,
+                        deleted = false
+                    };
+                    this.database.table_studentpracticeclass.Add(newClassStudent);
+                    this.database.SaveChanges();
+                    return 1;
+                }
             }
             catch (Exception) {
                 return -1;
             }
         }
-       //edit this class
+        //edit this class
         //"-1" means "general ErroR" and "1" means "Done"
         public int EditPracticeClass(string newIDCourse, string newIDTA, short newNumberYearFromStart, bool newTermPracticeClass) {
             try {
@@ -159,6 +174,28 @@ namespace PracticeClass {
                     foreach (var item in shiftLeft)
                         item.groupeNumberPracticeClass--;
                 }
+                database.SaveChanges();
+                return 1;
+            }
+            catch (Exception) {
+                return -1;
+            }
+        }
+        //delete student from this class
+        //"-2" means wrong student, "-1" means "general ErroR" and "1" means "Done"
+        public int DeleteStodentFromClass(string idStudent) {
+            if (!this.database.table_studentpracticeclass.Any(studentPrClass =>
+            studentPrClass.groupeNumberPracticeClass == this.groupNumber &&
+            studentPrClass.numberYearFromStart == this.numberYearFromStart &&
+            studentPrClass.termPracticeClass == this.term &&
+            studentPrClass.idStudent == idStudent))
+                return -2;
+            try {
+                this.database.table_studentpracticeclass.Where(studentPrClass =>
+                studentPrClass.groupeNumberPracticeClass == this.groupNumber &&
+                studentPrClass.numberYearFromStart == this.numberYearFromStart &&
+                studentPrClass.termPracticeClass == this.term &&
+                studentPrClass.idStudent == idStudent).First().deleted = true;
                 database.SaveChanges();
                 return 1;
             }
