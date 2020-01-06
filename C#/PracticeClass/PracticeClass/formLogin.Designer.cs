@@ -39,6 +39,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblId = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.radioButtonStudent = new System.Windows.Forms.RadioButton();
@@ -46,6 +47,7 @@
             this.buttonLogin = new System.Windows.Forms.Button();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // lblId
@@ -103,15 +105,18 @@
             this.buttonLogin.Text = "Sign in";
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
+            this.buttonLogin.MouseEnter += new System.EventHandler(this.buttonLogin_MouseEnter);
+            this.buttonLogin.MouseLeave += new System.EventHandler(this.buttonLogin_MouseLeave);
             // 
             // textBoxId
             // 
-            this.textBoxId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxId.Font = new System.Drawing.Font("Segoe UI", 9.8F);
             this.textBoxId.Location = new System.Drawing.Point(487, 340);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(304, 29);
             this.textBoxId.TabIndex = 7;
+            this.textBoxId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxId_KeyPress);
+            this.textBoxId.MouseHover += new System.EventHandler(this.textBoxId_MouseHover);
             // 
             // textBoxPassword
             // 
@@ -122,6 +127,8 @@
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(304, 29);
             this.textBoxPassword.TabIndex = 8;
+            this.textBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPassword_KeyPress);
+            this.textBoxPassword.MouseHover += new System.EventHandler(this.textBoxPassword_MouseHover);
             // 
             // formLogin
             // 
@@ -138,7 +145,9 @@
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblId);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "formLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formLogin";
             this.Load += new System.EventHandler(this.formLogin_Load);
             this.ResumeLayout(false);
@@ -155,5 +164,6 @@
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.TextBox textBoxId;
         private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
