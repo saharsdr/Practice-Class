@@ -7,6 +7,8 @@ namespace PracticeClass {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+            formLogin f = new formLogin();
+            f.Show();
         }
     }
 }
