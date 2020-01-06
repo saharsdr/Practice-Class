@@ -17,9 +17,9 @@ namespace PracticeClass {
         private string idTA { get; }
         private string fullNameTA { get; }
         //methods
-        public classPracticeClass(database_practiceclass database, bool term, short numberYearFromStart, short groupNumber) {
+        public classPracticeClass(bool term, short numberYearFromStart, short groupNumber) {
             //set basic data
-            this.database = database;
+            this.database = new database_practiceclass();
             this.term = term;
             this.numberYearFromStart = numberYearFromStart;
             this.groupNumber = groupNumber;
@@ -33,13 +33,13 @@ namespace PracticeClass {
                        select new {
                            nameCourse = practiceClass.nameCourse,
                            //idCourse = practiceClass.idCourse,
-                           fullNameTA = practiceClass.tafn + ' ' + practiceClass.taln,
+                           fullNameTA = practiceClass.tafn + " " + practiceClass.taln,
                            idTA = practiceClass.idTA,
-                           fullNameProfessor = practiceClass.prffn + ' ' + practiceClass.pfln,
+                           fullNameProfessor = practiceClass.prffn + " " + practiceClass.pfln,
                            idProfessor = practiceClass.idProfessor,
                        };
             //this.idCourse = temp.First().idCourse;
-            this.nameCourse = temp.First().nameCourse;
+            this.nameCourse = temp.First().nameCourse.ToString();
             this.idProfessor = temp.First().idProfessor;
             this.fullNameProfessor = temp.First().fullNameProfessor;
             this.idTA = temp.First().idTA;
