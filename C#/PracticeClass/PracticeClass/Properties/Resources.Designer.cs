@@ -65,7 +65,7 @@ namespace PracticeClass.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap education_2 {
             get {
-                object obj = ResourceManager.GetObject("education-2", resourceCulture);
+                object obj = ResourceManager.GetObject("education_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace PracticeClass.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap education_21 {
+        internal static System.Drawing.Bitmap Icon_awesome_edit_2x {
             get {
-                object obj = ResourceManager.GetObject("education-21", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_awesome_edit_2x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -85,7 +85,7 @@ namespace PracticeClass.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Icon_feather_download_2x {
             get {
-                object obj = ResourceManager.GetObject("Icon feather-download@2x", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_feather_download_2x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace PracticeClass.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Icon_feather_download_2x1 {
+        internal static System.Drawing.Bitmap Icon_feather_send_2x {
             get {
-                object obj = ResourceManager.GetObject("Icon feather-download@2x1", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_feather_send_2x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -105,7 +105,7 @@ namespace PracticeClass.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Icon_feather_upload_2x {
             get {
-                object obj = ResourceManager.GetObject("Icon feather-upload@2x", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_feather_upload_2x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -115,7 +115,17 @@ namespace PracticeClass.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Icon_home_2x {
             get {
-                object obj = ResourceManager.GetObject("Icon home@2x", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_home_2x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_ionic_ios_arrow_back_2x {
+            get {
+                object obj = ResourceManager.GetObject("Icon_ionic_ios_arrow_back_2x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -125,7 +135,7 @@ namespace PracticeClass.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Icon_ionic_ios_settings_2x {
             get {
-                object obj = ResourceManager.GetObject("Icon ionic-ios-settings@2x", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_ionic_ios_settings_2x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -135,7 +145,17 @@ namespace PracticeClass.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Icon_material_account_circle_2x {
             get {
-                object obj = ResourceManager.GetObject("Icon material-account-circle@2x", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_material_account_circle_2x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_metro_attachment_2x {
+            get {
+                object obj = ResourceManager.GetObject("Icon_metro_attachment_2x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -155,7 +175,7 @@ namespace PracticeClass.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Search_2x {
             get {
-                object obj = ResourceManager.GetObject("Search@2x", resourceCulture);
+                object obj = ResourceManager.GetObject("Search_2x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -165,7 +185,7 @@ namespace PracticeClass.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap sort__1__2x {
             get {
-                object obj = ResourceManager.GetObject("sort (1)@2x", resourceCulture);
+                object obj = ResourceManager.GetObject("sort__1__2x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

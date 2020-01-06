@@ -10,7 +10,7 @@ namespace PracticeClass {
         private bool term { get; }
         private short numberYearFromStart { get; }
         private short groupNumber { get; }
-        //   private string idCourse { get; }
+        private string idCourse;
         private string nameCourse { get; }
         private string idProfessor { get; }
         private string fullNameProfessor { get; }
@@ -19,7 +19,8 @@ namespace PracticeClass {
         //methods
         public classPracticeClass(bool term, short numberYearFromStart, short groupNumber) {
             //set basic data
-            this.database = new database_practiceclass();
+            this.database = new
+database_practiceclass();
             this.term = term;
             this.numberYearFromStart = numberYearFromStart;
             this.groupNumber = groupNumber;
@@ -44,6 +45,10 @@ namespace PracticeClass {
             this.fullNameProfessor = temp.First().fullNameProfessor;
             this.idTA = temp.First().idTA;
             this.fullNameTA = temp.First().fullNameTA;
+            this.idCourse = this.database.table_course.Where(course => course.nameCourse == this.nameCourse).First().idCourse;
+        }
+        public string getIDCourse() {
+            return this.idCourse;
         }
         private bool IsStudentOfClass(string id) => this.database.table_studentpracticeclass.Any(
                     practiceClass =>
