@@ -24,7 +24,7 @@ namespace PracticeClass {
     struct ShowPractice {
         public short number;
         public string link;
-        public int part;
+        public short part;
         public string idUploader;
     }
     struct ShowStudent {

@@ -83,7 +83,6 @@ namespace PracticeClass
         private void iconProfile_MouseHover(object sender, EventArgs e)
         {
             toolTip1.Show(thisStudent.GetFullName() + "\n@" + thisStudent.GetID(), iconProfile);
-
         }
 
 
@@ -158,59 +157,63 @@ namespace PracticeClass
 
         private void dataGridViewTab1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            rowIndexTab1 = dataGridViewTab1.CurrentRow.Index;
-            labelTab1Title.Text = rowIndexTab1.ToString();
+            if (labelTab1Title.Text != "Archive")
             {
-                //rename the title's of practice class page
-                labelTab2NameCourse.Text = onGoingClassesList[rowIndexTab1].nameCourse;
-                labelTab2NameProfessor.Text = onGoingClassesList[rowIndexTab1].fullNameProfessor;
-                labelTab2NameTa.Text = onGoingClassesList[rowIndexTab1].fullNameTA;
 
-                //make a list from practice that TA or professor uploaded
-                database_practiceclass db = new database_practiceclass();
-                thisPractisClass = new classPracticeClass(db, onGoingClassesList[rowIndexTab1].term,
-                    onGoingClassesList[rowIndexTab1].year, onGoingClassesList[rowIndexTab1].groupNumber);
-                selectedClassPractice = new List<ShowPractice>();
-                selectedClassPractice = thisPractisClass.GetClassPracticeList();
 
-                //show the practice in it's GridView
-                dataGridViewTab2Practice.Rows.Clear();
-                if (selectedClassPractice.Count != 0)
+                rowIndexTab1 = dataGridViewTab1.CurrentRow.Index;
+                labelTab1Title.Text = rowIndexTab1.ToString();
                 {
-                    dataGridViewTab2Practice.RowCount = selectedClassPractice.Count;
-                    for (int i = 0; i < selectedClassPractice.Count; i++)
+                    //rename the title's of practice class page
+                    labelTab2NameCourse.Text = onGoingClassesList[rowIndexTab1].nameCourse;
+                    labelTab2NameProfessor.Text = onGoingClassesList[rowIndexTab1].fullNameProfessor;
+                    labelTab2NameTa.Text = onGoingClassesList[rowIndexTab1].fullNameTA;
+
+                    //make a list from practice that TA or professor uploaded
+                    database_practiceclass db = new database_practiceclass();
+                    thisPractisClass = new classPracticeClass(db, onGoingClassesList[rowIndexTab1].term,
+                        onGoingClassesList[rowIndexTab1].year, onGoingClassesList[rowIndexTab1].groupNumber);
+                    selectedClassPractice = new List<ShowPractice>();
+                    selectedClassPractice = thisPractisClass.GetClassPracticeList();
+
+                    //show the practice in it's GridView
+                    dataGridViewTab2Practice.Rows.Clear();
+                    if (selectedClassPractice.Count != 0)
                     {
-                        dataGridViewTab2Practice.Rows[i].Cells["Tab2NumberPractice"].Value = selectedClassPractice[i].number;
-                        dataGridViewTab2Practice.Rows[i].Cells["Tab2PartPractice"].Value = selectedClassPractice[i].part;
-                        //dataGridViewTab2Practice.Rows[i].Cells["tab2GradePractice"].Value = selectedClassPractice[i].;
-                        dataGridViewTab2Practice.Rows[i].Cells["tab2UploadPractice"].Value =
-                            global::PracticeClass.Properties.Resources.Icon_feather_upload_2x;
-                        dataGridViewTab2Practice.Rows[i].Cells["tab2DownloadPractice"].Value =
-                            global::PracticeClass.Properties.Resources.Icon_feather_download_2x;
+                        dataGridViewTab2Practice.RowCount = selectedClassPractice.Count;
+                        for (int i = 0; i < selectedClassPractice.Count; i++)
+                        {
+                            dataGridViewTab2Practice.Rows[i].Cells["Tab2NumberPractice"].Value = selectedClassPractice[i].number;
+                            dataGridViewTab2Practice.Rows[i].Cells["Tab2PartPractice"].Value = selectedClassPractice[i].part;
+                            //dataGridViewTab2Practice.Rows[i].Cells["tab2GradePractice"].Value = selectedClassPractice[i].;
+                            dataGridViewTab2Practice.Rows[i].Cells["tab2UploadPractice"].Value =
+                                global::PracticeClass.Properties.Resources.Icon_feather_upload_2x;
+                            dataGridViewTab2Practice.Rows[i].Cells["tab2DownloadPractice"].Value =
+                                global::PracticeClass.Properties.Resources.Icon_feather_download_2x;
+                        }
                     }
-                }
 
-                //make data grid view for quiz
-                selectedClassQuiz = thisPractisClass.GetClassQuizList();
-                dataGridViewTab2Quiz.Rows.Clear();
-                if (selectedClassPractice.Count != 0)
-                {
-                    dataGridViewTab2Quiz.RowCount = selectedClassQuiz.Count;
-                    for (int i = 0; i < selectedClassPractice.Count; i++)
+                    //make data grid view for quiz
+                    selectedClassQuiz = thisPractisClass.GetClassQuizList();
+                    dataGridViewTab2Quiz.Rows.Clear();
+                    if (selectedClassPractice.Count != 0)
                     {
-                        dataGridViewTab2Quiz.Rows[i].Cells["Tab2NumberPractice"].Value = selectedClassQuiz[i].number;
-                        dataGridViewTab2Quiz.Rows[i].Cells["Tab2PartPractice"].Value = selectedClassQuiz[i].date;
-                       // dataGridViewTab2Quiz.Rows[i].Cells["tab2UploadPractice"].Value = selectedClassQuiz[i].;
+                        dataGridViewTab2Quiz.RowCount = selectedClassQuiz.Count;
+                        for (int i = 0; i < selectedClassPractice.Count; i++)
+                        {
+                            dataGridViewTab2Quiz.Rows[i].Cells["Tab2NumberPractice"].Value = selectedClassQuiz[i].number;
+                            dataGridViewTab2Quiz.Rows[i].Cells["Tab2PartPractice"].Value = selectedClassQuiz[i].date;
+                            // dataGridViewTab2Quiz.Rows[i].Cells["tab2UploadPractice"].Value = selectedClassQuiz[i].;
+                        }
                     }
+
+                    //go to practice class page
+                    tabControl1.SelectTab(tabPage2);
+                    iconHome.Visible = true;
+
                 }
-
-                //go to practice class page
-                tabControl1.SelectTab(tabPage2);
-                iconHome.Visible = true;
-
             }
         }
-
 
 
 
@@ -272,9 +275,13 @@ namespace PracticeClass
             else if (dataGridViewTab2Practice.CurrentCell.ColumnIndex == 3)
             {
                 rowIndexTab2Practice = dataGridViewTab2Practice.CurrentCell.RowIndex;
+                int temp = thisPractisClass.AddSolvedPractice(selectedClassPractice[rowIndexTab2Practice].number, selectedClassPractice[rowIndexTab2Practice].part,
+                    thisStudent.GetID(), "");
+                if (temp==1)
+                {
 
-                //thisPractisClass.AddSolvedPractice()
-                // thisPractisClass.
+                }
+                
                 tabControl1.SelectTab(tabPage5);
 
             }
@@ -288,6 +295,10 @@ namespace PracticeClass
         private void iconSetting_Click(object sender, EventArgs e)
         {
             tabControl1.SelectTab(tabPage3);
+            labelTab3FullNameStudent.Text = thisStudent.GetFullName();
+            labelTab3Id.Text = thisStudent.GetID();
+            bunifuMaterialTextboxTab3NewPassword.Text = bunifuMaterialTextboxTab3RepeatNewPassword.Text =
+                buttonTab3SaveNewPassword.Text = "";
             iconHome.Visible = true;
         }
 
@@ -332,6 +343,8 @@ namespace PracticeClass
                 }
 
             }
+            labelTab4nameCourse.Text = labelTab2NameCourse.Text;
+
             tabControl1.SelectTab(tabPage4);
         }
 
@@ -376,6 +389,42 @@ namespace PracticeClass
             if (openDialog.ShowDialog() == DialogResult.OK)
             {
                 bunifuMetroTextboxTab5LinkPractice.Text = openDialog.FileName;
+            }
+        }
+
+        private void bunifuMaterialTextboxCurrentPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 9 || e.KeyChar == 13)
+            {
+                if (bunifuMaterialTextboxCurrentPassword.Text != "")
+                {
+                    bunifuMaterialTextboxTab3NewPassword.Focus();
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void bunifuMaterialTextboxTab3NewPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 9 || e.KeyChar == 13)
+            {
+                if (bunifuMaterialTextboxTab3NewPassword.Text != "")
+                {
+                    bunifuMaterialTextboxTab3RepeatNewPassword.Focus();
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void bunifuMaterialTextboxTab3RepeatNewPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 9 || e.KeyChar == 13)
+            {
+                if (bunifuMaterialTextboxTab3RepeatNewPassword.Text != "")
+                {
+                    buttonTab4SaveNewPassword.Focus();
+                    e.Handled = true;
+                }
             }
         }
     }
