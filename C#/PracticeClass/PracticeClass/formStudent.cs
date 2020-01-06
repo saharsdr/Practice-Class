@@ -300,7 +300,7 @@ namespace PracticeClass
             labelTab3FullNameStudent.Text = thisStudent.GetFullName();
             labelTab3Id.Text = thisStudent.GetID();
             bunifuMaterialTextboxTab3NewPassword.Text = bunifuMaterialTextboxTab3RepeatNewPassword.Text =
-                buttonTab3SaveNewPassword.Text = "";
+                bunifuMaterialTextboxCurrentPassword.Text = "";
             iconHome.Visible = true;
         }
 
@@ -364,22 +364,24 @@ namespace PracticeClass
 
         private void iconTab5Send_Click(object sender, EventArgs e)
         {
+            
             if (bunifuMetroTextboxTab5LinkPractice.Text == "")
                 MessageBox.Show("Please first fill the field.");
             else
             {
-                thisPractisClass.AddSolvedPractice(selectedClassPractice[rowIndexTab2Practice].number,
+                int temp = thisPractisClass.AddSolvedPractice(selectedClassPractice[rowIndexTab2Practice].number,
                       selectedClassPractice[rowIndexTab2Practice].part,
                       thisStudent.GetID(), bunifuMetroTextboxTab5LinkPractice.Text);
-                MessageBox.Show("Upload done successfully.");
-                labelTab6NumberPartPractice.Text = ("Practice " + selectedClassPractice[rowIndexTab2Practice].number.ToString()
-                    + " Part " + selectedClassPractice[rowIndexTab2Practice].part.ToString());
-                labelTab6Grade.Visible = false;
-                labelTab6Date.Visible = false;
-                iconTab6EditPractice.Visible = false;
+                if (temp==-4)
+                {
+                    MessageBox.Show("You had a practice for time ago.");
+                }
+                else if(temp==-3 || temp==-2)
+                    MessageBox.Show("There is a mistake. please try again.");
+                else
+                    MessageBox.Show("Upload done successfully.");
                 bunifuMetroTextboxTab5LinkPractice.Text = "";
                 tabControl1.SelectTab(tabPage2);
-
             }
         }
 
@@ -430,6 +432,11 @@ namespace PracticeClass
                     e.Handled = true;
                 }
             }
+        }
+
+        private void labelTab4nameCourse_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

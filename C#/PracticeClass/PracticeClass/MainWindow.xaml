@@ -5,6 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticeClass"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Visibility="Visible" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Minimized">
     <Grid/>
 </Window>

@@ -44,6 +44,7 @@ namespace PracticeClass
                 {
                     formStudent formForStudent = new formStudent(id, pass);
                     formForStudent.Show();
+                    this.Close();
                 }
                 else
                 {
