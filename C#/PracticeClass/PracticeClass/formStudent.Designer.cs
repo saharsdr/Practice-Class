@@ -305,6 +305,7 @@
             this.iconSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.iconSearch.TabIndex = 4;
             this.iconSearch.TabStop = false;
+            this.iconSearch.Visible = false;
             this.iconSearch.MouseHover += new System.EventHandler(this.iconSearch_MouseHover);
             // 
             // iconStudentToTa
@@ -441,6 +442,7 @@
             // 
             // buttonTab1Archve
             // 
+            this.buttonTab1Archve.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonTab1Archve.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTab1Archve.Location = new System.Drawing.Point(550, 675);
             this.buttonTab1Archve.Name = "buttonTab1Archve";
@@ -664,6 +666,7 @@
             // 
             // labelTab2NameCourse
             // 
+            this.labelTab2NameCourse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelTab2NameCourse.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTab2NameCourse.ForeColor = System.Drawing.Color.MediumTurquoise;
             this.labelTab2NameCourse.Location = new System.Drawing.Point(9, 1);
@@ -714,9 +717,9 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Gainsboro;
             this.panel3.Controls.Add(this.buttonTab3SaveNewPassword);
-            this.panel3.Location = new System.Drawing.Point(483, 552);
+            this.panel3.Location = new System.Drawing.Point(487, 552);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(430, 73);
+            this.panel3.Size = new System.Drawing.Size(422, 69);
             this.panel3.TabIndex = 6;
             // 
             // buttonTab3SaveNewPassword
@@ -746,6 +749,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(303, 230);
@@ -756,6 +760,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.MediumTurquoise;
             this.label3.Location = new System.Drawing.Point(35, 84);
@@ -779,6 +784,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.bunifuMaterialTextboxTab3RepeatNewPassword);
             this.panel1.Controls.Add(this.labelTab3RepeatNewPassword);
             this.panel1.Controls.Add(this.bunifuMaterialTextboxTab3NewPassword);
@@ -824,9 +830,9 @@
             this.labelTab3RepeatNewPassword.ForeColor = System.Drawing.Color.MediumTurquoise;
             this.labelTab3RepeatNewPassword.Location = new System.Drawing.Point(40, 307);
             this.labelTab3RepeatNewPassword.Name = "labelTab3RepeatNewPassword";
-            this.labelTab3RepeatNewPassword.Size = new System.Drawing.Size(127, 32);
+            this.labelTab3RepeatNewPassword.Size = new System.Drawing.Size(247, 32);
             this.labelTab3RepeatNewPassword.TabIndex = 12;
-            this.labelTab3RepeatNewPassword.Text = "Last Name";
+            this.labelTab3RepeatNewPassword.Text = "Repeat New Password";
             // 
             // bunifuMaterialTextboxTab3NewPassword
             // 
@@ -905,7 +911,7 @@
             this.labelTab3Id.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelTab3Id.Font = new System.Drawing.Font("Segoe UI", 15.2F, System.Drawing.FontStyle.Italic);
             this.labelTab3Id.ForeColor = System.Drawing.Color.MediumTurquoise;
-            this.labelTab3Id.Location = new System.Drawing.Point(93, 62);
+            this.labelTab3Id.Location = new System.Drawing.Point(92, 61);
             this.labelTab3Id.Name = "labelTab3Id";
             this.labelTab3Id.Size = new System.Drawing.Size(239, 32);
             this.labelTab3Id.TabIndex = 4;
@@ -917,9 +923,9 @@
             this.labelTab3FullNameStudent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelTab3FullNameStudent.Font = new System.Drawing.Font("Segoe UI Semibold", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTab3FullNameStudent.ForeColor = System.Drawing.Color.MediumTurquoise;
-            this.labelTab3FullNameStudent.Location = new System.Drawing.Point(16, 15);
+            this.labelTab3FullNameStudent.Location = new System.Drawing.Point(15, 15);
             this.labelTab3FullNameStudent.Name = "labelTab3FullNameStudent";
-            this.labelTab3FullNameStudent.Size = new System.Drawing.Size(393, 51);
+            this.labelTab3FullNameStudent.Size = new System.Drawing.Size(393, 49);
             this.labelTab3FullNameStudent.TabIndex = 3;
             this.labelTab3FullNameStudent.Text = "Name LName";
             this.labelTab3FullNameStudent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -948,6 +954,7 @@
             // 
             // iconTab4BackArrow
             // 
+            this.iconTab4BackArrow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconTab4BackArrow.Image = global::PracticeClass.Properties.Resources.Icon_ionic_ios_arrow_back_2x;
             this.iconTab4BackArrow.Location = new System.Drawing.Point(3, 7);
             this.iconTab4BackArrow.Name = "iconTab4BackArrow";
@@ -1056,6 +1063,7 @@
             // panelTab5
             // 
             this.panelTab5.BackColor = System.Drawing.Color.White;
+            this.panelTab5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelTab5.Controls.Add(this.pictureBox1);
             this.panelTab5.Controls.Add(this.labelTab5NumberPractice);
             this.panelTab5.Controls.Add(this.bunifuMetroTextboxTab5LinkPractice);
@@ -1068,6 +1076,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::PracticeClass.Properties.Resources.Icon_ionic_ios_arrow_back_2x;
             this.pictureBox1.Location = new System.Drawing.Point(0, 29);
             this.pictureBox1.Name = "pictureBox1";
@@ -1082,9 +1091,9 @@
             this.labelTab5NumberPractice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelTab5NumberPractice.Font = new System.Drawing.Font("Segoe UI Semibold", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTab5NumberPractice.ForeColor = System.Drawing.Color.MediumTurquoise;
-            this.labelTab5NumberPractice.Location = new System.Drawing.Point(30, 20);
+            this.labelTab5NumberPractice.Location = new System.Drawing.Point(29, 20);
             this.labelTab5NumberPractice.Name = "labelTab5NumberPractice";
-            this.labelTab5NumberPractice.Size = new System.Drawing.Size(803, 53);
+            this.labelTab5NumberPractice.Size = new System.Drawing.Size(803, 51);
             this.labelTab5NumberPractice.TabIndex = 7;
             this.labelTab5NumberPractice.Text = "Practice number";
             this.labelTab5NumberPractice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1106,7 +1115,6 @@
             this.bunifuMetroTextboxTab5LinkPractice.Name = "bunifuMetroTextboxTab5LinkPractice";
             this.bunifuMetroTextboxTab5LinkPractice.Size = new System.Drawing.Size(816, 44);
             this.bunifuMetroTextboxTab5LinkPractice.TabIndex = 6;
-            this.bunifuMetroTextboxTab5LinkPractice.Text = "bunifuMetroTextbox1";
             this.bunifuMetroTextboxTab5LinkPractice.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // iconTab5Send
@@ -1145,6 +1153,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.iconTab6EditPractice);
             this.panel6.Controls.Add(this.iconTab6BackArrow);
             this.panel6.Controls.Add(this.labelTab6Grade);

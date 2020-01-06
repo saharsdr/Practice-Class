@@ -162,7 +162,6 @@ namespace PracticeClass
 
 
                 rowIndexTab1 = dataGridViewTab1.CurrentRow.Index;
-                labelTab1Title.Text = rowIndexTab1.ToString();
                 {
                     //rename the title's of practice class page
                     labelTab2NameCourse.Text = onGoingClassesList[rowIndexTab1].nameCourse;
@@ -170,8 +169,7 @@ namespace PracticeClass
                     labelTab2NameTa.Text = onGoingClassesList[rowIndexTab1].fullNameTA;
 
                     //make a list from practice that TA or professor uploaded
-                    database_practiceclass db = new database_practiceclass();
-                    thisPractisClass = new classPracticeClass(db, onGoingClassesList[rowIndexTab1].term,
+                    thisPractisClass = new classPracticeClass( onGoingClassesList[rowIndexTab1].term,
                         onGoingClassesList[rowIndexTab1].year, onGoingClassesList[rowIndexTab1].groupNumber);
                     selectedClassPractice = new List<ShowPractice>();
                     selectedClassPractice = thisPractisClass.GetClassPracticeList();
@@ -201,8 +199,8 @@ namespace PracticeClass
                         dataGridViewTab2Quiz.RowCount = selectedClassQuiz.Count;
                         for (int i = 0; i < selectedClassPractice.Count; i++)
                         {
-                            dataGridViewTab2Quiz.Rows[i].Cells["Tab2NumberPractice"].Value = selectedClassQuiz[i].number;
-                            dataGridViewTab2Quiz.Rows[i].Cells["Tab2PartPractice"].Value = selectedClassQuiz[i].date;
+                            dataGridViewTab2Quiz.Rows[i].Cells["tab2NumberQuiz"].Value = selectedClassQuiz[i].number;
+                            dataGridViewTab2Quiz.Rows[i].Cells["tab2DateQuiz"].Value = selectedClassQuiz[i].date;
                             // dataGridViewTab2Quiz.Rows[i].Cells["tab2UploadPractice"].Value = selectedClassQuiz[i].;
                         }
                     }
@@ -243,6 +241,9 @@ namespace PracticeClass
                     MessageBox.Show("Somthing is false. try agin later.");
 
             }
+            else
+                MessageBox.Show("Please enter correct information.");
+
         }
 
         private void labelTab2NameProfessor_Click(object sender, EventArgs e)
@@ -269,6 +270,7 @@ namespace PracticeClass
             if (dataGridViewTab2Practice.CurrentCell.ColumnIndex == 2)
             {
                 rowIndexTab2Practice = dataGridViewTab2Practice.CurrentCell.RowIndex;
+                if(selectedClassPractice[rowIndexTab2Practice].link!=null)
                 System.Diagnostics.Process.Start(selectedClassPractice[rowIndexTab2Practice].link);
 
             }
@@ -305,6 +307,7 @@ namespace PracticeClass
         private void iconHome_Click(object sender, EventArgs e)
         {
             iconHome.Visible = false;
+            tabControl1.SelectTab(tabPage1);
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -374,7 +377,8 @@ namespace PracticeClass
                 labelTab6Grade.Visible = false;
                 labelTab6Date.Visible = false;
                 iconTab6EditPractice.Visible = false;
-
+                bunifuMetroTextboxTab5LinkPractice.Text = "";
+                tabControl1.SelectTab(tabPage2);
 
             }
         }
