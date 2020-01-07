@@ -233,9 +233,9 @@ namespace PracticeClass
         {
             //Change the password for student
             classBase baseItem = new classBase();
-            if (labelTab3TitleCurrentPassword.Text == labelTab3RepeatNewPassword.Text)
+            if (bunifuMaterialTextboxTab3NewPassword.Text == bunifuMaterialTextboxTab3RepeatNewPasswordTab3RepeatPassword.Text)
             {
-                if (baseItem.EditUser("", "", labelTab3NewPass.Text) == 1)
+                if (baseItem.EditUser("", "",bunifuMaterialTextboxTab3NewPassword.Text) == 1)
                     MessageBox.Show("You changed the password successfuly.");
                 else
                     MessageBox.Show("Somthing is false. try agin later.");
@@ -279,11 +279,9 @@ namespace PracticeClass
                 rowIndexTab2Practice = dataGridViewTab2Practice.CurrentCell.RowIndex;
                 int temp = thisPractisClass.AddSolvedPractice(selectedClassPractice[rowIndexTab2Practice].number, selectedClassPractice[rowIndexTab2Practice].part,
                     thisStudent.GetID(), "");
-                if (temp==1)
-                {
-
-                }
-                
+                labelTab5NumberPractice.Text = "Pactice Number " +
+                    selectedClassPractice[rowIndexTab2Practice].number.ToString() +
+                    " Part " + selectedClassPractice[rowIndexTab2Practice].part.ToString();
                 tabControl1.SelectTab(tabPage5);
 
             }
