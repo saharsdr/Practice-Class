@@ -61,6 +61,8 @@ namespace PracticeClass {
             //numberYearFromStart= this.database.table_systemDatas.numberYearNow;
             numberYearFromStart = 98;
         }
+        public short get_numberyear() => this.numberYearFromStart;
+        public bool get_term() => this.term;
         public classStudent LoginStudent(string id, string password) {
             //first check if user exists as a Student then check if password is true
             if (database.table_student.Any(user => user.idStudent == id) && database.table_user.Any(user => user.idUser == id && user.password == password)) {

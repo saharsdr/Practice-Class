@@ -34,6 +34,19 @@ namespace PracticeClass {
                     textBoxPassword.Text = "";
                 }
             }
+            else if (radioButtonProfessor.Checked == true) {
+                classProfessor accountProfessor = null;
+                accountProfessor = temp.LoginProfessor(id, pass);
+                if (accountProfessor != null) {
+                    formProfessor formForProfessor = new formProfessor(id, pass);
+                    formForProfessor.Show();
+                }
+                else {
+                    MessageBox.Show("Username or password is wrong!");
+                    textBoxId.Text = "";
+                    textBoxPassword.Text = "";
+                }
+            }
         }
 
         private void buttonLogin_MouseEnter(object sender, EventArgs e) {
