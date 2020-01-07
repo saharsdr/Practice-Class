@@ -29,3 +29,30 @@ D:\Practice-Class_last version\Practice-Class_last version\C#\PracticeClass\Prac
 E:\Programing\University Projects\DataBase - Design Analysis\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\Bunifu_UI_v1.5.3.xml
 E:\Programing\University Projects\DataBase - Design Analysis\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.formLogin.resources
 E:\Programing\University Projects\DataBase - Design Analysis\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.formStudent.resources
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\PracticeClass.exe.config
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.csprojResolveAssemblyReference.cache
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\MainWindow.g.cs
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\App.g.cs
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass_Content.g.cs
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass_MarkupCompile.cache
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass_MarkupCompile.lref
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\PracticeClass.exe
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\PracticeClass.pdb
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\Bunifu_UI_v1.5.3.dll
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\EntityFramework.dll
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\MySql.Data.dll
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\Bunifu_UI_v1.5.3.xml
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\EntityFramework.xml
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\MySql.Data.xml
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\MainWindow.baml
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.g.resources
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.formLogin.resources
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.formStudent.resources
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.Properties.Resources.resources
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.csproj.GenerateResource.Cache
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.exe
+C:\Users\Sahar\Desktop\git more last\Practice-Class\C#\PracticeClass\PracticeClass\obj\Debug\PracticeClass.pdb
